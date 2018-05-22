@@ -1,0 +1,98 @@
+// basic styles
+body
+  min-width: 320px
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  +f('gil-400', 20, 28)
+  color: $color3
+  &.is-locked
+    overflow: hidden
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    height: 100%
+    
+.container
+  position: relative
+  max-width: 1200px
+  padding: 0 15px
+  margin: 0 auto
+  
+//.link-decor
+//  span
+//    color: #dc3531
+//    border-bottom: 1px solid rgba(#dc3531, .5)
+//    +trs
+//  .no-touch &:hover span
+//    border-bottom-color: #dc3531
+//
+.title-md
+  +f('gil-500', 36, 40)
+  text-align: center
+  letter-spacing: 1px
+  text-transform: uppercase
+  
+.title-lg
+  +f('gil-900', 120)
+  text-transform: uppercase
+  
+.back-title
+  position: absolute
+  top: 50%
+  left: 0
+  right: 0
+  transform: translateY(-50%)
+  text-align: center
+  color: $color1
+  +f('gil-900', 500)
+  opacity: .05
+
+.btn
+  position: relative
+  display: inline-block
+  padding: 20px 56px
+  text-align: center
+  outline: 0
+  line-height: 1
+  cursor: pointer
+  +f('gil-700', 13)
+  letter-spacing: 1px
+  text-transform: uppercase
+  border-radius: 26px
+  overflow: hidden
+  transition: background .2s .2s
+  backface-visibility: hidden
+  &::before, &::after
+    content: ''
+    display: inline-block
+    position: absolute
+    width: 75%
+    height: 200px
+    border-radius: 50%
+    background-color: #ff2f74
+    z-index: 0
+    backface-visibility: hidden
+    transform: translate3d(0, 0, 0)
+    transition: transform 0.7s
+  &::before
+    left: -15%
+    bottom: 101%
+  &::after
+    right: -15%
+    top: 101%
+  span
+    position: relative
+    z-index: 1
+    transition: color 0.7s, opacity 0.7s
+  &_green
+    background-color: $color1
+    span
+      color: #a8e1c2
+      
+    &:hover
+      background: red
+      &::before
+        transform: translate3d(0, 75px, 0)
+      &::after
+        transform: translate3d(0, -75px, 0)

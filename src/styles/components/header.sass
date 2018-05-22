@@ -1,0 +1,30 @@
+.header
+   position: absolute
+   top: 0
+   left: 0
+   right: 0
+   z-index: 1
+   &__container
+      display: flex
+      padding: 11px 15px 29px
+      border-bottom: 1px solid $white
+   
+   &__logo
+      flex: 0 0 146px
+      margin-right: 60px
+      
+   &__nav
+      display: flex
+      flex: 1 1 auto
+      color: $white
+      +f('gil-500', 15)
+      letter-spacing: 1.2px
+      text-transform: uppercase
+      ul
+         display: flex
+         li
+            &:not(:last-child)
+               margin-right: 20px
+               
+      &-link
+         margin-left: auto

@@ -1,0 +1,213 @@
+extends ../extend/default
+
+block variables
+	- var title = 'Home page';
+
+block main
+	main.content(data-page='home')
+
+		//begin screen
+		+b.SECTION.screen(style='background-image: url(static/img/bg/screen_bg.jpg)')
+			+e.container.container
+				+e.content
+					+e.sub-title.title-md
+						h4 ТЫ СПОСОБНА НА БОЛЬШЕЕ
+					+e.title.title-lg
+						h2 WOWBODY
+							span STRONG 2.0
+
+					+e.text
+						p Онлайн-программа эффективных ежедневных тренировок для создания женственного рельефа тела и упругих ягодиц. Работа над деталями!
+
+					+e.A.btn.btn._green(href='#!')
+						span ПРОЙТИ ПРОГРАММУ
+		//end screen
+
+		//begin about-program
+		+b.SECTION.about-program
+			+e.back-title.back-title
+				h4 ABOUT
+			+e.container.container
+				+e.text
+					+e.title.title-md
+						h2 О программе
+					+e.text
+						p Настойчивость, упорство и дисциплина каждый день будут приближать тебя к цели. Но будет нелегко!
+
+				+e.inner
+					-
+						aboutList = [{
+							img: '20-min',
+							title: 'Только 20 минут в день',
+							text: '6 разных тренировок в неделю рассчитаных на 20-30 минут и максимальную отдачу'
+						}, {
+						img: 'high-level',
+						title: 'Продвинутый уровень',
+						text: 'В этой прграмме усилена нагрузка, упражнения с весом 5 кг, добавлены йога и растяжка.'
+						}, {
+						img: 'control',
+						title: 'Контроль прогресса',
+						text: 'Ты получишь доступ в нашу внутреннюю систему, которая помогает отслеживать изменения в сантиметрах и визуально'
+						}]
+
+					mixin aboutItem(item)
+						+e.item
+							+e.item-img
+								+e.IMG(src=`static/img/content/${item.img}.png` srcset="static/img/content/" + item.img + "@2x.png 2x, img/content/" + item.img + "@3x.png 3x" alt='image')
+							+e.item-title
+								h4= item.title
+							+e.item-text
+								p= item.text
+					each item in aboutList
+						+aboutItem(item)
+		//end about-program
+
+		//begin team
+		+b.SECTION.team
+			+e.person._left(style='background-image: url(static/img/bg/team_anita.jpg)')
+				+e.person-text
+					+e.person-name.title-md
+						h4 АНИТА ЛУЦЕНКО
+					+e.person-text
+						p Главный тренер страны, мастер спорта, многократный чемпион по аэробике и фитнесу, известная телеведущая.
+
+			+e.person._right(style='background-image: url(static/img/bg/team_julia.jpg)')
+				+e.person-text
+					+e.person-name.title-md
+						h4 ЮЛИЯ БОГДАН
+					+e.person-text
+						p Звездный тренер, мастер спорта, консультант по питанию, коуч и автор фитнес-программ.
+		//end team
+
+		//begin teaser
+		+b.SECTION.teaser(style='background-image: url(static/img/bg/teaser_bg.jpg)')
+			+e.container.container
+				+e.text
+					+e.sub-title.title-md
+						h4 ТЕБЕ ПОНАДОБЯТСЯ
+					+e.title.title-lg
+						h2 ГАНТЕЛИ и коврик
+					+e.text
+						p Гантели 5 кг, любой коврик для фитнеса, стул и твоя сила воли — все что нужно для прохождения этой программы!
+		//end teaser
+
+		//begin how-look
+		+b.SECTION.how-look
+			+e.media(style='background-image: url(static/img/bg/how-look_bg.jpg)')
+				video(width="100%" height="100%" preload="auto" loop="" muted="" autoplay="" playsinline="")
+					source(src='static/video/video-sample.mp4' type="video/mp4")
+					source(src='static/video/video-sample.webm' type="video/webm")
+			+e.container.container
+				+e.content
+					+e.title.title-md
+						h3 Как это выглядит
+					+e.text
+						p Пример тренировки и личного кабинета.
+						p Всу упражнения в видео формате с подробными обьяснениями и акцентами
+
+					+e.A.btn.btn._green(href='#!')
+						span ПРОЙТИ ПРОГРАММУ
+		//end how-look
+
+		//begin results
+		+b.SECTION.results
+			+e.back-title.back-title
+				h4 results
+			+e.container.container
+				+e.title.title-md
+					h2 WOW результаты
+
+			+b.view-slider.results__view-slider
+
+				+e.images
+					-n = 0
+					while n < 2
+						+e.images-item
+							+e.images-item-inner
+								+e.images-pic-wrap
+									+e.images-pic
+										+e.IMG(src=`static/img/content/results-1_1.jpg` alt='image')
+									+e.images-pic
+										+e.IMG(src=`static/img/content/results-1_1.jpg` alt='image')
+
+						+e.images-item
+							+e.images-item-inner
+								+e.images-pic-wrap
+									+e.images-pic
+										+e.IMG(src=`static/img/content/results-2_1.jpg` alt='image')
+									+e.images-pic
+										+e.IMG(src=`static/img/content/results-2_1.jpg` alt='image')
+
+						+e.images-item
+							+e.images-item-inner
+								+e.images-pic-wrap
+									+e.images-pic
+										+e.IMG(src=`static/img/content/results-3_1.jpg` alt='image')
+									+e.images-pic
+										+e.IMG(src=`static/img/content/results-3_1.jpg` alt='image')
+						-n++
+
+				+e.view-text.view-slider__text
+					-i = 0
+					while i < 2
+						+e.text-item
+							+e.text-title
+								h4 Елена (Украина)
+							+e.text-descr
+								p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
+								p а муж так вообще
+
+						+e.text-item
+							+e.text-title
+								h4 Антонина (Украина)
+							+e.text-descr
+								p Результатом очень довольна.... Ну вот и подошла к концу моя любимая программа!
+								p а муж так вообще
+
+						+e.text-item
+							+e.text-title
+								h4 Светлана (Украина)
+							+e.text-descr
+								p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
+								p а муж так вообще
+
+						-i++
+		//end results
+
+		//begin prices
+		+b.SECTION.prices
+			+e.back-title.back-title
+				h4 PRICE
+			+e.container.container
+				+e.text
+					+e.title.title-md
+						h2 Стоимость программы
+					+e.descr
+						p Программа стартует сразу после оплаты
+
+				+e.inner
+					+e.item._color
+						+e.item-value
+							h5
+								sup €
+								| 15
+						+e.item-title
+							h5 Доступ к программе
+								span WOWBODY HEAVY STRONG
+								| на 4 недели
+						+e.A.item-btn.btn._green(href='#!')
+							span ПРОЙТИ ПРОГРАММУ
+
+
+					+e.item
+						+e.item-value
+							h5
+								sup €
+								| 25
+						+e.item-title
+							h5 Доступ к программе
+								span WOWBODY HEAVY STRONG
+								| на 8 недель
+						+e.A.item-btn.btn._green(href='#!')
+							span ПРОЙТИ ПРОГРАММУ
+		//end prices

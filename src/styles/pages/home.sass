@@ -1,0 +1,164 @@
+.screen
+   height: 100vh
+   +cover
+   
+   &__container
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: flex-end
+      height: 100%
+      
+   &__content
+      max-width: 680px
+      text-align: right
+      color: $white
+      
+   &__sub-title
+      margin-bottom: 10px
+      text-align: right
+      
+   &__title
+      margin-bottom: 20px
+      span
+         display: block
+         color: $color2
+         
+   &__descr
+      display: inline-block
+      margin-bottom: 35px
+      max-width: 480px
+      
+.about-program
+   position: relative
+   padding: 100px 0
+   background-color: #a8dcbf
+   
+   &__text
+      margin-bottom: 100px
+      text-align: center
+      
+   &__title
+      margin-bottom: 15px
+      
+   &__descr
+      max-width: 600px
+      margin: 0 auto
+   
+   &__inner
+      display: flex
+      margin: 0 -30px
+      
+   &__item
+      flex: 0 1 33.33333%
+      padding: 0 30px
+      text-align: center
+      color: $color1
+      &-img
+         width: 120px
+         height: 120px
+         margin: 0 auto 30px
+         +cover-img
+      &-title
+         margin-bottom: 10px
+         +f('gil-700', 22)
+         line-height: 1.09
+      
+      &-descr
+      
+.team
+   display: flex
+   height: 100vh
+   &__person
+      $parent: &
+      display: flex
+      flex-direction: column
+      justify-content: center
+      flex: 0 1 50%
+      +cover
+      color: $white
+      &_left
+         align-items: flex-end
+      &_right
+         align-items: flex-start
+      &-text
+         max-width: 400px
+         #{$parent}_left &
+            padding-bottom: 200px
+            text-align: left
+         #{$parent}_right &
+            text-align: right
+         
+      &-name
+         margin-bottom: 20px
+         #{$parent}_right &
+            text-align: right
+         
+.teaser
+   +cover
+   &__text
+      color: $white
+      
+.how-look
+   height: 100vh
+   position: relative
+   &__media
+      +coverdiv
+      overflow: hidden
+      +cover
+      video
+         min-width: 100%
+         min-height: 100%
+   &__content
+      color: $white
+      text-align: center
+      
+   &__btn
+      padding: 20px 61px
+      
+.results
+   padding: 100px 0
+   &__view-slider
+      max-width: 994px
+      margin: 0 auto
+      
+.prices
+   position: relative
+   padding: 100px 0
+   background-color: #a8e1c2
+   &__text
+      margin: 0 0 100px
+      color: $white
+      text-align: center
+      
+   &__title
+      margin-bottom: 10px
+      
+   &__inner
+      display: flex
+      max-width: 800px
+      margin: 0 auto
+      
+   &__item
+      padding: 0 30px
+      text-align: center
+      color: $color1
+      &_color
+         color: $white
+         
+      &-value
+         +f('gil-800', 120)
+         line-height: 1
+         sup
+            right: 0.15em
+            font-size: 80%
+         
+      &-title
+         margin-bottom: 20px
+         +f('gil-600', null, 24)
+         span
+            display: block
+            +f('gil-900')
+            text-transform: uppercase
+      &-btn
+         padding: 20px 61px

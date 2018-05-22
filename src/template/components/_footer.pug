@@ -1,0 +1,32 @@
+//begin FOOTER
++b.FOOTER.footer
+	+e.container.container
+		+e.nav
+			-
+				navList = [
+				'программа',
+				'О нас',
+				'РЕЗУЛЬТАТЫ',
+				'СТОИМОСТЬ'
+				]
+			ul
+				for navText in navList
+					li= navText
+		
+		+e.programs
+			+e.programs-title
+				p Все наши программы на сайте
+			+e.programs-links
+				-
+					programsList = [
+					'wow',
+					'wow',
+					'wow',
+					'wow'
+					]
+			
+				for programsIcon in programsList
+					a(href='#!')
+						+i(programsIcon, 'footer__programs-icon')
+		
+//end FOOTER
