@@ -1,2 +1,40 @@
 .footer
+   padding: 60px 0
    background: $color1
+   text-align: center
+   color: $white
+   font-size: 16px
+   letter-spacing: 1px
+   &__nav
+      margin-bottom: 60px
+      ul
+         display: flex
+         justify-content: center
+         li
+            margin: 0 15px
+            a
+               +f('gil-700', 16)
+               color: $color2
+               text-transform: uppercase
+               
+   &__programs
+      margin-bottom: 50px
+      &-title
+         margin-bottom: 30px
+         
+      &-links
+         display: flex
+         a
+            margin: 0 18px
+            
+   &__bottom
+      display: flex
+      justify-content: space-between
+      color: $white
+      &-col
+         display: flex
+         p
+            margin-right: 20px
+            
+   &__socials
+      margin-left: 20px

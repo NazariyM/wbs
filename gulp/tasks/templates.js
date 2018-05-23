@@ -11,7 +11,7 @@ const config         = require('../config');
  * Default HTML task.
  * Compile '.pug' files to '.html'.
  */
-gulp.task('pug-compile', () => compileHtml('src/template/sections/*.pug', './www/'));
+gulp.task('pug-compile', () => compileHtml('src/template/pages/*.pug', './www/'));
 
 /**
  * Watcher HTML task.
@@ -52,4 +52,4 @@ function compileHtml(src, dest) {
 }
 
 /** Compile on first run (development) */
-if (config.development) compileHtml('src/template/sections/*.pug', './www/');
+if (config.development) compileHtml('src/template/pages/*.pug', './www/');

@@ -23,10 +23,6 @@ html(lang='ru')
 
     block body
         body
-            // SVG
-            block svg
-                div.svg-container(style="position: absolute; width: 0; height: 0; overflow: hidden;")
-                    include ../partials/_sprite.svg
 
             // picture element HTML5 shiv
             block inlineScripts
@@ -35,7 +31,7 @@ html(lang='ru')
 
             // Header
             block header
-                include ../components/_header
+                include ../components/header
 
             // Main content
             block main
@@ -43,7 +39,7 @@ html(lang='ru')
 
             // Footer
             block footer
-                include ../components/_footer
+                include ../components/footer
 
             // Scripts
             block scripts
