@@ -1,28 +1,27 @@
 .view-slider
    &__images
       $parent: &
-      margin-bottom: 50px
+      margin-bottom: 63px
       .slick-track
-         height: 318px
-         padding: 76px 0 20px
+         height: 250px
       
       &-item
          position: relative
          display: inline-block
          vertical-align: top
          height: 250px
-         width: 398px
+         width: 400px
          margin-right: 35px
          margin-left: 35px
          transition: transform .5s ease
          cursor: pointer
-         transform: scale(0.58) translate3d(53%, -9px, 0)
+         transform: scale(0.75, 0.815) translate3d(-7%, 0, 0)
          
          &.slick-center
             z-index: 10
             transform: scale(1)
             + #{$parent}-item
-               transform: scale(0.58) translate3d(-53%, -9px, 0)
+               transform: scale(0.75, 0.815) translate3d(7%, 0, 0)
          
          &-inner
             width: 100%
@@ -51,6 +50,7 @@
       max-width: 460px
       margin: 0 auto
       &-title
+         margin-bottom: 25px
          +f('gil-700', 22, 24)
          letter-spacing: 1px
       
@@ -67,13 +67,13 @@
      margin-right: -20px
    
    &__slider__point
-      width: 430px
-      height: 430px
+      width: 431px
+      height: 431px
       border: 2px solid #a8e1c2
       position: relative
       border-radius: 50%
       transition: .6s ease-in
-      margin-left: 170px
+      margin-left: 80px
       z-index: 10
    
    //+respond-to(tablet)
@@ -117,7 +117,6 @@
       &__img
          display: none
          border-radius: 50%
-         box-shadow: 0 20px 30px rgba(0, 0, 0, 0.19)
          overflow: hidden
          img
             width: 100%
@@ -129,20 +128,35 @@
 
       &__right
          .around-slider__item__title
-            left: 20px
+            left: 35px
             text-align: left
          
       &__left
          .around-slider__item__title
-            right: 20px
+            right: 28px
             text-align: right
-      
+         
+      &__center
+         .around-slider__item__title
+            top: -30px
+            left: 50%
+            transform: translateX(-50%)
+            text-align: center
+         
+      &__bottom
+         .around-slider__item__title
+            top: 20px
+            left: 50%
+            right: auto
+            transform: translateX(-50%)
+            text-align: center
+   
       &__title
          position: absolute
+         top: -5px
          font-size: 14px
          transition: .3s
          text-align: left
-         top: -4px
          width: 200px
          letter-spacing: 0.6px
          +f('gil-700')
@@ -167,7 +181,7 @@
          position: absolute
          width: 525px
          text-align: left
-         left: 48px
+         left: 47px
          top: 0
          opacity: 0
          visibility: hidden
@@ -195,7 +209,7 @@
       background: #a8e1c2
       
       .around-slider__item__title
-         top: -30px
+         top: -48px
          left: 48px
          opacity: 1
          font-size: 22px
@@ -203,7 +217,7 @@
          text-align: left
       
       .around-slider__item__desc
-         top: 18px
+         top: -6px
          opacity: 1
          visibility: visible
       
@@ -212,17 +226,15 @@
    
    &__slides
       position: absolute
-      width: 370px
-      height: 370px
+      width: 393px
+      height: 393px
       border-radius: 50%
-      margin-left: 170px
-      top: 30px
+      margin-left: 70px
+      top: 16px
       left: 30px
-      margin-bottom: 90px
       z-index: 5
       transition: .6s
       overflow: hidden
-      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1)
       
       //+respond-to(mobile)
         display: none
@@ -263,8 +275,9 @@
 
    &__controls
       position: absolute
-      top: 190px
-      left: 100%
+      top: 50%
+      right: -60px
+      margin-top: -24px
       text-align: right
       z-index: 1
       font-size: 0
@@ -322,7 +335,7 @@
          height: 36px
          width: 36px
          top: -6px
-         margin-right: 8px
+         margin-right: 4px
    
    &__loader
       position: absolute

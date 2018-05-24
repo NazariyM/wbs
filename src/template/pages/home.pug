@@ -16,7 +16,7 @@ block main
 						h2 WOWBODY
 							span STRONG 2.0
 
-					+e.text
+					+e.descr
 						p Онлайн-программа эффективных ежедневных тренировок для создания женственного рельефа тела и упругих ягодиц. Работа над деталями!
 
 					+e.A.btn.btn._green(href='#!')
@@ -31,7 +31,7 @@ block main
 				+e.text
 					+e.title.title-md
 						h2 О программе
-					+e.text
+					+e.descr
 						p Настойчивость, упорство и дисциплина каждый день будут приближать тебя к цели. Но будет нелегко!
 
 				+e.inner
@@ -39,15 +39,16 @@ block main
 						aboutList = [{
 							img: '20-min',
 							title: 'Только 20 минут в день',
-							text: '6 разных тренировок в неделю рассчитаных на 20-30 минут и максимальную отдачу'
+							text: '6 разных тренировок в неделю рассчитаных на 20-30 минут',
+							brText: 'и максимальную отдачу'
 						}, {
-						img: 'high-level',
-						title: 'Продвинутый уровень',
-						text: 'В этой прграмме усилена нагрузка, упражнения с весом 5 кг, добавлены йога и растяжка.'
+							img: 'high-level',
+							title: 'Продвинутый уровень',
+							text: 'В этой прграмме усилена нагрузка, упражнения с весом 5 кг, добавлены йога и растяжка.'
 						}, {
-						img: 'control',
-						title: 'Контроль прогресса',
-						text: 'Ты получишь доступ в нашу внутреннюю систему, которая помогает отслеживать изменения в сантиметрах и визуально'
+							img: 'control',
+							title: 'Контроль прогресса',
+							text: 'Ты получишь доступ в нашу внутреннюю систему, которая помогает отслеживать изменения в сантиметрах и визуально'
 						}]
 
 					mixin aboutItem(item)
@@ -56,8 +57,11 @@ block main
 								+e.IMG(src=`static/img/content/${item.img}.png` srcset="static/img/content/" + item.img + "@2x.png 2x, img/content/" + item.img + "@3x.png 3x" alt='image')
 							+e.item-title
 								h4= item.title
-							+e.item-text
+							+e.item-descr
 								p= item.text
+									if item.brText
+										br
+										= item.brText
 					each item in aboutList
 						+aboutItem(item)
 		//end about-program
@@ -103,11 +107,6 @@ block main
 						.around-slider__item.item5.around-slider__item__left
 							.around-slider__item__img
 								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Контроль успехов
-							.around-slider__item__desc Отмечай пройденные тренировки и следи за нормой прибавки веса.
-						.around-slider__item.item7.around-slider__item__left
-							.around-slider__item__img
-								img(src='static/img/content/what-prog_2.jpg', alt='')
 							.around-slider__item__title
 								h6 Советы
 							.around-slider__item__desc
@@ -124,8 +123,6 @@ block main
 							img(src='static/img/content/what-prog_2.jpg', alt='')
 						.around-slider__slide
 							img(src='static/img/content/what-prog_1.jpg', alt='')
-						.around-slider__slide
-							img(src='static/img/content/what-prog_2.jpg', alt='')
 
 					.around-slider__controls
 						.arrow.arrow-left
@@ -158,15 +155,17 @@ block main
 				+e.person-text
 					+e.person-name.title-md
 						h4 АНИТА ЛУЦЕНКО
-					+e.person-text
+					+e.person-descr
 						p Главный тренер страны, мастер спорта, многократный чемпион по аэробике и фитнесу, известная телеведущая.
 
 			+e.person._right(style='background-image: url(static/img/bg/team_julia.jpg)')
 				+e.person-text
 					+e.person-name.title-md
 						h4 ЮЛИЯ БОГДАН
-					+e.person-text
-						p Звездный тренер, мастер спорта, консультант по питанию, коуч и автор фитнес-программ.
+					+e.person-descr
+						p Звездный тренер, мастер спорта, консультант по питанию,
+							br
+							| коуч и автор фитнес-программ.
 		//end team
 
 		//begin teaser
@@ -177,7 +176,7 @@ block main
 						h4 ТЕБЕ ПОНАДОБЯТСЯ
 					+e.title.title-lg
 						h2 ГАНТЕЛИ и коврик
-					+e.text
+					+e.descr
 						p Гантели 5 кг, любой коврик для фитнеса, стул и твоя сила воли — все что нужно для прохождения этой программы!
 		//end teaser
 
@@ -207,61 +206,62 @@ block main
 				+e.title.title-md
 					h2 WOW результаты
 
-			+b.view-slider.results__view-slider
+				+b.view-slider.results__view-slider
 
-				+e.images
-					-n = 0
-					while n < 2
-						+e.images-item
-							+e.images-item-inner
-								+e.images-pic-wrap
-									+e.images-pic
-										+e.IMG(src=`static/img/content/results-1_1.jpg` alt='image')
-									+e.images-pic
-										+e.IMG(src=`static/img/content/results-1_1.jpg` alt='image')
+					+e.images
+						-n = 0
+						while n < 2
 
-						+e.images-item
-							+e.images-item-inner
-								+e.images-pic-wrap
-									+e.images-pic
-										+e.IMG(src=`static/img/content/results-2_1.jpg` alt='image')
-									+e.images-pic
-										+e.IMG(src=`static/img/content/results-2_1.jpg` alt='image')
+							+e.images-item
+								+e.images-item-inner
+									+e.images-pic-wrap
+										+e.images-pic
+											+e.IMG(src=`static/img/content/results-2_1.jpg` alt='image')
+										+e.images-pic
+											+e.IMG(src=`static/img/content/results-2_1.jpg` alt='image')
 
-						+e.images-item
-							+e.images-item-inner
-								+e.images-pic-wrap
-									+e.images-pic
-										+e.IMG(src=`static/img/content/results-3_1.jpg` alt='image')
-									+e.images-pic
-										+e.IMG(src=`static/img/content/results-3_1.jpg` alt='image')
-						-n++
+							+e.images-item
+								+e.images-item-inner
+									+e.images-pic-wrap
+										+e.images-pic
+											+e.IMG(src=`static/img/content/results-1_1.jpg` alt='image')
+										+e.images-pic
+											+e.IMG(src=`static/img/content/results-1_1.jpg` alt='image')
 
-				+e.view-text.view-slider__text
-					-i = 0
-					while i < 2
-						+e.text-item
-							+e.text-title
-								h4 Елена (Украина)
-							+e.text-descr
-								p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
-								p а муж так вообще
+							+e.images-item
+								+e.images-item-inner
+									+e.images-pic-wrap
+										+e.images-pic
+											+e.IMG(src=`static/img/content/results-3_1.jpg` alt='image')
+										+e.images-pic
+											+e.IMG(src=`static/img/content/results-3_1.jpg` alt='image')
+							-n++
 
-						+e.text-item
-							+e.text-title
-								h4 Антонина (Украина)
-							+e.text-descr
-								p Результатом очень довольна.... Ну вот и подошла к концу моя любимая программа!
-								p а муж так вообще
+					+e.view-text.view-slider__text
+						-i = 0
+						while i < 2
+							+e.text-item
+								+e.text-title
+									h4 Елена (Украина)
+								+e.text-descr
+									p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
+									p а муж так вообще
 
-						+e.text-item
-							+e.text-title
-								h4 Светлана (Украина)
-							+e.text-descr
-								p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
-								p а муж так вообще
+							+e.text-item
+								+e.text-title
+									h4 Антонина (Украина)
+								+e.text-descr
+									p Результатом очень довольна.... Ну вот и подошла к концу моя любимая программа!
+									p а муж так вообще
 
-						-i++
+							+e.text-item
+								+e.text-title
+									h4 Светлана (Украина)
+								+e.text-descr
+									p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
+									p а муж так вообще
+
+							-i++
 		//end results
 
 		//begin prices

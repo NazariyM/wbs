@@ -1,44 +1,16 @@
 .socials
-  &__title
-    margin-bottom: 13px
-    color: #18222d
-    +f('cal-700', 18, 18)
-  &__links
-    display: flex
+  a
+    display: inline-flex
     align-items: center
     justify-content: center
-    font-size: 0
-    a
-      display: inline-flex
-      align-items: center
-      justify-content: center
-      width: 30px
-      height: 30px
-      border-radius: 50%
-      background-color: #e5aa46
-      line-height: 1
-      transition: .4s ease-in-out
+    width: 30px
+    height: 30px
+    line-height: 1
+    transition: .4s ease-in-out
+    &:hover
+      background-color: $color1
+    &:not(:last-child)
+      margin-right: 3px
       
-      .no-touch &:hover
-        background-color: $color1
-      &:not(:last-child)
-        margin-right: 10px
-        
-      .icon
-        fill: #fff
-        &-fb
-          width: 10px
-          height: 18px
-        &-vk
-          position: relative
-          top: 1px
-          width: 19px
-          height: 13px
-        &-inst
-          width: 18px
-          height: 20px
-          position: relative
-          left: -1px
-        &-gp
-          width: 21px
-          height: 13px
+    .icon
+      fill: $white

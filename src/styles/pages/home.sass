@@ -10,74 +10,103 @@
       height: 100%
       
    &__content
-      max-width: 680px
+      padding-right: 56px
+      max-width: 740px
       text-align: right
       color: $white
       
    &__sub-title
-      margin-bottom: 10px
+      margin-bottom: 20px
       text-align: right
       
    &__title
-      margin-bottom: 20px
+      margin-bottom: 50px
+      padding-right: 4px
       span
          display: block
+         margin-left: 16px
+         white-space: nowrap
          color: $color2
          
    &__descr
       display: inline-block
-      margin-bottom: 35px
+      margin-bottom: 30px
       max-width: 480px
+      letter-spacing: 0.006em
+      
+   &__btn
+      margin-right: 4px
       
 .about-program
    position: relative
-   padding: 100px 0
+   padding: 122px 0 254px
    overflow: hidden
    background-color: #a8dcbf
    
+   &__container
+      max-width: 1160px
+   
    &__text
-      margin-bottom: 100px
+      max-width: 580px
+      margin: 0 auto 180px
       text-align: center
       
    &__title
-      margin-bottom: 15px
+      margin-bottom: 35px
       
    &__descr
       max-width: 600px
       margin: 0 auto
+      letter-spacing: 0.006em
    
    &__inner
       display: flex
-      margin: 0 -30px
-      
    &__item
       flex: 0 1 33.33333%
-      padding: 0 30px
       text-align: center
       color: $color1
+      &:nth-child(1)
+         padding-right: 28px
+      &:nth-child(2)
+         padding-right: 20px
+         .about-program__item-descr
+            margin: 0 auto
+            max-width: 340px
+            
+      &:nth-child(3)
+         padding-right: 10px
+      
       &-img
          width: 120px
          height: 120px
-         margin: 0 auto 30px
+         margin: 0 auto 65px
          +cover-img
       &-title
-         margin-bottom: 10px
+         margin-bottom: 30px
          +f('gil-700', 22)
          line-height: 1.09
       
       &-descr
+         line-height: 25px
 
 .what-program
    overflow: hidden
-   padding: 100px 0
+   padding: 122px 0 292px
    &__title
-      margin-bottom: 60px
+      margin-bottom: 140px
+      
+   &__slider
+   
    
 .team
+   position: relative
    display: flex
-   height: 100vh
+   height: 1024px
    &__person
       $parent: &
+      position: absolute
+      top: 0
+      bottom: 0
       display: flex
       flex-direction: column
       justify-content: center
@@ -85,30 +114,60 @@
       +cover
       color: $white
       &_left
+         left: 0
+         right: 50%
          align-items: flex-end
       &_right
+         right: 0
+         left: 50%
          align-items: flex-start
       &-text
-         max-width: 400px
+         max-width: 384px
          #{$parent}_left &
-            padding-bottom: 200px
+            padding: 0 5px 275px 0
             text-align: left
          #{$parent}_right &
+            padding: 0 4px 65px 15px
             text-align: right
          
       &-name
          margin-bottom: 20px
+         text-align: left
          #{$parent}_right &
             text-align: right
          
 .teaser
+   height: 1024px
    +cover
-   &__text
-      color: $white
+   
+   &__container
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: flex-end
+      height: 100%
       
+   &__text
+      max-width: 650px
+      padding-right: 74px
+      color: $white
+      text-align: right
+      
+   &__sub-title
+      margin-bottom: 20px
+      text-align: right
+      
+   &__title
+      margin-bottom: 40px
+   
+   &__descr
+      display: inline-block
+      max-width: 395px
+   
+
 .how-look
-   height: 100vh
    position: relative
+   height: 1024px
    &__media
       +coverdiv
       overflow: hidden
@@ -116,26 +175,43 @@
       video
          min-width: 100%
          min-height: 100%
+         +cover-video
    &__content
+      max-width: 750px
+      margin: 0 auto
+      padding: 125px 0 0
       color: $white
       text-align: center
+      
+   &__title
+      margin-bottom: 7px
+      
+   &__text
+      margin-bottom: 53px
       
    &__btn
       padding: 20px 61px
       
 .results
    position: relative
-   padding: 100px 0
+   padding: 125px 0 252px
+   
+   &__container
+      max-width: 1320px
+   
+   &__title
+      margin-bottom: 170px
+   
    &__view-slider
-      max-width: 994px
-      margin: 0 auto
+      //max-width: 994px
+      //margin: 0 auto
       
 .prices
    position: relative
-   padding: 100px 0
+   padding: 124px 0 307px
    background-color: #a8e1c2
    &__text
-      margin: 0 0 100px
+      margin: 0 0 210px
       color: $white
       text-align: center
       
@@ -144,10 +220,12 @@
       
    &__inner
       display: flex
-      max-width: 800px
+      justify-content: center
+      max-width: 930px
       margin: 0 auto
       
    &__item
+      flex: 0 1 50%
       padding: 0 30px
       text-align: center
       color: $color1
@@ -155,14 +233,19 @@
          color: $white
          
       &-value
+         position: relative
+         display: inline-block
+         margin-bottom: 10px
          +f('gil-800', 120)
          line-height: 1
          sup
-            right: 0.15em
-            font-size: 80%
+            position: absolute
+            top: 33%
+            right: 108%
+            font-size: 60%
          
       &-title
-         margin-bottom: 20px
+         margin-bottom: 45px
          +f('gil-600', null, 24)
          span
             display: block

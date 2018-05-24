@@ -10859,6 +10859,7 @@ var Sliders = function () {
         var statusResize = true;
         var $loaderResize = (0, _jquery2.default)('.around-slider__loader');
         var counterSlider = 0;
+        var activeSldClass = 'around-slider__active';
 
         (0, _jquery2.default)('.around-slider__item').removeClass('active-slide').eq(0).addClass('active-slide');
 
@@ -10967,27 +10968,44 @@ var Sliders = function () {
 
         (0, _jquery2.default)(parent + '.around-slider__item').on('click', function () {
           if (!_helpers.Resp.isMobile) {
-            (0, _jquery2.default)(parent + '.around-slider__item').removeClass('around-slider__active');
+            (0, _jquery2.default)(parent + '.around-slider__item').removeClass(activeSldClass);
             var index = (0, _jquery2.default)(parent + ' .around-slider__item').index(this);
             counterSlider = index;
-            (0, _jquery2.default)(this).addClass('what-program__active');
+
             (0, _jquery2.default)(this).closest('.around-slider').find('.around-slider__slide').removeClass('active-slide').eq(counterSlider).addClass('active-slide');
-            (0, _jquery2.default)(this).closest('.around-slider').find('.around-slider__item').removeClass('around-slider__active').eq(counterSlider).addClass('around-slider__active');
+
+            (0, _jquery2.default)(this).closest('.around-slider').find('.around-slider__item').removeClass(activeSldClass).eq(counterSlider).addClass(activeSldClass);
+
             rotationSlider(this);
+
             (0, _jquery2.default)(parent + ' .around-slider__item').removeClass('around-slider__item__right').removeClass('around-slider__item__left').addClass('around-slider__item__left');
-            console.log('index  - number:' + counterSlider);
 
             var i = 0;
             var test1 = counterSlider;
             var test2 = counterSlider;
+
             while (i <= 1) {
               i++;
-              console.log('go up - number:' + test1++);
-              console.log('go down - number:' + test2--);
+              test1++;
+              test2--;
+
               (0, _jquery2.default)(parent + ' .around-slider__item').eq(test1).removeClass('around-slider__item__left').addClass('around-slider__item__right');
+
               if (test2 >= 0) {
                 (0, _jquery2.default)(parent + ' .around-slider__item').eq(test2).removeClass('around-slider__item__left').addClass('around-slider__item__right');
               }
+
+              if (counterSlider >= 2) {
+                (0, _jquery2.default)('.around-slider__item').removeClass('around-slider__item__center');
+                (0, _jquery2.default)('.' + activeSldClass).prev().prev().addClass('around-slider__item__center');
+              }
+
+              if (counterSlider === 0) {
+                (0, _jquery2.default)('.around-slider__item').removeClass('around-slider__item__center');
+              }
+
+              (0, _jquery2.default)(parent + ' .around-slider__item').removeClass('around-slider__item__bottom');
+              (0, _jquery2.default)('.' + activeSldClass).next().next().addClass('around-slider__item__bottom');
             }
           } else {
             (0, _jquery2.default)(parent + '.around-slider__slider__point').css({
@@ -10998,10 +11016,12 @@ var Sliders = function () {
             });
           }
         });
+
+        (0, _jquery2.default)('.' + activeSldClass).next().next().addClass('around-slider__item__bottom');
       }
 
-      // slider('.what-program ', 33.72, 1.5, 1);
-      slider('.what-program ', 33.72, 1.5, 1);
+      // slider('.what-program ', 45, 1.5, 1);
+      slider('.what-program ', 46, 1.25, 1);
 
       // $window.on('resize', () => {
       //   windowWidth = $(window).width();

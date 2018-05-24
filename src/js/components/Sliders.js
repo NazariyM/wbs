@@ -88,6 +88,7 @@ class Sliders {
       var statusResize = true;
       var $loaderResize = $('.around-slider__loader');
       var counterSlider = 0;
+      const activeSldClass = 'around-slider__active';
 
       $('.around-slider__item').removeClass('active-slide').eq(0).addClass('active-slide');
 
@@ -196,36 +197,57 @@ class Sliders {
 
       $(parent + '.around-slider__item').on('click', function () {
         if (!Resp.isMobile) {
-          $(parent + '.around-slider__item').removeClass('around-slider__active');
+          $(parent + '.around-slider__item').removeClass(activeSldClass);
           let index = $(parent + ' .around-slider__item').index(this);
           counterSlider = index;
-          $(this).addClass('what-program__active');
-          $(this).closest('.around-slider')
+
+          $(this)
+            .closest('.around-slider')
             .find('.around-slider__slide')
             .removeClass('active-slide')
             .eq(counterSlider)
             .addClass('active-slide');
-          $(this).closest('.around-slider')
+
+          $(this)
+            .closest('.around-slider')
             .find('.around-slider__item')
-            .removeClass('around-slider__active')
+            .removeClass(activeSldClass)
             .eq(counterSlider)
-            .addClass('around-slider__active');
+            .addClass(activeSldClass);
+
           rotationSlider(this);
+
           $(parent + ' .around-slider__item').removeClass('around-slider__item__right').removeClass('around-slider__item__left').addClass('around-slider__item__left');
-          console.log('index  - number:' + counterSlider);
 
           var i = 0;
           var test1 = counterSlider;
           var test2 = counterSlider;
+
           while (i <= 1) {
             i++;
-            console.log('go up - number:' + test1++);
-            console.log('go down - number:' + test2--);
+            test1++;
+            test2--;
+
             $(parent + ' .around-slider__item').eq(test1).removeClass('around-slider__item__left').addClass('around-slider__item__right');
+
             if (test2 >= 0) {
               $(parent + ' .around-slider__item').eq(test2).removeClass('around-slider__item__left').addClass('around-slider__item__right');
             }
+
+            if (counterSlider >= 2) {
+              $('.around-slider__item').removeClass('around-slider__item__center');
+              $(`.${activeSldClass}`).prev().prev().addClass('around-slider__item__center');
+            }
+
+            if (counterSlider === 0) {
+              $('.around-slider__item').removeClass('around-slider__item__center');
+            }
+
+            $(parent + ' .around-slider__item').removeClass('around-slider__item__bottom');
+            $(`.${activeSldClass}`).next().next().addClass('around-slider__item__bottom');
+
           }
+
         } else {
           $(parent + '.around-slider__slider__point').css({
             transform: 'rotate(0deg)'
@@ -235,10 +257,12 @@ class Sliders {
           });
         }
       });
+
+      $(`.${activeSldClass}`).next().next().addClass('around-slider__item__bottom');
     }
 
-    // slider('.what-program ', 33.72, 1.5, 1);
-    slider('.what-program ', 33.72, 1.5, 1);
+    // slider('.what-program ', 45, 1.5, 1);
+    slider('.what-program ', 46, 1.25, 1);
 
     // $window.on('resize', () => {
     //   windowWidth = $(window).width();
