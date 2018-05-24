@@ -234,7 +234,6 @@ class Sliders {
     });
 
     slider('.what-program ', 33.72, 1.5, 1);
-    slider('.reviews-landing ', 33.72, 1.1, 1);
 
     $(window).resize(function () {
       windowWidth = $(window).width();
