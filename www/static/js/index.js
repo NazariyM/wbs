@@ -10765,6 +10765,8 @@ var _jquery2 = _interopRequireDefault(_jquery);
 
 __webpack_require__(5);
 
+var _helpers = __webpack_require__(7);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10855,12 +10857,15 @@ var Sliders = function () {
         var timeoutSlider;
         var timerResize = 500;
         var statusResize = true;
-        var loaderResize = (0, _jquery2.default)('.around-slider__loader');
+        var $loaderResize = (0, _jquery2.default)('.around-slider__loader');
         var counterSlider = 0;
+
         (0, _jquery2.default)('.around-slider__item').removeClass('active-slide').eq(0).addClass('active-slide');
-        var fields = (0, _jquery2.default)(parent + '.around-slider__item'),
-            container = (0, _jquery2.default)(parent).find('.around-slider__slider__point'),
-            lenghtSlider = fields.length;
+
+        var $fields = (0, _jquery2.default)(parent + '.around-slider__item');
+        var container = (0, _jquery2.default)(parent).find('.around-slider__slider__point');
+        var lenghtSlider = $fields.length;
+
         function initPosition() {
           if (windowWidth <= 1200 && windowWidth >= 768) {
             var radius = 187; // adjust to move out items in and out
@@ -10874,7 +10879,7 @@ var Sliders = function () {
               containerHeight = container.height(),
               angle = 0,
               step = stepNumber * Math.PI / lenghtSlider;
-          fields.each(function () {
+          $fields.each(function () {
             var x = Math.round(containerWidth / 2 + radius * Math.cos(angle) - (0, _jquery2.default)(this).width() / 2);
             var y = Math.round(containerHeight / 2 + radius * Math.sin(angle) - (0, _jquery2.default)(this).height() / 2);
             (0, _jquery2.default)(this).css({
@@ -10885,16 +10890,17 @@ var Sliders = function () {
           });
         }
         initPosition();
-        (0, _jquery2.default)(window).resize(function () {
-          if ((0, _jquery2.default)(window).width() > 767) {
+
+        _helpers.$window.on('resize', function () {
+          if (!_helpers.Resp.isMobile) {
             (0, _jquery2.default)('.around-slider').addClass('loading-slider');
-            loaderResize.addClass('active-loader');
+            $loaderResize.addClass('active-loader');
             clearTimeout(timeoutSlider);
 
             timeoutSlider = setTimeout(function () {
               initPosition();
               setTimeout(function () {
-                loaderResize.removeClass('active-loader');
+                $loaderResize.removeClass('active-loader');
                 (0, _jquery2.default)('.around-slider').removeClass('loading-slider');
               }, 600);
             }, 700);
@@ -10902,14 +10908,14 @@ var Sliders = function () {
         });
 
         // contorls slider and rotation
-        var stepRotateon = rotationDeg;
+        var stepRotation = rotationDeg;
         function rotationSlider(_this) {
           if (windowWidth >= 768) {
             (0, _jquery2.default)(parent + '.around-slider__slider__point').css({
-              transform: 'rotate(-' + counterSlider * stepRotateon + 'deg)'
+              transform: 'rotate(-' + counterSlider * stepRotation + 'deg)'
             });
             (0, _jquery2.default)(parent + '.around-slider__item').css({
-              transform: 'rotate(' + counterSlider * stepRotateon + 'deg)'
+              transform: 'rotate(' + counterSlider * stepRotation + 'deg)'
             });
           } else {
             (0, _jquery2.default)(parent + '.around-slider__slider__point').css({
@@ -10920,24 +10926,25 @@ var Sliders = function () {
             });
           }
         }
-        (0, _jquery2.default)(window).resize(function () {
-          if ((0, _jquery2.default)(window).width() > 767) {
+
+        _helpers.$window.on('resize', function () {
+          if (!_helpers.Resp.isMobile) {
             (0, _jquery2.default)('.around-slider').addClass('loading-slider');
-            loaderResize.addClass('active-loader');
+            $loaderResize.addClass('active-loader');
             clearTimeout(timeoutSlider);
 
             timeoutSlider = setTimeout(function () {
               initPosition();
               rotationSlider();
               setTimeout(function () {
-                loaderResize.removeClass('active-loader');
+                $loaderResize.removeClass('active-loader');
                 (0, _jquery2.default)('.around-slider').removeClass('loading-slider');
               }, 600);
             }, 700);
           }
         });
 
-        (0, _jquery2.default)(parent + '.arrow-right').click(function () {
+        (0, _jquery2.default)(parent + '.arrow-right').on('click', function () {
           if (counterSlider < lenghtSlider - 1) {
             counterSlider++;
           } else {
@@ -10946,7 +10953,7 @@ var Sliders = function () {
           (0, _jquery2.default)(parent + '.around-slider__item').eq(counterSlider).click();
         });
 
-        (0, _jquery2.default)(parent + '.arrow-left').click(function () {
+        (0, _jquery2.default)(parent + '.arrow-left').on('click', function () {
           if (counterSlider > 0) {
             counterSlider--;
           } else {
@@ -10955,8 +10962,8 @@ var Sliders = function () {
           (0, _jquery2.default)(parent + '.around-slider__item').eq(counterSlider).click();
         });
 
-        (0, _jquery2.default)(parent + '.around-slider__item').click(function () {
-          if (windowWidth >= 768) {
+        (0, _jquery2.default)(parent + '.around-slider__item').on('click', function () {
+          if (!_helpers.Resp.isMobile) {
             (0, _jquery2.default)(parent + '.around-slider__item').removeClass('around-slider__active');
             var index = (0, _jquery2.default)(parent + ' .around-slider__item').index(this);
             counterSlider = index;
@@ -10966,6 +10973,7 @@ var Sliders = function () {
             rotationSlider(this);
             (0, _jquery2.default)(parent + ' .around-slider__item').removeClass('around-slider__item__right').removeClass('around-slider__item__left').addClass('around-slider__item__left');
             console.log('index  - number:' + counterSlider);
+
             var i = 0;
             var test1 = counterSlider;
             var test2 = counterSlider;
@@ -10989,14 +10997,9 @@ var Sliders = function () {
         });
       }
 
-      (0, _jquery2.default)('.what-program .around-slider__item').click(function () {
-        var nuberText = (0, _jquery2.default)(this).attr('data-number');
-        (0, _jquery2.default)('.around-slider__number').text('0' + nuberText);
-      });
-
       slider('.what-program ', 33.72, 1.5, 1);
 
-      (0, _jquery2.default)(window).resize(function () {
+      _helpers.$window.on('resize', function () {
         windowWidth = (0, _jquery2.default)(window).width();
       });
     }
@@ -14055,6 +14058,416 @@ var PublicAPI = exports.PublicAPI = function PublicAPI() {
 
 
 exports.default = window.PublicAPI = PublicAPI;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.detectIE = exports.getRandomInt = exports.hex2number = exports.throttle = exports.debounce = exports.randomString = exports.css = exports.Resp = exports.checkClosest = exports.isScrolledIntoView = exports.toggleClass = exports.currentPage = exports.winWidth = exports.$scrolledElements = exports.$footer = exports.$header = exports.$window = exports.$document = exports.$main = exports.$body = undefined;
+var _arguments = arguments;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Commonly used constants and functions.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module Helpers
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Cache body DOM element.
+ *
+ * @constant
+ * @type {jQuery}
+ */
+var $body = exports.$body = (0, _jquery2.default)('body');
+
+/**
+ * Cache main DOM element.
+ *
+ * @constant
+ * @type {jQuery}
+ */
+var $main = exports.$main = (0, _jquery2.default)('main');
+
+/**
+ * Cache document.
+ *
+ * @constant
+ * @type {jQuery}
+ */
+var $document = exports.$document = (0, _jquery2.default)(document);
+
+/**
+ * Cache window.
+ *
+ * @constant
+ * @type {jQuery}
+ */
+var $window = exports.$window = (0, _jquery2.default)(window);
+
+/**
+ * Cache header.
+ *
+ * @constant
+ * @type {jQuery}
+ */
+var $header = exports.$header = (0, _jquery2.default)('header');
+
+/**
+ * Cache footer.
+ *
+ * @constant
+ * @type {jQuery}
+ */
+var $footer = exports.$footer = (0, _jquery2.default)('footer');
+
+/**
+ * Elements for cross-browser window scroll.
+ *
+ * @constant
+ * @type {jQuery}
+ */
+var $scrolledElements = exports.$scrolledElements = (0, _jquery2.default)('html, body');
+
+/**
+ * Window width.
+ *
+ * @constant
+ * @type {Number}
+ */
+var winWidth = exports.winWidth = $window.width();
+
+/**
+ * Detect current page.
+ *
+ * @constant
+ * @type {String}
+ */
+var currentPage = exports.currentPage = $body.find('main').data('page');
+
+/**
+ * Toggle class on specified element on click.
+ *
+ * @param {jQuery} clickHandler
+ * @param {jQuery} element
+ * @param {String} [className='active']
+ */
+var toggleClass = exports.toggleClass = function toggleClass(clickHandler, element) {
+	var className = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : css.active;
+
+	clickHandler.on('click tap', function () {
+		return element.toggleClass(className);
+	});
+};
+
+/**
+ * Check if element is in viewport.
+ *
+ * @param {jQuery} $element
+ * @param {Boolean} [fullyInView = false] - element should be fully in viewport?
+ * @param {Number} [offsetTop = 0]
+ * @returns {Boolean}
+ */
+var isScrolledIntoView = exports.isScrolledIntoView = function isScrolledIntoView($element) {
+	var offsetTop = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+	var fullyInView = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+	var pageTop = $window.scrollTop();
+	var pageBottom = pageTop + $window.height();
+	var elementTop = $element.offset().top;
+	var elementBottom = elementTop + $element.height();
+
+	if (fullyInView) return pageTop < elementTop && pageBottom > elementBottom;
+
+	return elementTop + offsetTop <= pageBottom && elementBottom >= pageTop;
+};
+
+/**
+ * Check specified item to be target of the event.
+ *
+ * @param {Object} e - Event object.
+ * @param {jQuery} item - Item to compare with.
+ * @returns {Boolean} - Indicate whether clicked target is the specified item or not.
+ */
+var checkClosest = exports.checkClosest = function checkClosest(e, item) {
+	return (0, _jquery2.default)(e.target).closest(item).length > 0;
+};
+
+/**
+ * Match media device indicator.
+ */
+
+var Resp = exports.Resp = function () {
+	function Resp() {
+		_classCallCheck(this, Resp);
+	}
+
+	_createClass(Resp, null, [{
+		key: 'currWidth',
+
+		/**
+   * Get window's current width.
+   *
+   * @get
+   * @static
+   * @return {Number}
+   */
+		get: function get() {
+			return window.innerWidth;
+		}
+
+		/**
+   * Detect touch events.
+   *
+   * @get
+   * @static
+   * @return {Boolean}
+   */
+
+	}, {
+		key: 'isTouch',
+		get: function get() {
+			return 'ontouchstart' in window;
+		}
+
+		/**
+   * Detect desktop device.
+   *
+   * @get
+   * @static
+   * @return {Boolean}
+   */
+
+	}, {
+		key: 'isDesk',
+		get: function get() {
+			return window.matchMedia('(min-width: 1199px)').matches;
+		}
+	}, {
+		key: 'isMobiles',
+		get: function get() {
+			return window.matchMedia('(max-width: 1023px)').matches;
+		}
+
+		/**
+   * Detect tablet device.
+   *
+   * @get
+   * @static
+   * @return {Boolean}
+   */
+
+	}, {
+		key: 'isTablet',
+		get: function get() {
+			return window.matchMedia('(min-width: 768px) and (max-width: 1199px)').matches;
+		}
+
+		/**
+   * Detect mobile device.
+   *
+   * @get
+   * @static
+   * @return {Boolean}
+   */
+
+	}, {
+		key: 'isMobile',
+		get: function get() {
+			return window.matchMedia('(max-width: 767px)').matches;
+		}
+
+		/**
+   * Detect mobile device orientation.
+   *
+   * @get
+   * @static
+   * @return {Boolean}
+   */
+
+	}, {
+		key: 'isPortrait',
+		get: function get() {
+			return window.matchMedia('(orientation: portrait)').matches;
+		}
+	}]);
+
+	return Resp;
+}();
+
+/**
+ * Css class names.
+ *
+ * @constant
+ * @type {Object}
+ */
+
+
+var css = exports.css = {
+	noTouch: 'no-touch',
+	reload: 'is-reload',
+	active: 'is-active',
+	visible: 'is-visible',
+	hidden: 'is-hidden',
+	cursor: 'is-cursor',
+	hasAnim: 'has-anim',
+	small: 'is-small',
+	medium: 'is-medium',
+	left: 'is-left',
+	right: 'is-right',
+	disabled: 'is-disabled',
+	mark: 'is-mark',
+	overflow: 'is-overflow',
+	dark: 'is-dark',
+	transitionOff: 'transition-off',
+	relative: 'is-relative',
+	hide: 'is-hide',
+	bg: 'is-bg',
+	playing: 'is-playing',
+	fill: 'is-fill',
+	selected: 'is-selected',
+	fixed: 'is-fixed',
+	locked: 'is-locked',
+	error: 'has-error',
+	noTransition: 'no-transition',
+	menuActive: 'menu-active',
+	animsDisabled: 'anims-disabled'
+};
+
+/**
+ * Generate string of random letters.
+ *
+ * @param {Number} length
+ */
+var randomString = exports.randomString = function randomString() {
+	var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+	return Math.random().toString(36).substr(2, length);
+};
+
+/**
+ * Returns a function, that, as long as it continues to be invoked, will not be triggered.
+ *
+ * @param {Function} func
+ * @param {Object} context
+ * @param {Number} wait
+ * @param {Boolean} [immediate]
+ * @returns {Function}
+ */
+var debounce = exports.debounce = function debounce(func, context, wait, immediate) {
+	var timeout = void 0;
+
+	return function () {
+		var args = _arguments;
+
+		var later = function later() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+
+/**
+ * Throttle function.
+ *
+ * @param {Function} fn
+ * @param {Number} [threshold]
+ * @param {Object} [scope]
+ * @returns {Function}
+ */
+var throttle = exports.throttle = function throttle(fn) {
+	var threshold = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 250;
+	var scope = arguments[2];
+
+	var last = void 0,
+	    deferTimer = void 0;
+
+	return function () {
+		var context = scope || this;
+		var now = +new Date();
+		var args = arguments;
+
+		if (last && now < last + threshold) {
+			clearTimeout(deferTimer);
+			deferTimer = setTimeout(function () {
+				last = now;
+				fn.apply(context, args);
+			}, threshold);
+		} else {
+			last = now;
+			fn.apply(context, args);
+		}
+	};
+};
+
+/**
+ * Converts a hex color number to 16 number
+ *
+ * @param hex {String}
+ * @return {Number}
+ */
+var hex2number = exports.hex2number = function hex2number(hex) {
+	return parseInt(hex.substring(1), 16);
+};
+
+/**
+ * Get a random integer between `min` and `max`.
+ *
+ * @param {number} min - min number
+ * @param {number} max - max number
+ * @return {int} a random integer
+ */
+var getRandomInt = exports.getRandomInt = function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+/**
+ * detect IE
+ * returns version of IE or false, if browser is not Internet Explorer
+ */
+var detectIE = exports.detectIE = function detectIE() {
+	var ua = window.navigator.userAgent;
+
+	var msie = ua.indexOf('MSIE ');
+	if (msie > 0) {
+		// IE 10 or older => return version number
+		return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+	}
+
+	var trident = ua.indexOf('Trident/');
+	if (trident > 0) {
+		// IE 11 => return version number
+		var rv = ua.indexOf('rv:');
+		return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+	}
+
+	var edge = ua.indexOf('Edge/');
+	if (edge > 0) {
+		// Edge (IE 12+) => return version number
+		return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+	}
+
+	// other browser
+	return false;
+};
 
 /***/ })
 /******/ ]);

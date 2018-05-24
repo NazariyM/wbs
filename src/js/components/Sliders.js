@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'slick-carousel';
+import { $window, Resp } from '../modules/dev/_helpers';
 
 class Sliders {
   constructor () {
@@ -85,12 +86,15 @@ class Sliders {
       var timeoutSlider;
       var timerResize = 500;
       var statusResize = true;
-      var loaderResize = $('.around-slider__loader');
+      var $loaderResize = $('.around-slider__loader');
       var counterSlider = 0;
+
       $('.around-slider__item').removeClass('active-slide').eq(0).addClass('active-slide');
-      var fields = $(parent + '.around-slider__item'),
-        container = $(parent).find('.around-slider__slider__point'),
-        lenghtSlider = fields.length;
+
+      const $fields = $(parent + '.around-slider__item');
+      const container = $(parent).find('.around-slider__slider__point');
+      const lenghtSlider = $fields.length;
+
       function initPosition() {
         if (windowWidth <= 1200 && windowWidth >= 768) {
           var radius = 187; // adjust to move out items in and out
@@ -100,13 +104,13 @@ class Sliders {
         if (windowWidth >= 1200) {
           var radius = 215; // adjust to move out items in and out
         }
-        var containerWidth = container.width(),
+        let containerWidth = container.width(),
           containerHeight = container.height(),
           angle = 0,
           step = (stepNumber * Math.PI) / lenghtSlider;
-        fields.each(function () {
-          var x = Math.round(containerWidth / 2 + radius * Math.cos(angle) - $(this).width() / 2);
-          var y = Math.round(containerHeight / 2 + radius * Math.sin(angle) - $(this).height() / 2);
+        $fields.each(function () {
+          const x = Math.round(containerWidth / 2 + radius * Math.cos(angle) - $(this).width() / 2);
+          const y = Math.round(containerHeight / 2 + radius * Math.sin(angle) - $(this).height() / 2);
           $(this).css({
             left: x - 3 + 'px',
             top: y - 3 + 'px'
@@ -115,32 +119,32 @@ class Sliders {
         });
       }
       initPosition();
-      $(window).resize(function () {
-        if ($(window).width() > 767) {
+
+      $window.on('resize', () => {
+        if (!Resp.isMobile) {
           $('.around-slider').addClass('loading-slider');
-          loaderResize.addClass('active-loader');
+          $loaderResize.addClass('active-loader');
           clearTimeout(timeoutSlider);
 
           timeoutSlider = setTimeout(function () {
             initPosition();
             setTimeout(function () {
-              loaderResize.removeClass('active-loader');
+              $loaderResize.removeClass('active-loader');
               $('.around-slider').removeClass('loading-slider');
             }, 600);
           }, 700);
         }
       });
 
-
       // contorls slider and rotation
-      var stepRotateon = rotationDeg;
+      const stepRotation = rotationDeg;
       function rotationSlider(_this) {
         if (windowWidth >= 768) {
           $(parent + '.around-slider__slider__point').css({
-            transform: 'rotate(-' + counterSlider * stepRotateon + 'deg)'
+            transform: 'rotate(-' + counterSlider * stepRotation + 'deg)'
           });
           $(parent + '.around-slider__item').css({
-            transform: 'rotate(' + counterSlider * stepRotateon + 'deg)'
+            transform: 'rotate(' + counterSlider * stepRotation + 'deg)'
           });
         } else {
           $(parent + '.around-slider__slider__point').css({
@@ -151,24 +155,25 @@ class Sliders {
           });
         }
       }
-      $(window).resize(function () {
-        if ($(window).width() > 767) {
+
+      $window.on('resize', () => {
+        if (!Resp.isMobile) {
           $('.around-slider').addClass('loading-slider');
-          loaderResize.addClass('active-loader');
+          $loaderResize.addClass('active-loader');
           clearTimeout(timeoutSlider);
 
           timeoutSlider = setTimeout(function () {
             initPosition();
             rotationSlider();
             setTimeout(function () {
-              loaderResize.removeClass('active-loader');
+              $loaderResize.removeClass('active-loader');
               $('.around-slider').removeClass('loading-slider');
             }, 600);
           }, 700);
         }
       });
 
-      $(parent + '.arrow-right').click(function () {
+      $(parent + '.arrow-right').on('click', () => {
         if (counterSlider < lenghtSlider - 1) {
           counterSlider++;
         } else {
@@ -177,7 +182,7 @@ class Sliders {
         $(parent + '.around-slider__item').eq(counterSlider).click();
       });
 
-      $(parent + '.arrow-left').click(function () {
+      $(parent + '.arrow-left').on('click', () => {
         if (counterSlider > 0) {
           counterSlider--;
         } else {
@@ -186,10 +191,10 @@ class Sliders {
         $(parent + '.around-slider__item').eq(counterSlider).click();
       });
 
-      $(parent + '.around-slider__item').click(function () {
-        if (windowWidth >= 768) {
+      $(parent + '.around-slider__item').on('click', function () {
+        if (!Resp.isMobile) {
           $(parent + '.around-slider__item').removeClass('around-slider__active');
-          var index = $(parent + ' .around-slider__item').index(this);
+          let index = $(parent + ' .around-slider__item').index(this);
           counterSlider = index;
           $(this).addClass('what-program__active');
           $(this).closest('.around-slider')
@@ -205,6 +210,7 @@ class Sliders {
           rotationSlider(this);
           $(parent + ' .around-slider__item').removeClass('around-slider__item__right').removeClass('around-slider__item__left').addClass('around-slider__item__left');
           console.log('index  - number:' + counterSlider);
+
           var i = 0;
           var test1 = counterSlider;
           var test2 = counterSlider;
@@ -228,14 +234,9 @@ class Sliders {
       });
     }
 
-    $('.what-program .around-slider__item').click(function () {
-      var nuberText = $(this).attr('data-number');
-      $('.around-slider__number').text('0' + nuberText);
-    });
-
     slider('.what-program ', 33.72, 1.5, 1);
 
-    $(window).resize(function () {
+    $window.on('resize', () => {
       windowWidth = $(window).width();
     });
 
