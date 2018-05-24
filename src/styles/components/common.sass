@@ -32,10 +32,8 @@ body
 .back-title
   position: absolute
   top: 50%
-  left: 0
-  right: 0
-  transform: translateY(-50%)
-  text-align: center
+  left: 50%
+  transform: translate(-50%, -60%)
   color: $color1
   +f('gil-900', 500, 500)
   opacity: .05
@@ -53,8 +51,14 @@ body
   text-transform: uppercase
   border-radius: 26px
   overflow: hidden
-  transition: background .2s .2s
   backface-visibility: hidden
+  background-color: $color1
+  &:hover
+    background: $color2
+    transition: background .2s .2s
+    span
+      color: $color1
+      
   &::before, &::after
     content: ''
     display: inline-block
@@ -62,7 +66,6 @@ body
     width: 75%
     height: 200px
     border-radius: 50%
-    background-color: #ff2f74
     z-index: 0
     backface-visibility: hidden
     transform: translate3d(0, 0, 0)
@@ -76,14 +79,21 @@ body
   span
     position: relative
     z-index: 1
-    transition: color 0.7s, opacity 0.7s
-  &_green
-    background-color: $color1
-    span
-      color: #a8e1c2
-      
+    transition: color 0.6s, opacity 0.6s
+    color: $color2
+  &_white-hov
+    &::before, &::after
+      background-color: $white
     &:hover
-      background: red
+      &::before
+        transform: translate3d(0, 75px, 0)
+      &::after
+        transform: translate3d(0, -75px, 0)
+        
+  &_green-hov
+    &::before, &::after
+      background-color: $color2
+    &:hover
       &::before
         transform: translate3d(0, 75px, 0)
       &::after

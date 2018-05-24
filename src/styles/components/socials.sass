@@ -1,16 +1,20 @@
 .socials
+  display: flex
   a
-    display: inline-flex
+    display: flex
     align-items: center
     justify-content: center
-    width: 30px
-    height: 30px
     line-height: 1
     transition: .4s ease-in-out
     &:hover
       background-color: $color1
     &:not(:last-child)
-      margin-right: 3px
+      margin-right: 19px
       
-    .icon
-      fill: $white
+    &:hover .socials__icon
+      stroke: red
+      fill: blue
+    
+  &__icon
+    height: 20px
+    stroke: $white

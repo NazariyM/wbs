@@ -20,15 +20,23 @@
    &__logo
       flex: 0 0 160px
       margin-right: 60px
+      &:hover
+         svg
+            .for-fill
+               fill: $color1
+               
       svg
          width: 100%
          height: 100%
-      
+         .for-fill
+            transition: .3s ease
+         
    &__nav
       display: flex
       flex: 1 1 auto
       color: $white
-      +f('gil-500', 15)
+      +f('gil-700', 15)
+      //line-height: 1
       letter-spacing: 1.2px
       text-transform: uppercase
       ul
@@ -36,6 +44,34 @@
          li
             &:not(:last-child)
                margin-right: 42px
+               
+            &.is-active
+               a
+                  color: $color1
+                  &::after
+                     left: 0
+                     right: 0
+                  
+      a
+         position: relative
+         display: block
+         transition: 0.3s
+         &::after
+            position: absolute
+            left: 50%
+            right: 50%
+            bottom: -22px
+            z-index: 1
+            display: block
+            height: 3px
+            background: $color1
+            transition: 0.3s
+            content: ''
+         &:hover
+            color: $color1
+            &::after
+               left: 0
+               right: 0
                
       &-link
          margin-left: auto
