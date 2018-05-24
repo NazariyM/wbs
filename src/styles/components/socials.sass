@@ -11,10 +11,11 @@
     &:not(:last-child)
       margin-right: 19px
       
-    &:hover .socials__icon
-      stroke: red
-      fill: blue
+    &:hover .socials__icon .for-fill
+      stroke: $color2
     
   &__icon
     height: 20px
     stroke: $white
+    .for-fill
+      transition: .3s ease

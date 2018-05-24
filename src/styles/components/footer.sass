@@ -6,6 +6,11 @@
    font-size: 16px
    letter-spacing: 1px
    
+   a
+      transition: .3s ease
+      &:hover
+         color: $color2
+   
    &__container
       max-width: 1330px
    
@@ -16,10 +21,36 @@
          justify-content: center
          li
             margin: 0 25px
+            &.is-active
+               a
+                  color: $white
+                  &::after
+                     left: 0
+                     right: 0
+            
             a
+               position: relative
+               display: block
                +f('gil-700', 16)
                color: $color2
                text-transform: uppercase
+               transition: 0.3s
+               &::after
+                  position: absolute
+                  left: 50%
+                  right: 50%
+                  bottom: -5px
+                  z-index: 1
+                  display: block
+                  height: 2px
+                  background: $white
+                  transition: 0.3s
+                  content: ''
+               &:hover
+                  color: $white
+                  &::after
+                     left: 0
+                     right: 0
                
    &__programs
       margin-bottom: 30px
@@ -32,6 +63,23 @@
          a
             display: block
             margin: 0 19px
+            &:hover
+               .icon-wow-mom
+                  .for-fill
+                     fill: #f6b0cc
+               .icon-wow-slim
+                  .for-fill
+                     fill: #fd3573
+               .icon-wow-strong
+                  .for-fill
+                     fill: #9fc851
+               .icon-wow-men
+                  .for-fill
+                     fill: #242a2f
+                     
+            svg
+               .for-fill
+                  transition: .3s ease
             
    &__bottom
       display: flex
