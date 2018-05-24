@@ -10850,7 +10850,7 @@ var Sliders = function () {
     key: 'createAroundSlider',
     value: function createAroundSlider() {
 
-      var windowWidth = (0, _jquery2.default)(window).width();
+      // var windowWidth = $(window).width();
 
       function slider(parent, rotationDeg, stepNumber, testNumber) {
         // init slider
@@ -10867,24 +10867,27 @@ var Sliders = function () {
         var lenghtSlider = $fields.length;
 
         function initPosition() {
-          if (windowWidth <= 1200 && windowWidth >= 768) {
+          if (_helpers.Resp.isTablet) {
             var radius = 187; // adjust to move out items in and out
           } else {
             var radius = 0;
           }
-          if (windowWidth >= 1200) {
+          if (_helpers.Resp.isDesk) {
             var radius = 215; // adjust to move out items in and out
           }
+
           var containerWidth = container.width(),
               containerHeight = container.height(),
               angle = 0,
               step = stepNumber * Math.PI / lenghtSlider;
+
           $fields.each(function () {
             var x = Math.round(containerWidth / 2 + radius * Math.cos(angle) - (0, _jquery2.default)(this).width() / 2);
             var y = Math.round(containerHeight / 2 + radius * Math.sin(angle) - (0, _jquery2.default)(this).height() / 2);
+
             (0, _jquery2.default)(this).css({
-              left: x - 3 + 'px',
-              top: y - 3 + 'px'
+              left: x + 'px',
+              top: y + 'px'
             });
             angle += step;
           });
@@ -10910,7 +10913,7 @@ var Sliders = function () {
         // contorls slider and rotation
         var stepRotation = rotationDeg;
         function rotationSlider(_this) {
-          if (windowWidth >= 768) {
+          if (!_helpers.Resp.isMobile) {
             (0, _jquery2.default)(parent + '.around-slider__slider__point').css({
               transform: 'rotate(-' + counterSlider * stepRotation + 'deg)'
             });
@@ -10997,11 +11000,12 @@ var Sliders = function () {
         });
       }
 
+      // slider('.what-program ', 33.72, 1.5, 1);
       slider('.what-program ', 33.72, 1.5, 1);
 
-      _helpers.$window.on('resize', function () {
-        windowWidth = (0, _jquery2.default)(window).width();
-      });
+      // $window.on('resize', () => {
+      //   windowWidth = $(window).width();
+      // });
     }
   }]);
 

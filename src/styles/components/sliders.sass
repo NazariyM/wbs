@@ -69,7 +69,7 @@
    &__slider__point
       width: 430px
       height: 430px
-      border: 1px solid #bae6f2
+      border: 2px solid #a8e1c2
       position: relative
       border-radius: 50%
       transition: .6s ease-in
@@ -91,13 +91,12 @@
      padding-bottom: 40px
 
    &__item
-      width: 12px
-      height: 12px
+      position: absolute
+      width: 17px
+      height: 17px
       text-align: center
       border-radius: 50%
-      position: absolute
-      border: 3px solid #bbe9f4
-      background: #dcf6fd
+      background: #a8e1c2
       cursor: pointer
       transition: .6s ease-in
       z-index: 10
@@ -120,7 +119,6 @@
          border-radius: 50%
          box-shadow: 0 20px 30px rgba(0, 0, 0, 0.19)
          overflow: hidden
-         
          img
             width: 100%
             display: block
@@ -141,13 +139,13 @@
       
       &__title
          position: absolute
-         opacity: 0.5
-         font-size: 15px
-         color: #535e6c
+         font-size: 14px
          transition: .3s
          text-align: left
          top: -4px
          width: 200px
+         letter-spacing: 0.6px
+         +f('gil-700')
       
       //+respond-to(tablet)
         color: #2b3138
@@ -167,8 +165,7 @@
 
       &__desc
          position: absolute
-         width: 340px
-         font-size: 15px
+         width: 525px
          text-align: left
          left: 48px
          top: 0
@@ -188,35 +185,20 @@
         text-align: center
         opacity: 1
         width: 100%
-
-      &:after
-         position: absolute
-         left: 50%
-         top: 50%
-         border-radius: 50%
-         transform: translate(-50%, -50%)
-         content: ''
-         display: block
-         width: 20px
-         height: 20px
-         border: 1px solid #6fd6e5
-         transition: .3s
-         opacity: 0
    
    //+respond-to(mobile)
      display: none
 
    &__active
-      width: 16px
-      height: 16px
-      background: #70d7e6
-      border: 3px solid #70d7e6
+      width: 24px
+      height: 24px
+      background: #a8e1c2
       
       .around-slider__item__title
          top: -30px
          left: 48px
          opacity: 1
-         font-size: 24px
+         font-size: 22px
          width: 300px
          text-align: left
       
@@ -234,7 +216,6 @@
       height: 370px
       border-radius: 50%
       margin-left: 170px
-      transition: .6s ease-in
       top: 30px
       left: 30px
       margin-bottom: 90px
@@ -273,15 +254,6 @@
    .active-slide
       opacity: 1
    
-   &__number
-      position: absolute
-      left: 52%
-      top: 5%
-      font-size: 400px
-      //font-family: $font-sf-display
-      color: #e0f1f8
-      font-weight: 800
-   
    //+respond-to(tablet)
      left: 25%
 
@@ -292,33 +264,23 @@
    &__controls
       position: absolute
       top: 190px
+      left: 100%
       text-align: right
-      width: 100%
       z-index: 1
-      
+      font-size: 0
+      white-space: nowrap
+   
       //+respond-to(mobile)
         display: none
       
-      &:after
-         position: absolute
-         content: ''
-         left: 98%
-         top: 26px
-         height: 1px
-         width: 2000px
-         background: #b6e6f1
-      
       .arrow
          position: relative
-         background: #dcf6fd
+         background: #a8e1c2
          display: inline-block
          border-radius: 50%
          cursor: pointer
          transition: .3s
          z-index: 1
-         
-         //+btn-shadow
-
          overflow: hidden
          
          &:after
@@ -333,8 +295,8 @@
             display: block
             border-radius: 50%
             transform: translate(-50%, -50%) scale(0)
-            transition: transform .3s ease-out, opacity .2s ease-out
-            background: #70d9e7
+            transition: transform .4s ease-out, opacity .3s ease-out
+            background: #537161
          
          span
             position: absolute
@@ -346,33 +308,21 @@
             
             svg
                display: block
-               fill: #70d6e5
+               fill: $white
          
          &:hover
-            //background: #70d9e7;
             &:after
                opacity: 1
                transform: translate(-50%, -50%) scale(1)
-            
-            svg
-               fill: $white
-      
       .arrow-right
          height: 52px
          width: 52px
-         
-         svg
-            height: 12px
-            width: 7px
       
       .arrow-left
          height: 36px
          width: 36px
          top: -6px
-         
-         svg
-            width: 5px
-            height: 10px
+         margin-right: 8px
    
    &__loader
       position: absolute
@@ -381,7 +331,7 @@
       right: -100%
       bottom: -10px
       z-index: 20
-      background: #d6ebf6
+      background: #a8e1c2
       visibility: hidden
       opacity: 0
       transition: .2s
@@ -409,7 +359,7 @@
             width: 40px
             height: 40px
             border-radius: 50%
-            background: #d6ebf6
+            background: #a8e1c2
             z-index: 1
       
       &.active-loader

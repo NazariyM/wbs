@@ -65,81 +65,87 @@ block main
 		//begin what-program
 		+b.SECTION.what-program
 			+e.container.container
-				.around-slider
+
+				+e.title.title-md
+					h2 Что входит в программу
+
+				.around-slider.what-program__around-slider
 					.around-slider__slider__point
 						.around-slider__item.item1.around-slider__item__right.around-slider__active.active-slide
 							.around-slider__item__img
 								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Тренировки для беременных
+							.around-slider__item__title
+								h6 Питание
 							.around-slider__item__desc
-								| Это не программа похудения. Специальные простые упражнения для беременных в формате видео помогут тебе меняться без вреда для здоровья сейчас и после родов. Силовые тренировки беременным категорически запрещены!
+								p Наше питание подходит и для вегетарианцев, и для тех, кто ест мясо. Ты получишь меню на месяц, продукты в котором можно менять в зависимости от предпочтений и настроения.
+
 						.around-slider__item.item2.around-slider__item__right
 							.around-slider__item__img
-								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Прогресс
+								img(src='static/img/content/what-prog_2.jpg', alt='')
+							.around-slider__item__title
+								h6 Силовые тренировки
 							.around-slider__item__desc
-								| В личном кабинете ты сможешь следить за изменениями в твоем теле и контролировать правильный здоровый набор веса.
-						.around-slider__item.item3.around-slider__item__right
+								p В личном кабинете ты сможешь следить за изменениями в твоем теле и контролировать правильный здоровый набор веса.
+						.around-slider__item.item3.around-slider__item__left
 							.around-slider__item__img
 								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Питание
+							.around-slider__item__title
+								h6 Йога
 							.around-slider__item__desc
-								| Получишь полный рацион полезного, сбалансированного питания на каждый день беременности с учетом размеров порций и вкусными рецептами.
+								p Срок беременности, дата родов, вес, фото — мы гарантируем конфиденциальность и безопасность всех твоих даных.
 						.around-slider__item.item4.around-slider__item__left
 							.around-slider__item__img
-								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Твои данные
+								img(src='static/img/content/what-prog_2.jpg', alt='')
+							.around-slider__item__title
+								h6 Растяжка
 							.around-slider__item__desc
-								| Срок беременности, дата родов, вес, фото — мы гарантируем конфиденциальность и безопасность всех твоих даных.
+								p Важная и полезная информация по развитию ребенка на каждом этапе беременности, от зачатия до родов в понятном формате.
 						.around-slider__item.item5.around-slider__item__left
-							.around-slider__item__img
-								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Твой малыш
-							.around-slider__item__desc
-								| Важная и полезная информация по развитию ребенка на каждом этапе беременности, от зачатия до родов в понятном формате.
-						.around-slider__item.item6.around-slider__item__left
 							.around-slider__item__img
 								img(src='static/img/content/what-prog_1.jpg', alt='')
 							.around-slider__item__title Контроль успехов
 							.around-slider__item__desc Отмечай пройденные тренировки и следи за нормой прибавки веса.
 						.around-slider__item.item7.around-slider__item__left
 							.around-slider__item__img
-								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Совет дня
+								img(src='static/img/content/what-prog_2.jpg', alt='')
+							.around-slider__item__title
+								h6 Советы
 							.around-slider__item__desc
-								| Что почитать, посмотреть, уход за телом, посещения врача и важные моменты, на которые нужно обратить внимание.
-						.around-slider__item.item8.around-slider__item__left
-							.around-slider__item__img
-								img(src='static/img/content/what-prog_1.jpg', alt='')
-							.around-slider__item__title Дневник
-							.around-slider__item__desc
-								| Сохрани свои мысли, эмоции, наблюдения и ожидания на протяжении беременности. Делай фото животика и распечатай все это в конце программы.
+								p Что почитать, посмотреть, уход за телом, посещения врача и важные моменты, на которые нужно обратить внимание.
+
 					.around-slider__slides
 						.around-slider__slide.active-slide
 							img(src='static/img/content/what-prog_1.jpg', alt='')
 						.around-slider__slide
-							img(src='static/img/content/what-prog_1.jpg', alt='')
+							img(src='static/img/content/what-prog_2.jpg', alt='')
 						.around-slider__slide
 							img(src='static/img/content/what-prog_1.jpg', alt='')
 						.around-slider__slide
-							img(src='static/img/content/what-prog_1.jpg', alt='')
+							img(src='static/img/content/what-prog_2.jpg', alt='')
 						.around-slider__slide
 							img(src='static/img/content/what-prog_1.jpg', alt='')
 						.around-slider__slide
-							img(src='static/img/content/what-prog_1.jpg', alt='')
-						.around-slider__slide
-							img(src='static/img/content/what-prog_1.jpg', alt='')
-						.around-slider__slide
-							img(src='static/img/content/what-prog_1.jpg', alt='')
+							img(src='static/img/content/what-prog_2.jpg', alt='')
+
 					.around-slider__controls
 						.arrow.arrow-left
 							span
-								svg
-									use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#arrow-left')
+								svg(width='36px', height='36px', viewbox='0 0 36 36', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+									g(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+										g(transform='translate(-1274.000000, -2550.000000)')
+											g(transform='translate(0.000000, 2048.000000)')
+												g(transform='translate(1274.000000, 502.000000)')
+													polyline(stroke='#FFFFFF', stroke-width='2', stroke-linecap='round', stroke-linejoin='round', transform='translate(17.000000, 18.000000) rotate(90.000000) translate(-17.000000, -18.000000) ', points='13 16 17 20 21 16')
+
 						.arrow.arrow-right
 							span
-								svg
-									use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='#arrow-right')
+								svg(width='52px', height='52px', viewbox='0 0 52 52', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+									g(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+										g(transform='translate(-1314.000000, -2542.000000)')
+											g(transform='translate(0.000000, 2048.000000)')
+												g(transform='translate(1314.000000, 494.000000)')
+													polyline(stroke='#FFFFFF', stroke-width='2', stroke-linecap='round', stroke-linejoin='round', transform='translate(26.000000, 26.000000) scale(-1, 1) rotate(90.000000) translate(-26.000000, -26.000000) ', points='22 24 26 28 30 24')
+
 					.around-slider__loader
 						.around-slider__loader__container
 							.around-slider__loader__circle
