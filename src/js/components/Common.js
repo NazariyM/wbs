@@ -6,6 +6,7 @@ import '../sections/Screen';
 import './Sliders';
 import './Anims';
 import './Footer';
+import PageResize from './pageResize';
 // import './Dot';
 
 export class Common {
@@ -20,6 +21,7 @@ export class Common {
    */
   init() {
     objectFitImages();
+    PageResize.init();
   }
 }
 

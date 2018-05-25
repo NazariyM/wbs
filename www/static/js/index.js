@@ -20817,6 +20817,10 @@ __webpack_require__(341);
 
 __webpack_require__(344);
 
+var _pageResize = __webpack_require__(345);
+
+var _pageResize2 = _interopRequireDefault(_pageResize);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20841,6 +20845,7 @@ var Common = exports.Common = function () {
     key: 'init',
     value: function init() {
       (0, _objectFitImages2.default)();
+      _pageResize2.default.init();
     }
   }]);
 
@@ -36251,6 +36256,75 @@ var Footer = function () {
 }();
 
 exports.default = new Footer();
+
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.PageResize = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _helpers = __webpack_require__(126);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var PageResize = exports.PageResize = function () {
+	function PageResize() {
+		_classCallCheck(this, PageResize);
+	}
+
+	_createClass(PageResize, [{
+		key: 'getResp',
+		value: function getResp() {
+			if (_helpers.Resp.isDesk) {
+				this.resp = 'desk';
+			} else if (_helpers.Resp.isTablet) {
+				this.resp = 'tablet';
+			} else if (_helpers.Resp.isMobile) {
+				this.resp = 'mobile';
+			}
+		}
+	}, {
+		key: 'init',
+		value: function init() {
+			var _this = this;
+
+			this.getResp();
+
+			//refresh page
+			var refreshPage = (0, _helpers.throttle)(function () {
+				//check current Resp
+				if (_helpers.Resp.isDesk) {
+					_this.currentResp = 'desk';
+				} else if (_helpers.Resp.isTablet) {
+					_this.currentResp = 'tablet';
+				} else if (_helpers.Resp.isMobile) {
+					_this.currentResp = 'mobile';
+				}
+
+				//compare Resp
+				if (_this.resp !== _this.currentResp) {
+					_this.resp = _this.currentResp;
+					location.reload();
+				}
+			}, 250, this);
+
+			//refresh page on resize
+			_helpers.$window.on('resize', refreshPage);
+		}
+	}]);
+
+	return PageResize;
+}();
+
+exports.default = new PageResize();
 
 /***/ })
 /******/ ]);
