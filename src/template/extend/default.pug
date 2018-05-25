@@ -24,6 +24,8 @@ html(lang='ru')
     block body
         body
 
+            include ../components/preloader
+
             // picture element HTML5 shiv
             block inlineScripts
                 script.
@@ -39,7 +41,7 @@ html(lang='ru')
 
             // Footer
             block footer
-                //include ../components/footer
+                include ../components/footer
 
             // Scripts
             block scripts

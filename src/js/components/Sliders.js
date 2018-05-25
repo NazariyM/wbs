@@ -7,6 +7,7 @@ class Sliders {
     this.$viewSlider = $('.view-slider');
     this.$aroundSlider = $('.around-slider');
     this.$respSlider = $('.js-responsive-slider');
+    this.$mobSlider = $('.js-mobile-slider');
 
     this.defaultSlickOpts = {
       slidesToShow: 1,
@@ -46,8 +47,22 @@ class Sliders {
         onInit: countSlides()
       }));
 
-    } else if (this.$respSlider.is(slickInit)) {
-      this.$respSlider.slick('unslick');
+    }
+
+    if (Resp.isMobile) {
+      this.$mobSlider.not(slickInit).slick($.extend({}, this.defaultSlickOpts, {
+        dots: true,
+        dotsClass: 'slick-dots slick-dots_white'
+      }));
+
+    } else {
+      if (this.$respSlider.is(slickInit)) {
+        this.$respSlider.slick('unslick');
+      }
+      if (this.$mobSlider.is(slickInit)) {
+        this.$mobSlider.slick('unslick');
+      }
+
     }
 
     function countSlides() {
@@ -85,6 +100,7 @@ class Sliders {
               slidesToShow: 1,
               slidesToScroll: 1,
               dots: false,
+              centerPadding: 0
             }
           }
         ]
@@ -102,7 +118,7 @@ class Sliders {
           {
             breakpoint: 767,
             settings: {
-              dots: true,
+              dots: true
             }
           }
         ]
@@ -213,7 +229,6 @@ class Sliders {
 
       $(parent + '.around-slider__item').on('click', function () {
         if (Resp.isDesk) {
-          console.log('mobile');
           $(parent + '.around-slider__item').removeClass(activeSldClass);
           let index = $(parent + ' .around-slider__item').index(this);
           counterSlider = index;

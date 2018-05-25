@@ -15,7 +15,8 @@ block main
 					+e.title.title-lg
 						h2 WOWBODY
 					+e.title._mod.title-lg
-						h2 STRONG 2.0
+						h2 STRONG
+							span 2.0
 
 					+e.descr
 						p Онлайн-программа эффективных ежедневных тренировок для создания женственного рельефа тела и упругих ягодиц. Работа над деталями!
@@ -29,7 +30,7 @@ block main
 			+e.back-title.back-title
 				h4 ABOUT
 			+e.container.container
-				+e.text
+				+e.text(data-anim-stagger="fade-y")
 					+e.title.title-md
 						h2 О программе
 					+e.descr
@@ -54,12 +55,12 @@ block main
 
 					mixin aboutItem(item)
 						+e.item
-							+e.item-img
+							+e.item-img(data-anim="fade-y")
 								+e.IMG(src=`static/img/content/${item.img}.png` srcset="static/img/content/" + item.img + "@2x.png 2x, img/content/" + item.img + "@3x.png 3x" alt='image')
-							+e.item-text
+							+e.item-text(data-anim="fade-y")
 								+e.item-title
 									h4= item.title
-								+e.item-descr
+								+e.item-descr(data-anim-stagger="fade-y")
 									p= item.text
 										if item.brText
 											br
@@ -72,11 +73,11 @@ block main
 		+b.SECTION.what-program
 			+e.container.container
 
-				+e.title.title-md
+				+e.title.title-md(data-anim="fade-y")
 					h2 Что входит в программу
 
 				.around-slider.what-program__around-slider
-					.around-slider__slider__point.js-responsive-slider
+					.around-slider__slider__point.js-responsive-slider(data-anim='fade-y' data-anim-stagger="fade-y" data-anim-delay='0.3' data-anim-duration='0.25')
 						.around-slider__item.around-slider__item__right.around-slider__active.active-slide
 							.around-slider__item__img
 								img(src='static/img/content/what-prog_1.jpg', alt='')
@@ -122,7 +123,7 @@ block main
 								.around-slider__item__desc
 									p Что почитать, посмотреть, уход за телом, посещения врача и важные моменты, на которые нужно обратить внимание.
 
-					.around-slider__slides
+					.around-slider__slides(data-anim='fade-y' data-anim-delay='0.3' data-anim-duration='0.25')
 						.around-slider__slide.active-slide
 							img(src='static/img/content/what-prog_1.jpg', alt='')
 						.around-slider__slide
@@ -134,7 +135,7 @@ block main
 						.around-slider__slide
 							img(src='static/img/content/what-prog_1.jpg', alt='')
 
-					.around-slider__controls
+					.around-slider__controls(data-anim-stagger="fade-y" data-anim-delay='1' data-anim-duration='0.25')
 						.arrow.arrow-left
 							span
 								svg(width='36px', height='36px', viewbox='0 0 36 36', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
@@ -162,16 +163,20 @@ block main
 		//end what-program
 
 		//begin team
-		//+b.SECTION.team
-			+e.person._left(style='background-image: url(static/img/bg/team_anita.jpg)')
-				+e.person-text
+		+b.SECTION.team
+			+e.person._left(style='background-image: url(static/img/bg/team_anita.jpg)' data-anim='bg')
+				+e.person-bg._tab(style='background-image: url(static/img/bg/team_anita-tab.jpg)')
+				+e.person-bg._mob(style='background-image: url(static/img/bg/team_anita-mob.jpg)')
+				+e.person-text(data-anim='fade-x' data-anim-delay='0.4' data-anim-duration='0.5')
 					+e.person-name.title-md
 						h4 АНИТА ЛУЦЕНКО
 					+e.person-descr
 						p Главный тренер страны, мастер спорта, многократный чемпион по аэробике и фитнесу, известная телеведущая.
 
-			+e.person._right(style='background-image: url(static/img/bg/team_julia.jpg)')
-				+e.person-text
+			+e.person._right(style='background-image: url(static/img/bg/team_julia.jpg)' data-anim='bg')
+				+e.person-bg._tab(style='background-image: url(static/img/bg/team_julia-tab.jpg)')
+				+e.person-bg._mob(style='background-image: url(static/img/bg/team_julia-mob.jpg)')
+				+e.person-text(data-anim='fade-x' data-anim-delay='0.4' data-anim-duration='0.5')
 					+e.person-name.title-md
 						h4 ЮЛИЯ БОГДАН
 					+e.person-descr
@@ -181,9 +186,9 @@ block main
 		//end team
 
 		//begin teaser
-		//+b.SECTION.teaser(style='background-image: url(static/img/bg/teaser_bg.jpg)')
+		+b.SECTION.teaser(style='background-image: url(static/img/bg/teaser_bg.jpg)' data-anim='bg')
 			+e.container.container
-				+e.text
+				+e.text(data-anim-stagger='fade-x' data-anim-delay='1.5')
 					+e.sub-title.title-md
 						h4 ТЕБЕ ПОНАДОБЯТСЯ
 					+e.title.title-lg
@@ -195,13 +200,13 @@ block main
 		//end teaser
 
 		//begin how-look
-		//+b.SECTION.how-look
+		+b.SECTION.how-look(data-anim='bg')
 			+e.media(style='background-image: url(static/img/bg/how-look_bg.jpg)')
 				video(width="100%" height="100%" preload="auto" loop="" muted="" autoplay="" playsinline="")
 					source(src='static/video/video-sample.mp4' type="video/mp4")
 					source(src='static/video/video-sample.webm' type="video/webm")
 			+e.container.container
-				+e.content
+				+e.content(data-anim-stagger='fade-x')
 					+e.title.title-md
 						h3 Как это выглядит
 					+e.text
@@ -213,16 +218,16 @@ block main
 		//end how-look
 
 		//begin results
-		//+b.SECTION.results
+		+b.SECTION.results
 			+e.back-title.back-title
 				h4 results
 			+e.container.container
-				+e.title.title-md
+				+e.title.title-md(data-anim='fade-y')
 					h2 WOW результаты
 
 				+b.view-slider.results__view-slider
 
-					+e.images
+					+e.images(data-anim='fade-y')
 						-n = 0
 						while n < 2
 
@@ -254,21 +259,21 @@ block main
 					+e.view-text.view-slider__text
 						-i = 0
 						while i < 2
-							+e.text-item
+							+e.text-item(data-anim-stagger='fade-y')
 								+e.text-title
 									h4 Елена (Украина)
 								+e.text-descr
 									p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
 									p а муж так вообще
 
-							+e.text-item
+							+e.text-item(data-anim-stagger='fade-y')
 								+e.text-title
 									h4 Антонина (Украина)
 								+e.text-descr
 									p Результатом очень довольна.... Ну вот и подошла к концу моя любимая программа!
 									p а муж так вообще
 
-							+e.text-item
+							+e.text-item(data-anim-stagger='fade-y')
 								+e.text-title
 									h4 Светлана (Украина)
 								+e.text-descr
@@ -279,18 +284,18 @@ block main
 		//end results
 
 		//begin prices
-		//+b.SECTION.prices
+		+b.SECTION.prices
 			+e.back-title.back-title
 				h4 PRICE
 			+e.container.container
-				+e.text
+				+e.text(data-anim-stagger='fade-y')
 					+e.title.title-md
 						h2 Стоимость программы
 					+e.descr
 						p Программа стартует сразу после оплаты
 
-				+e.inner
-					+e.item._color
+				+e.inner.js-mobile-slider
+					+e.item._color(data-anim-stagger='fade-y')
 						+e.item-value
 							h5
 								sup €
@@ -303,7 +308,7 @@ block main
 							span ПРОЙТИ ПРОГРАММУ
 
 
-					+e.item
+					+e.item(data-anim-stagger='fade-y')
 						+e.item-value
 							h5
 								sup €

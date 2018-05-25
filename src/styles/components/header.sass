@@ -3,7 +3,8 @@
    top: 0
    left: 0
    right: 0
-   z-index: 1
+   z-index: 2
+   transform: translateY(-102%)
    &__container
       position: relative
       display: flex
@@ -12,22 +13,23 @@
          justify-content: space-between
          max-width: 944px
          padding: 18px 15px
-      &::after
-         position: absolute
-         top: 100%
-         left: 15px
-         right: 15px
-         height: 1px
-         background: $white
-         content: ''
+      +xs
+         padding: 18px 20px
    
    &__logo
+      position: relative
+      z-index: 101
       flex: 0 0 160px
       margin-right: 60px
       +md
          position: relative
          left: 20px
          margin-right: 0
+         margin-left: auto
+      +xs
+         left: 10px
+         margin-right: auto
+         margin-left: auto
    
       &:hover
          svg
@@ -41,60 +43,115 @@
             transition: .3s ease
          
    &__nav
-      display: flex
       flex: 1 1 auto
-      color: $white
-      +f('gil-700', 15)
-      letter-spacing: 1.2px
-      text-transform: uppercase
       +md
+         position: fixed
+         top: 0
+         left: 0
+         z-index: 100
+         right: 0
+         height: 100vh
          flex: 0 1 auto
+         background: $color2
+         transition: background-color .3s ease
+         overflow: hidden
+         text-align: center
+         transform: translateY(-100%)
       ul
          display: flex
          +md
-            display: none
+            flex-direction: column
+            justify-content: center
+            margin-bottom: 60px
          li
+            +md
+               opacity: 0
+               transform: translateY(-20px)
             &:not(:last-child)
                margin-right: 42px
-               
+               +md
+                  margin: 0 0 20px
+                  
             &.is-active
                a
                   color: $color1
                   &::after
                      left: 0
                      right: 0
+                
+      &-inner
+         +md
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            overflow: auto
+            margin-top: 68px
+            height: calc(100% - 68px)
+      &-mob-scroll
+         +md
+            padding: 30px 15px
+         +mob-fix
+            padding: 220px 15px 100px
+      
+      &-actions
+         display: none
+         +md
+            display: flex
+            flex-direction: column
+         &-btn
+            min-width: 260px
+            padding: 20px 30px
+            opacity: 0
+            transform: translateY(-20px)
+            &:not(:last-child)
+               margin-bottom: 20px
                   
-      a
-         position: relative
+   a:not(.header__nav-actions-btn)
+      position: relative
+      display: block
+      color: $white
+      +f('gil-700', 15)
+      letter-spacing: 1.2px
+      text-transform: uppercase
+      transition: 0.3s
+      &::after
+         position: absolute
+         left: 50%
+         right: 50%
+         bottom: -22px
+         z-index: 101
          display: block
+         height: 2px
+         background: $color1
          transition: 0.3s
+         content: ''
+         +md
+            display: none
+      &:hover
+         color: $color1
          &::after
-            position: absolute
-            left: 50%
-            right: 50%
-            bottom: -22px
-            z-index: 1
-            display: block
-            height: 2px
-            background: $color1
-            transition: 0.3s
-            content: ''
-         &:hover
-            color: $color1
-            &::after
-               left: 0
-               right: 0
+            left: 0
+            right: 0
                
-      &-link
-         margin-left: auto
+   &__log-link
+      z-index: 101
+      margin-left: auto
+      +xs
+         display: none!important
          
    &__nav-toggle
+      display: none
+      position: relative
+      z-index: 101
       width: 20px
       height: 32px
       border-radius: 3px
       box-sizing: border-box
       cursor: pointer
       user-select: none
+      +md
+         display: block
       &.is-active span
          &:first-child
             -webkit-transform: translateY(6px) rotate(45deg)
@@ -115,3 +172,14 @@
          transition: 0.3s ease
          &:nth-child(2)
             margin: 4px 0
+            
+   &__line
+      position: absolute
+      top: 100%
+      height: 1px
+      background: $white
+      z-index: 100
+      &_l
+         left: 15px
+      &_r
+         right: 15px

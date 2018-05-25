@@ -1,6 +1,11 @@
 import objectFitImages from 'object-fit-images';
 
+import './Preloader';
+import './Header';
+import '../sections/Screen';
 import './Sliders';
+import './Anims';
+import './Footer';
 // import './Dot';
 
 export class Common {

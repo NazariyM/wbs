@@ -3,8 +3,8 @@
    +cover
    +md
       background-position: 30% 50%
-      //background-size: 145% 130%
-      //background-position: 40% 0%
+   +xs
+      background-position: 100% 50%
    
    &__container
       display: flex
@@ -14,7 +14,10 @@
       height: 100%
       +md
          max-width: 990px
-   
+      +xs
+         align-items: center
+         justify-content: flex-end
+         
    &__content
       padding-right: 56px
       max-width: 740px
@@ -22,13 +25,24 @@
       color: $white
       +lg
          padding-right: 10px
+      +xs
+         padding: 0 0 30px
+         text-align: center
+         
+      > div
+         opacity: 0
+         transform: translateX(50px)
          
    &__sub-title
       margin-bottom: 20px
       text-align: right
       +lg
          margin-bottom: 40px
-   
+      +xs
+         margin: 0 auto 15px
+         text-align: center
+         max-width: 240px
+         
    &__title
       padding-right: 4px
       &_mod
@@ -37,6 +51,10 @@
          white-space: nowrap
          color: $color2
          
+      span
+         +xs
+            display: block
+         
    &__descr
       display: inline-block
       margin: 50px 0 30px
@@ -44,9 +62,13 @@
       letter-spacing: 0.006em
       +md
          margin: 30px 0
-      
+      +xs
+         padding: 0 15px
+         //max-width: 290px
    &__btn
       margin-right: 4px
+      opacity: 0
+      transform: translateX(50px)
       
 .about-program
    position: relative
@@ -57,6 +79,8 @@
       padding: 68px 0 136px
    +md
       padding: 68px 0 90px
+   +xs
+      padding: 48px 0 38px
    
    &__container
       max-width: 1160px
@@ -71,11 +95,15 @@
          margin: 0 auto 95px
       +md
          margin: 0 auto 65px
+      +xs
+         margin: 0 auto 58px
    
    &__title
       margin-bottom: 35px
       +md
          margin-bottom: 40px
+      +xs
+         margin-bottom: 27px
    
    &__descr
       max-width: 600px
@@ -89,26 +117,38 @@
          padding-left: 50px
          margin: 0 auto
          flex-direction: column
+      +xs
+         padding-left: 0
          
    &__item
       flex: 0 1 33.33333%
       +md
          display: flex
-       
+      +xs
+         flex-direction: column
+         align-items: center
+         padding: 0 15px
+         
       &:not(:last-child)
          +md
             margin-bottom: 65px
-            
+         +xs
+            margin-bottom: 45px
+   
       &:nth-child(1)
          padding-right: 28px
          +md
             padding-right: 0
+         +xs
+            padding: 0 12px
       &:nth-child(2)
          padding-right: 20px
          +lg
             padding-right: 50px
          +md
             padding-right: 0
+         +xs
+            padding: 0 12px
          .about-program__item-descr
             margin: 0 auto
             max-width: 340px
@@ -119,7 +159,9 @@
             padding-right: 70px
          +md
             padding-right: 0
-      
+         +xs
+            padding: 0 12px
+   
       &-img
          width: 120px
          height: 120px
@@ -128,18 +170,25 @@
          +md
             flex: 0 0 120px
             margin: 0 38px 0 0
+         +xs
+            margin: 0 auto 23px
          
       &-text
          text-align: center
          color: $color1
          +md
             text-align: left
+         +xs
+            text-align: center
       
       &-title
          margin-bottom: 30px
          +f('gil-700', 22)
          line-height: 1.09
-      
+         +xs
+            margin-bottom: 22px
+            line-height: 22px
+   
       &-descr
          line-height: 25px
 
@@ -150,6 +199,8 @@
       padding: 70px 0 140px
    +md
       padding: 76px 0 66px
+   +xs
+      padding: 45px 0 55px
    
    &__title
       margin-bottom: 140px
@@ -157,22 +208,25 @@
          margin-bottom: 88px
       +md
          margin-bottom: 68px
+      +xs
+         max-width: 215px
+         margin: 0 auto 30px
    
    &__slider
    
    
 .team
-   position: relative
    display: flex
    height: 1024px
    +lg
       height: 768px
-      
+   +md
+      flex-direction: column
+      height: auto
+   
    &__person
       $parent: &
-      position: absolute
-      top: 0
-      bottom: 0
+      opacity: 0
       display: flex
       flex-direction: column
       justify-content: center
@@ -181,40 +235,101 @@
       color: $white
       +lg
          background-position: 50% 20%
+      +md
+         position: relative
+         flex: 0 1 auto
+         height: 768px
+         background-image: none!important
+      +xs
+         justify-content: flex-start
+         height: 568px
       
       &_left
-         left: 0
-         right: 50%
          align-items: flex-end
+         transform: translateX(-100px)
       &_right
-         right: 0
-         left: 50%
          align-items: flex-start
+         transform: translateX(100px)
       &-text
+         opacity: 0
          max-width: 384px
+         +md
+            position: relative
+            z-index: 1
          #{$parent}_left &
             padding: 0 5px 275px 0
             text-align: left
+            transform: translateX(-80px)
             +lg
                padding: 0 5px 187px 30px
-               
+            +md
+               max-width: 445px
+               padding: 0 50px 207px 0
+            +sm
+               max-width: 395px
+            +xs
+               padding: 45px 15px
+               text-align: center
+   
          #{$parent}_right &
             padding: 0 4px 65px 15px
             text-align: right
+            transform: translateX(80px)
             +lg
                padding: 0 30px 5px 15px
+            +md
+               max-width: 505px
+               padding: 0 40px 35px 140px
+            +sm
+               max-width: 375px
+               padding: 0 40px 35px 30px
+            +xs
+               padding: 45px 15px
+               text-align: center
                
       &-name
          margin-bottom: 20px
          text-align: left
+         +xs
+            margin-bottom: 17px
+            text-align: center
          #{$parent}_right &
             text-align: right
+            +xs
+               text-align: center
+            
+      &-bg
+         display: none
+         +coverdiv
+         +cover
+         
+         #{$parent}_left &
+            background-position: 0 50%
+            +sm
+               background-position: 10% 50%
+         #{$parent}_right &
+            background-position: 100% 50%
+            +sm
+               background-position: 50% 50%
+         &_tab
+            +md
+               display: block
+            +xs
+               display: none
+         &_mob
+            +xs
+               display: block
+            
          
 .teaser
    height: 1024px
    +cover
+   opacity: 0
+   transform: translateX(-100px)
    +lg
       height: 768px
+   +xs
+      height: 568px
       
    &__container
       display: flex
@@ -222,6 +337,9 @@
       justify-content: center
       align-items: flex-end
       height: 100%
+      +xs
+         align-items: center
+         justify-content: flex-start
       
    &__text
       max-width: 650px
@@ -230,25 +348,49 @@
       text-align: right
       +lg
          padding-right: 0
-         
+      +md
+         padding-right: 40px
+      +sm
+         padding-right: 20px
+      +xs
+         padding: 40px 0 0
+         text-align: center
+   
    &__sub-title
       margin-bottom: 15px
       text-align: right
-      
+      +md
+         margin-bottom: 35px
+      +xs
+         margin-bottom: 7px
+         text-align: center
+   
    &__title
    
    &__descr
       display: inline-block
       max-width: 395px
       margin-top: 40px
-   
+      +md
+         max-width: 370px
+         margin-top: 30px
+      +xs
+         margin-top: 18px
 
 .how-look
    position: relative
    height: 1024px
    +lg
       height: 760px
+   +md
+      height: 768px
+   +xs
+      height: 568px
       
+   &__container
+      +xs
+         padding: 0 10px
+   
    &__media
       +coverdiv
       overflow: hidden
@@ -272,13 +414,23 @@
       text-align: center
       +lg
          padding: 75px 0 0
+      +md
+         padding: 85px 0 0
+      +xs
+         padding: 45px 0 0
    
    &__title
       margin-bottom: 10px
-      
+      +xs
+         margin-bottom: 20px
+   
    &__text
       margin-bottom: 53px
-      
+      +xs
+         margin-bottom: 30px
+      p
+         +xs
+            display: inline
    &__btn
       padding: 20px 61px
       
@@ -288,16 +440,21 @@
    overflow: hidden
    +lg
       padding: 83px 0 128px
-      
+   +xs
+      padding: 40px 0 36px
+   
    &__container
       max-width: 1320px
+      +md
+         padding: 0
    
    &__title
       margin-bottom: 170px
       +lg
          margin-bottom: 85px
+      +xs
+         margin-bottom: 45px
          
-
 .prices
    position: relative
    padding: 124px 0 307px
@@ -305,31 +462,46 @@
    overflow: hidden
    +lg
       padding: 88px 0 170px
-      
+   +md
+      padding: 103px 0 168px
+   +xs
+      padding: 45px 0 20px
+   
    &__back-title
-      transform: translate(-50%, -52%)
-      
+      margin-top: -260px
+   
    &__text
       margin: 0 0 210px
       color: $white
       text-align: center
       +lg
          margin: 0 0 120px
-         
+      +xs
+         margin: 0 0 32px
+   
    &__title
       margin-bottom: 10px
+   &__descr
+      +md
+         +f('gil-600')
+         font-size: 20px
       
    &__inner
       display: flex
       justify-content: center
       max-width: 930px
       margin: 0 auto
-      
+      +xs
+         flex-direction: column
+         padding-bottom: 40px
+   
    &__item
       flex: 0 1 50%
       padding: 0 30px
       text-align: center
       color: $color1
+      +xs
+         padding: 0
       &_color
          color: $white
          
@@ -348,6 +520,9 @@
       &-title
          margin-bottom: 45px
          +f('gil-600', null, 24)
+         +xs
+            font-size: 20px
+            
          span
             display: block
             +f('gil-900')

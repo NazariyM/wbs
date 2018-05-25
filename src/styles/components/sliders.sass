@@ -2,6 +2,9 @@
    &__images
       $parent: &
       margin-bottom: 63px
+      +xs
+         margin-bottom: 40px
+   
       .slick-track
          height: 250px
       
@@ -18,6 +21,14 @@
          transform: scale(0.75, 0.815) translate3d(-7%, 0, 0)
          +lg
             transform: scale(0.75, 0.815) translate3d(9%, 0, 0)
+         +md
+            transform: scale(0.75, 0.815) translate3d(25%, 0, 0)
+         +xs
+            height: 175px
+            width: 280px
+            margin-right: 15px
+            margin-left: 15px
+            transform: none
          
          &.slick-center
             z-index: 10
@@ -26,11 +37,18 @@
                transform: scale(0.75, 0.815) translate3d(7%, 0, 0)
                +lg
                   transform: scale(0.75, 0.815) translate3d(-11%, 0, 0)
+               +md
+                  transform: scale(0.75, 0.815) translate3d(-25%, 0, 0)
+               +xs
+                  transform: none
          
          &-inner
             width: 100%
             height: 100%
             transition: width .3s ease, height .3s ease, transform .3s ease
+            +xs
+               width: 140px
+               height: 176px
       
       &-pic-wrap
          width: 50%
@@ -38,6 +56,8 @@
          font-size: 0
          white-space: nowrap
          transition: width .3s ease, height .3s ease, transform .3s ease
+         +xs
+            width: 100%
       
       &-pic
          display: inline-block
@@ -46,6 +66,9 @@
          height: 100%
          overflow: hidden
          transition: width .3s ease, height .3s ease
+         +xs
+            width: 140px
+            height: 176px
          img
             width: 100%
             height: 100%
@@ -53,13 +76,21 @@
       text-align: center
       max-width: 460px
       margin: 0 auto
+      +xs
+         padding-bottom: 30px
+         
       &-title
          margin-bottom: 25px
          +f('gil-700', 22, 24)
          letter-spacing: 1px
+         +xs
+            font-size: 18px
+            line-height: 22px
       
       &-descr
          line-height: 24px
+         +xs
+            line-height: 22px
 
 .around-slider
    position: relative
@@ -82,7 +113,9 @@
          width: auto
          height: auto
          padding-bottom: 93px
-
+      +xs
+         padding-bottom: 45px
+   
    &__item
       position: absolute
       width: 17px
@@ -106,7 +139,10 @@
          transition: 0s
          margin: 0 20px
          padding: 0 70px 0 40px
-         
+      +sm
+         padding: 0
+         text-align: left
+   
       &__img
          display: none
          border-radius: 50%
@@ -119,6 +155,17 @@
             padding: 19px
             border-radius: 50%
             border: 1px solid $color2
+         +sm
+            width: 321px
+            height: 321px
+            padding: 19px
+         +xs
+            display: block
+            margin: 0 auto 30px
+            width: 278px
+            height: 278px
+            padding: 12px
+   
          img
             width: 100%
             display: block
@@ -163,6 +210,13 @@
             vertical-align: middle
             width: calc(100% - 440px)
             padding: 45px 0 0 41px
+         +sm
+            width: calc(100% - 330px)
+            padding: 45px 0 0 40px
+         +xs
+            display: block
+            width: 100%
+            padding: 0
    
       &__title
          position: absolute
@@ -183,6 +237,8 @@
             font-size: 24px !important
             margin: 0 0 15px
             letter-spacing: 0
+         +xs
+            text-align: center
    
       &__desc
          position: absolute
@@ -202,6 +258,8 @@
             width: 100%
             visibility: visible
             opacity: 1
+         +xs
+            text-align: center
 
    &__active
       width: 24px
@@ -215,6 +273,8 @@
          font-size: 22px
          width: 300px
          text-align: left
+         +xs
+            text-align: center
       
       .around-slider__item__desc
          top: -6px
@@ -375,42 +435,23 @@
       overflow: hidden
       
    .slick-count
-      display: flex
+      display: none
       position: absolute
       top: -35px
       right: -48px
       +f('gil-900', 500, 500)
       opacity: .05
       color: $color1
+      +md
+         display: flex
+      +sm
+         top: -105px
+      +xs
+         display: none
+         
       span
          flex: 0 0 290px
          width: 290px
-   
-   .slick-dots
-      position: absolute
-      left: 0
-      right: 0
-      bottom: 0
-      font-size: 0
-      text-align: center
-      li
-         display: inline-block
-         vertical-align: middle
-         &:not(:last-child)
-            margin-right: 10px
-         &.slick-active button
-            transform: scale(1.7)
-            border-color: #a8e1c2
-            background: $white
-            
-         button
-            width: 10px
-            height: 10px
-            background-color: #a8e1c2
-            border-radius: 50%
-            border: 1px solid transparent
-            transition: .6s ease
-            
 
 @keyframes roll-r
    0%
@@ -425,3 +466,38 @@
    
    100%
       transform: rotate(-360deg)
+
+.slick-dots
+   position: absolute
+   left: 0
+   right: 0
+   bottom: 0
+   font-size: 0
+   text-align: center
+   li
+      display: inline-block
+      vertical-align: middle
+      &:not(:last-child)
+         margin-right: 10px
+      &.slick-active button
+         transform: scale(1.7)
+         border-color: #a8e1c2
+         background: $white
+      
+      button
+         width: 10px
+         height: 10px
+         background-color: #a8e1c2
+         border-radius: 50%
+         border: 1px solid transparent
+         transition: .6s ease
+         
+   &_white
+      li
+         &:not(:last-child)
+            margin-right: 15px
+         &.slick-active button
+            border-color: $white
+            background-color: #a8e1c2
+         button
+            background-color: $white

@@ -7,15 +7,21 @@ body
   color: $color3
   +md
     font-size: 18px
+  +xs
+    font-size: 16px
+    line-height: 22px
     
   &.is-locked
-    overflow: hidden
+    overflow: hidden!important
     position: fixed
     top: 0
     left: 0
     right: 0
     height: 100%
     
+.content
+  overflow: hidden
+  
 .container
   position: relative
   max-width: 1200px
@@ -31,6 +37,9 @@ body
     font-size: 30px
     line-height: 34px
     letter-spacing: 0.8px
+  +xs
+    font-size: 30px
+    line-height: 36px
 
 .title-lg
   +f('gil-900', 120, 120)
@@ -38,15 +47,21 @@ body
   +lg
     font-size: 100px
     line-height: 90px
+  +xs
+    font-size: 58px
+    line-height: 60px
   
 .back-title
   position: absolute
   top: 50%
   left: 50%
-  transform: translate(-50%, -60%)
-  color: $color1
+  opacity: 0
+  transform: translateX(-50%) translateY(100px)
+  margin-top: -300px
+  color: rgba($color1, .05)
   +f('gil-900', 500, 500)
-  opacity: .05
+  +xs
+    display: none
 
 .btn
   position: relative
@@ -68,6 +83,7 @@ body
     transition: background .2s .2s
     span
       color: $color1
+      +gpu
       
   &::before, &::after
     content: ''
@@ -108,3 +124,28 @@ body
         transform: translate3d(0, 75px, 0)
       &::after
         transform: translate3d(0, -75px, 0)
+        
+::selection
+   background: $color2
+
+::-moz-selection
+   background: $color2
+  
+// default anims
+[data-anim='bg']
+  opacity: 0
+  transform: translateX(-100px)
+  
+[data-anim='fade-y']
+  opacity: 0
+  transform: translateY(60px)
+
+[data-anim-stagger="fade-x"]
+  > *
+    opacity: 0
+    transform: translateX(-60px)
+
+[data-anim-stagger="fade-y"]
+  > *
+    opacity: 0
+    transform: translateY(30px)
