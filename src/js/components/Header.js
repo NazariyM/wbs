@@ -64,9 +64,7 @@ class Header {
   }
 
   prepareHeaderAnim() {
-    this.mobTl = new TimelineMax({ paused: true, onComplete: () => {
-        this.lockBody();
-      } });
+    this.mobTl = new TimelineMax({ paused: true });
 
     this.mobTl
       .to(this.nav, .35, {
@@ -85,6 +83,7 @@ class Header {
 
   toggleNav() {
     this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(3).reverse();
+    this.lockBody();
   }
 
   startAnim() {

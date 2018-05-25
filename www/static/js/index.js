@@ -21201,11 +21201,7 @@ var Header = function () {
   }, {
     key: 'prepareHeaderAnim',
     value: function prepareHeaderAnim() {
-      var _this2 = this;
-
-      this.mobTl = new _gsap.TimelineMax({ paused: true, onComplete: function onComplete() {
-          _this2.lockBody();
-        } });
+      this.mobTl = new _gsap.TimelineMax({ paused: true });
 
       this.mobTl.to(this.nav, .35, {
         y: 0
@@ -21221,6 +21217,7 @@ var Header = function () {
     key: 'toggleNav',
     value: function toggleNav() {
       this.burgerActiveState ? this.mobTl.timeScale(1).play() : this.mobTl.timeScale(3).reverse();
+      this.lockBody();
     }
   }, {
     key: 'startAnim',
@@ -29291,8 +29288,6 @@ var Sliders = function () {
   }, {
     key: 'responsiveSlider',
     value: function responsiveSlider() {
-      var _this2 = this;
-
       var _this = this;
       var slickInit = '.slick-initialized';
       var $slickCount = (0, _jquery2.default)('.slick-count').find('span');
@@ -29328,9 +29323,9 @@ var Sliders = function () {
         });
       }
 
-      _helpers.$window.on('resize', function () {
-        _this2.responsiveSlider();
-      });
+      // $window.on('resize', () => {
+      //   this.responsiveSlider();
+      // });
     }
   }, {
     key: 'createViewSlider',

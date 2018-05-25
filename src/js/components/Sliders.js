@@ -73,9 +73,9 @@ class Sliders {
       });
     }
 
-    $window.on('resize', () => {
-      this.responsiveSlider();
-    });
+    // $window.on('resize', () => {
+    //   this.responsiveSlider();
+    // });
 
   }
 
