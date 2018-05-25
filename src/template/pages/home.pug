@@ -56,7 +56,7 @@ block main
 					mixin aboutItem(item)
 						+e.item
 							+e.item-img(data-anim="fade-y")
-								+e.IMG(src=`static/img/content/${item.img}.png` srcset="static/img/content/" + item.img + "@2x.png 2x, img/content/" + item.img + "@3x.png 3x" alt='image')
+								+e.IMG(src=`static/img/content/${item.img}.png` alt='image')
 							+e.item-text(data-anim="fade-y")
 								+e.item-title
 									h4= item.title
