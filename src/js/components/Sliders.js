@@ -6,6 +6,7 @@ class Sliders {
   constructor () {
     this.$viewSlider = $('.view-slider');
     this.$aroundSlider = $('.around-slider');
+    this.$respSlider = $('.js-responsive-slider');
 
     this.defaultSlickOpts = {
       slidesToShow: 1,
@@ -28,6 +29,38 @@ class Sliders {
   init() {
     if (this.$viewSlider.length) this.createViewSlider();
     if (this.$aroundSlider.length) this.createAroundSlider();
+
+    if (this.$respSlider) this.responsiveSlider();
+
+  }
+
+  responsiveSlider() {
+    const _this = this;
+    const slickInit = '.slick-initialized';
+    const $slickCount = $('.slick-count').find('span');
+
+    if (!Resp.isDesk) {
+      this.$respSlider.not(slickInit).slick($.extend({}, this.defaultSlickOpts, {
+        dots: true,
+        infinite: false,
+        onInit: countSlides()
+      }));
+
+    } else if (this.$respSlider.is(slickInit)) {
+      this.$respSlider.slick('unslick');
+    }
+
+    function countSlides() {
+      _this.$respSlider.on('init afterChange reInit  ', function (event, slick, currentSlide, nextSlide) {
+        let i = (currentSlide ? currentSlide : 0) + 1;
+        $slickCount.text(i);
+      });
+    }
+
+    $window.on('resize', () => {
+      this.responsiveSlider();
+    });
+
   }
 
   createViewSlider() {
@@ -78,8 +111,7 @@ class Sliders {
   }
 
   createAroundSlider() {
-
-    // var windowWidth = $(window).width();
+    const _this = this;
 
     function slider(parent, rotationDeg, stepNumber, testNumber) {
       // init slider
@@ -126,18 +158,19 @@ class Sliders {
 
       $window.on('resize', () => {
         if (!Resp.isMobile) {
-          $('.around-slider').addClass('loading-slider');
+          _this.$aroundSlider.addClass('loading-slider');
           $loaderResize.addClass('active-loader');
           clearTimeout(timeoutSlider);
 
           timeoutSlider = setTimeout(function () {
             initPosition();
-            setTimeout(function () {
+            setTimeout(() => {
               $loaderResize.removeClass('active-loader');
-              $('.around-slider').removeClass('loading-slider');
+              _this.$aroundSlider.removeClass('loading-slider');
             }, 600);
           }, 700);
         }
+
       });
 
       // contorls slider and rotation
@@ -160,23 +193,6 @@ class Sliders {
         }
       }
 
-      $window.on('resize', () => {
-        if (!Resp.isMobile) {
-          $('.around-slider').addClass('loading-slider');
-          $loaderResize.addClass('active-loader');
-          clearTimeout(timeoutSlider);
-
-          timeoutSlider = setTimeout(function () {
-            initPosition();
-            rotationSlider();
-            setTimeout(function () {
-              $loaderResize.removeClass('active-loader');
-              $('.around-slider').removeClass('loading-slider');
-            }, 600);
-          }, 700);
-        }
-      });
-
       $(parent + '.arrow-right').on('click', () => {
         if (counterSlider < lenghtSlider - 1) {
           counterSlider++;
@@ -196,7 +212,8 @@ class Sliders {
       });
 
       $(parent + '.around-slider__item').on('click', function () {
-        if (!Resp.isMobile) {
+        if (Resp.isDesk) {
+          console.log('mobile');
           $(parent + '.around-slider__item').removeClass(activeSldClass);
           let index = $(parent + ' .around-slider__item').index(this);
           counterSlider = index;
@@ -261,12 +278,7 @@ class Sliders {
       $(`.${activeSldClass}`).next().next().addClass('around-slider__item__bottom');
     }
 
-    // slider('.what-program ', 45, 1.5, 1);
     slider('.what-program ', 46, 1.25, 1);
-
-    // $window.on('resize', () => {
-    //   windowWidth = $(window).width();
-    // });
 
   }
 }

@@ -10777,6 +10777,7 @@ var Sliders = function () {
 
     this.$viewSlider = (0, _jquery2.default)('.view-slider');
     this.$aroundSlider = (0, _jquery2.default)('.around-slider');
+    this.$respSlider = (0, _jquery2.default)('.js-responsive-slider');
 
     this.defaultSlickOpts = {
       slidesToShow: 1,
@@ -10801,6 +10802,38 @@ var Sliders = function () {
     value: function init() {
       if (this.$viewSlider.length) this.createViewSlider();
       if (this.$aroundSlider.length) this.createAroundSlider();
+
+      if (this.$respSlider) this.responsiveSlider();
+    }
+  }, {
+    key: 'responsiveSlider',
+    value: function responsiveSlider() {
+      var _this2 = this;
+
+      var _this = this;
+      var slickInit = '.slick-initialized';
+      var $slickCount = (0, _jquery2.default)('.slick-count').find('span');
+
+      if (!_helpers.Resp.isDesk) {
+        this.$respSlider.not(slickInit).slick(_jquery2.default.extend({}, this.defaultSlickOpts, {
+          dots: true,
+          infinite: false,
+          onInit: countSlides()
+        }));
+      } else if (this.$respSlider.is(slickInit)) {
+        this.$respSlider.slick('unslick');
+      }
+
+      function countSlides() {
+        _this.$respSlider.on('init afterChange reInit  ', function (event, slick, currentSlide, nextSlide) {
+          var i = (currentSlide ? currentSlide : 0) + 1;
+          $slickCount.text(i);
+        });
+      }
+
+      _helpers.$window.on('resize', function () {
+        _this2.responsiveSlider();
+      });
     }
   }, {
     key: 'createViewSlider',
@@ -10849,8 +10882,7 @@ var Sliders = function () {
   }, {
     key: 'createAroundSlider',
     value: function createAroundSlider() {
-
-      // var windowWidth = $(window).width();
+      var _this = this;
 
       function slider(parent, rotationDeg, stepNumber, testNumber) {
         // init slider
@@ -10897,7 +10929,7 @@ var Sliders = function () {
 
         _helpers.$window.on('resize', function () {
           if (!_helpers.Resp.isMobile) {
-            (0, _jquery2.default)('.around-slider').addClass('loading-slider');
+            _this.$aroundSlider.addClass('loading-slider');
             $loaderResize.addClass('active-loader');
             clearTimeout(timeoutSlider);
 
@@ -10905,7 +10937,7 @@ var Sliders = function () {
               initPosition();
               setTimeout(function () {
                 $loaderResize.removeClass('active-loader');
-                (0, _jquery2.default)('.around-slider').removeClass('loading-slider');
+                _this.$aroundSlider.removeClass('loading-slider');
               }, 600);
             }, 700);
           }
@@ -10931,23 +10963,6 @@ var Sliders = function () {
           }
         }
 
-        _helpers.$window.on('resize', function () {
-          if (!_helpers.Resp.isMobile) {
-            (0, _jquery2.default)('.around-slider').addClass('loading-slider');
-            $loaderResize.addClass('active-loader');
-            clearTimeout(timeoutSlider);
-
-            timeoutSlider = setTimeout(function () {
-              initPosition();
-              rotationSlider();
-              setTimeout(function () {
-                $loaderResize.removeClass('active-loader');
-                (0, _jquery2.default)('.around-slider').removeClass('loading-slider');
-              }, 600);
-            }, 700);
-          }
-        });
-
         (0, _jquery2.default)(parent + '.arrow-right').on('click', function () {
           if (counterSlider < lenghtSlider - 1) {
             counterSlider++;
@@ -10967,7 +10982,8 @@ var Sliders = function () {
         });
 
         (0, _jquery2.default)(parent + '.around-slider__item').on('click', function () {
-          if (!_helpers.Resp.isMobile) {
+          if (_helpers.Resp.isDesk) {
+            console.log('mobile');
             (0, _jquery2.default)(parent + '.around-slider__item').removeClass(activeSldClass);
             var index = (0, _jquery2.default)(parent + ' .around-slider__item').index(this);
             counterSlider = index;
@@ -11020,12 +11036,7 @@ var Sliders = function () {
         (0, _jquery2.default)('.' + activeSldClass).next().next().addClass('around-slider__item__bottom');
       }
 
-      // slider('.what-program ', 45, 1.5, 1);
       slider('.what-program ', 46, 1.25, 1);
-
-      // $window.on('resize', () => {
-      //   windowWidth = $(window).width();
-      // });
     }
   }]);
 

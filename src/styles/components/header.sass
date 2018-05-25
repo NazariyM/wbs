@@ -8,6 +8,10 @@
       position: relative
       display: flex
       padding: 18px 15px 21px
+      +md
+         justify-content: space-between
+         max-width: 944px
+         padding: 18px 15px
       &::after
          position: absolute
          top: 100%
@@ -20,6 +24,11 @@
    &__logo
       flex: 0 0 160px
       margin-right: 60px
+      +md
+         position: relative
+         left: 20px
+         margin-right: 0
+   
       &:hover
          svg
             .for-fill
@@ -38,8 +47,12 @@
       +f('gil-700', 15)
       letter-spacing: 1.2px
       text-transform: uppercase
+      +md
+         flex: 0 1 auto
       ul
          display: flex
+         +md
+            display: none
          li
             &:not(:last-child)
                margin-right: 42px
@@ -74,3 +87,31 @@
                
       &-link
          margin-left: auto
+         
+   &__nav-toggle
+      width: 20px
+      height: 32px
+      border-radius: 3px
+      box-sizing: border-box
+      cursor: pointer
+      user-select: none
+      &.is-active span
+         &:first-child
+            -webkit-transform: translateY(6px) rotate(45deg)
+            transform: translateY(6px) rotate(45deg)
+         &:nth-child(2)
+            opacity: 0
+         &:last-child
+            -webkit-transform: translateY(-6px) rotate(-45deg)
+            transform: translateY(-6px) rotate(-45deg)
+      span
+         display: block
+         background: #fff
+         width: 20px
+         height: 2px
+         border-radius: 3px
+         -webkit-transform-origin: center
+         transform-origin: center
+         transition: 0.3s ease
+         &:nth-child(2)
+            margin: 4px 0

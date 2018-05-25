@@ -5,6 +5,9 @@ body
   -moz-osx-font-smoothing: grayscale
   +f('gil-400', 20, 28)
   color: $color3
+  +md
+    font-size: 18px
+    
   &.is-locked
     overflow: hidden
     position: fixed
@@ -24,10 +27,17 @@ body
   text-align: center
   letter-spacing: 1px
   text-transform: uppercase
-  
+  +md
+    font-size: 30px
+    line-height: 34px
+    letter-spacing: 0.8px
+
 .title-lg
   +f('gil-900', 120, 120)
   text-transform: uppercase
+  +lg
+    font-size: 100px
+    line-height: 90px
   
 .back-title
   position: absolute

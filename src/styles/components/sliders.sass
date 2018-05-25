@@ -16,12 +16,16 @@
          transition: transform .5s ease
          cursor: pointer
          transform: scale(0.75, 0.815) translate3d(-7%, 0, 0)
+         +lg
+            transform: scale(0.75, 0.815) translate3d(9%, 0, 0)
          
          &.slick-center
             z-index: 10
             transform: scale(1)
             + #{$parent}-item
                transform: scale(0.75, 0.815) translate3d(7%, 0, 0)
+               +lg
+                  transform: scale(0.75, 0.815) translate3d(-11%, 0, 0)
          
          &-inner
             width: 100%
@@ -59,12 +63,8 @@
 
 .around-slider
    position: relative
-   
-   //+respond-to(mobile)
-     //			overflow: hidden;
-     padding-bottom: 40px
-     margin-left: -20px
-     margin-right: -20px
+   +md
+      margin: 0 -20px
    
    &__slider__point
       width: 431px
@@ -75,20 +75,13 @@
       transition: .6s ease-in
       margin-left: 80px
       z-index: 10
-   
-   //+respond-to(tablet)
-     margin-left: 0
-     width: 375px
-     height: 375px
-
-
-   //+respond-to(mobile)
-     border-radius: 0
-     margin-left: 0
-     border: transparent
-     width: auto
-     height: auto
-     padding-bottom: 40px
+      +md
+         border-radius: 0
+         margin-left: 0
+         border: transparent
+         width: auto
+         height: auto
+         padding-bottom: 93px
 
    &__item
       position: absolute
@@ -100,32 +93,37 @@
       cursor: pointer
       transition: .6s ease-in
       z-index: 10
-      
-      //+respond-to(mobile)
-        transform: none
-        position: relative
-        left: 0 !important
-        top: 0 !important
-        height: auto !important
-        width: auto
-        background: transparent !important
-        border: 0px solid transparent !important
-        float: left
-        transition: 0s
-        margin: 0 20px
-      
+      +md
+         transform: none
+         position: relative
+         left: 0 !important
+         top: 0 !important
+         height: auto !important
+         width: auto
+         background: transparent !important
+         border: 0px solid transparent !important
+         float: left
+         transition: 0s
+         margin: 0 20px
+         padding: 0 70px 0 40px
+         
       &__img
          display: none
          border-radius: 50%
          overflow: hidden
+         +md
+            display: inline-block
+            vertical-align: middle
+            width: 431px
+            height: 431px
+            padding: 19px
+            border-radius: 50%
+            border: 1px solid $color2
          img
             width: 100%
             display: block
             border-radius: 50%
       
-      //+respond-to(mobile)
-        display: block
-
       &__right
          .around-slider__item__title
             left: 35px
@@ -135,6 +133,8 @@
          .around-slider__item__title
             right: 28px
             text-align: right
+            +md
+               text-align: left
          
       &__center
          .around-slider__item__title
@@ -142,6 +142,9 @@
             left: 50%
             transform: translateX(-50%)
             text-align: center
+            +md
+               transform: none
+               text-align: left
          
       &__bottom
          .around-slider__item__title
@@ -150,6 +153,16 @@
             right: auto
             transform: translateX(-50%)
             text-align: center
+            +md
+               transform: none
+               text-align: left
+         
+      &__text
+         +md
+            display: inline-block
+            vertical-align: middle
+            width: calc(100% - 440px)
+            padding: 45px 0 0 41px
    
       &__title
          position: absolute
@@ -160,23 +173,17 @@
          width: 200px
          letter-spacing: 0.6px
          +f('gil-700')
-      
-      //+respond-to(tablet)
-        color: #2b3138
-        opacity: 0
-
-
-      //+respond-to(mobile)
-        position: relative
-        left: 0 !important
-        top: 0 !important
-        color: #2b3138
-        opacity: 1
-        font-size: 24px !important
-        width: 100% !important
-        text-align: center !important
-        margin: 30px 0
-
+         +md
+            position: relative
+            left: 0 !important
+            top: 0 !important
+            width: 100% !important
+            color: #2b3138
+            opacity: 1
+            font-size: 24px !important
+            margin: 0 0 15px
+            letter-spacing: 0
+   
       &__desc
          position: absolute
          width: 525px
@@ -186,22 +193,15 @@
          opacity: 0
          visibility: hidden
          transition: .3s
-      
-      //+respond-to(tablet)
-        width: 200px
-
-
-      //+respond-to(mobile)
-        position: relative
-        left: 0 !important
-        top: 0 !important
-        visibility: visible
-        text-align: center
-        opacity: 1
-        width: 100%
-   
-   //+respond-to(mobile)
-     display: none
+         +lg
+            width: 485px
+         +md
+            position: relative
+            left: 0 !important
+            top: 0 !important
+            width: 100%
+            visibility: visible
+            opacity: 1
 
    &__active
       width: 24px
@@ -235,17 +235,11 @@
       z-index: 5
       transition: .6s
       overflow: hidden
-      
-      //+respond-to(mobile)
-        display: none
-      
+      +md
+         display: none
+         
       img
          max-width: 100%
-   
-   //+respond-to(tablet)
-     margin-left: 0px
-     width: 315px
-     height: 315px
 
    &__slide
       position: absolute
@@ -265,13 +259,6 @@
    
    .active-slide
       opacity: 1
-   
-   //+respond-to(tablet)
-     left: 25%
-
-
-   //+respond-to(mobile)
-     display: none
 
    &__controls
       position: absolute
@@ -282,9 +269,11 @@
       z-index: 1
       font-size: 0
       white-space: nowrap
+      +lg
+         right: 0
    
-      //+respond-to(mobile)
-        display: none
+      +md
+         display: none
       
       .arrow
          position: relative
@@ -344,7 +333,7 @@
       right: -100%
       bottom: -10px
       z-index: 20
-      background: #a8e1c2
+      background: $white
       visibility: hidden
       opacity: 0
       transition: .2s
@@ -359,7 +348,7 @@
          width: 50px
          height: 50px
          border-radius: 50%
-         background: linear-gradient(rgba(255, 255, 255, 1) -50%, rgba(255, 255, 255, 0) 100%)
+         background: linear-gradient(#a8e1c2 -50%, rgba(255, 255, 255, 0) 100%)
          animation: roll-r 0.6s linear infinite
       
       &__circle
@@ -372,7 +361,7 @@
             width: 40px
             height: 40px
             border-radius: 50%
-            background: #a8e1c2
+            background: $white
             z-index: 1
       
       &.active-loader
@@ -384,6 +373,44 @@
    
    &.loading-slider
       overflow: hidden
+      
+   .slick-count
+      display: flex
+      position: absolute
+      top: -35px
+      right: -48px
+      +f('gil-900', 500, 500)
+      opacity: .05
+      color: $color1
+      span
+         flex: 0 0 290px
+         width: 290px
+   
+   .slick-dots
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      font-size: 0
+      text-align: center
+      li
+         display: inline-block
+         vertical-align: middle
+         &:not(:last-child)
+            margin-right: 10px
+         &.slick-active button
+            transform: scale(1.7)
+            border-color: #a8e1c2
+            background: $white
+            
+         button
+            width: 10px
+            height: 10px
+            background-color: #a8e1c2
+            border-radius: 50%
+            border: 1px solid transparent
+            transition: .6s ease
+            
 
 @keyframes roll-r
    0%
