@@ -6,6 +6,7 @@ import '../sections/Screen';
 import './Sliders';
 import './Anims';
 import './Footer';
+import './PlayInView';
 import PageResize from './pageResize';
 // import './Dot';
 
