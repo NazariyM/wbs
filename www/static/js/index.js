@@ -29310,14 +29310,16 @@ var Sliders = function () {
           dots: true,
           dotsClass: 'slick-dots slick-dots_white'
         }));
-      } else {
-        if (this.$respSlider.is(slickInit)) {
-          this.$respSlider.slick('unslick');
-        }
-        if (this.$mobSlider.is(slickInit)) {
-          this.$mobSlider.slick('unslick');
-        }
       }
+      // else {
+      //   if (this.$respSlider.is(slickInit)) {
+      //     this.$respSlider.slick('unslick');
+      //   }
+      //   if (this.$mobSlider.is(slickInit)) {
+      //     this.$mobSlider.slick('unslick');
+      //   }
+      //
+      // }
 
       function countSlides() {
         _this.$respSlider.on('init afterChange reInit  ', function (event, slick, currentSlide, nextSlide) {
