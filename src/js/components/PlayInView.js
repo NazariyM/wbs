@@ -1,9 +1,11 @@
 class PlayInView {
   constructor() {
     this.el = document.querySelector('.js-in-view');
+    if (!this.el) return;
+
     this.video = this.el.querySelector('video');
 
-    if (this.el) this.init();
+    this.init();
   }
 
   init() {

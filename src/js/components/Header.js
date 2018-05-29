@@ -1,11 +1,8 @@
 import { TimelineMax, TweenMax } from 'gsap';
 import { preloader } from './Preloader';
 import {
-  $body,
-  $window,
   throttle,
-  css,
-  Resp
+  css
 } from '../modules/dev/_helpers';
 
 class Header {
@@ -16,6 +13,7 @@ class Header {
     this.navMobLinks = [...this.header.querySelector('.header__nav ul').children];
     this.navActionsBtns = [...this.header.querySelector('.header__nav-actions').children];
     this.navBtn = this.header.querySelector('.header__nav-toggle');
+    this.lines = this.header.querySelectorAll('.header__line');
     this.lineLeft = this.header.querySelector('.header__line_l');
     this.lineRight = this.header.querySelector('.header__line_r');
 
@@ -26,6 +24,7 @@ class Header {
     await preloader.wait();
     await this.startAnim();
     this.prepareHeaderAnim();
+    this.initFix();
     this.bindEvents();
   }
 
@@ -87,12 +86,36 @@ class Header {
   }
 
   startAnim() {
-    const tl = new TimelineMax();
+    const tl = new TimelineMax({ onComplete: () => {
+        this.header.classList.remove('no-transition');
+
+        for (let line of this.lines) {
+          line.classList.remove('no-transition');
+        }
+      } });
 
     tl
       .to(this.header, .4, { y: 0 })
       .to(this.lineLeft, .5, { right: '50%' }, 'animAll')
       .to(this.lineRight, .5, { left: '50%' }, 'animAll');
+  }
+
+  initFix() {
+    const _this = this;
+    const toggleHeaderScroll = throttle(() => {
+      toggleHeader();
+    }, 0, this);
+
+    function toggleHeader() {
+
+      if (window.pageYOffset > 0 && !_this.header.classList.contains(css.menuActive)) {
+        _this.header.classList.add(css.fixed);
+      } else {
+        _this.header.classList.remove(css.fixed);
+      }
+    }
+
+    window.addEventListener('scroll', toggleHeaderScroll);
   }
 
 }

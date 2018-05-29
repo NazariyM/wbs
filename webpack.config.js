@@ -39,6 +39,10 @@ module.exports = (extension) => {
 
     // Webpack's plugins
     plugins: [
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+      }),
       new WebpackMd5Hash(),
 
       new webpack.NoEmitOnErrorsPlugin()

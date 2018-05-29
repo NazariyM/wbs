@@ -2,9 +2,10 @@ extends ../extend/default
 
 block variables
 	- var title = 'Home page';
+	- var topBtn = true;
 
 block main
-	main.content(data-page='home')
+	main.content
 
 		//begin screen
 		+b.SECTION.screen(style='background-image: url(static/img/bg/screen_bg.jpg)')
@@ -18,7 +19,7 @@ block main
 						h2 STRONG
 							span 2.0
 
-					+e.descr
+					+e.descr.js-dot
 						p Онлайн-программа эффективных ежедневных тренировок для создания женственного рельефа тела и упругих ягодиц. Работа над деталями!
 
 					+e.A.btn.btn._green-hov(href='#!')

@@ -1,0 +1,264 @@
+$arrows-size: 10px;
+$arrows-speed: 3s;
+$arrows-color: #ffffff;
+$peak-opacity: 0.7;
+.arrows-down {
+  width: $arrows-size;
+  height: $arrows-size;
+  transform: translate(-50%, -50%);
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-left: $arrows-size/3 solid $arrows-color;
+    border-bottom: $arrows-size/3 solid $arrows-color;
+    opacity: $peak-opacity;
+  }
+  &:before {
+    transform: translate($arrows-size/3, $arrows-size*4/3) rotate(-45deg);
+    animation: arrows $arrows-speed linear infinite;
+  }
+  &:after {
+    transform: translate($arrows-size*2/3, 0px) rotate(-45deg);
+    animation: arrows $arrows-speed linear infinite $arrows-speed/-2;
+  }
+}
+
+@keyframes arrows {
+  0% {
+    border-left: $arrows-size/3 solid $arrows-color;
+    border-bottom: $arrows-size/3 solid $arrows-color;
+    transform: translate($arrows-size/-6, $arrows-size*4/-6) rotate(-45deg);
+    opacity: 0;
+  }
+  10%, 90% {
+    border-left: $arrows-size/3 solid $arrows-color;
+    border-bottom: $arrows-size/3 solid $arrows-color;
+    opacity: 0;
+  }
+  50% {
+    border-left: $arrows-size/3 solid $arrows-color;
+    border-bottom: $arrows-size/3 solid $arrows-color;
+    transform: translate($arrows-size/-6, 0px) rotate(-45deg);
+    opacity: $peak-opacity;
+  }
+  100% {
+    border-left: $arrows-size/3 $arrows-color;
+    border-bottom: $arrows-size/3 $arrows-color;
+    transform: translate($arrows-size/-6, $arrows-size*4/6) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+.select2-container {
+  z-index: 1;
+  font-family: "Gilroy-Bold", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 13px;
+  letter-spacing: 0.9px;
+  color: #3f3f3f;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 12px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  height: 100%;
+}
+
+.select2-container--default .select2-selection--single {
+  position: relative;
+  width: 100%;
+  height: 43px;
+  line-height: 43px;
+  padding: 0 23px;
+  border: solid 1px #979797;
+  border-radius: 30px;
+  transition: border .3s ease, background .5s ease;
+
+  &::placeholder {
+    //font-size: 12px;
+    //line-height: 12px;
+    transition: color .3s ease;
+    text-align: left;
+    vertical-align: middle;
+
+    .firefox & {
+      line-height: 30px;
+    }
+  }
+  &:focus {
+    &::placeholder {
+      color: transparent;
+    }
+    & ~ .add-label {
+      opacity: 1;
+    }
+  }
+
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 43px;
+  padding: 0 10px 0 0;
+}
+
+.add-label {
+  text-align: right;
+}
+
+// обертка для выпадающего списка
+.select2-container--open .select2-dropdown--below {
+  padding: 15px 0;
+  border-radius: 0 0 30px 30px;
+  border: none;
+}
+
+.select2-container--open .select2-dropdown--above {
+  padding: 15px 0;
+  border-radius: 30px 30px 0 0;
+  border: none;
+}
+
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single {
+  border-radius: 30px;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: calc(44px/2);
+    left: -1px;
+    width: calc(100% + 2px);
+    height: 50%;
+    z-index: -1;
+    background: #a8dcbf;
+  }
+}
+
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--single {
+  border-radius: 30px;
+  position: relative;
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: 50%;
+    z-index: -1;
+    background: #a8dcbf;
+  }
+}
+
+.select2-container--open .select2-dropdown--below,
+.select2-container--open .select2-dropdown--above {
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #a8dcbf;
+}
+
+.select2-container--open .select2-dropdown--below {
+  border-radius: 0 0 30px 30px;
+  padding-top: 10px;
+}
+
+.select2-container--open .select2-dropdown--above {
+  border-radius: 30px 30px 0 0;
+  padding-bottom: 10px;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background: transparent;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background: transparent;
+}
+
+.select2-results__option {
+  padding: 7px;
+  &:hover {
+    opacity: 1;
+    color: #3f3f3f;
+  }
+}
+
+// arrow wrapper
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 8px;
+  right: 15px;
+}
+
+// arrow
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #99e3c0 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+  transition: .2s ease;
+}
+
+// open arrow
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  transform: rotate(180deg);
+  border-color: #99e3c0 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+}
+
+.select2-search__field {
+  height: 30px;
+  padding: 0 10px !important;
+  line-height: 28px;
+  border-radius: 10px;
+  color: #3f3f3f;
+  font-family: "Gilroy-Bold", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  border: solid 1px #979797;
+}
+
+.select2-results__option {
+  color: #3f3f3f;
+  opacity: .7;
+  transition: .2s ease;
+}
+.select2-search--dropdown {
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.select2-selection__placeholder {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 43px;
+  padding: 0 23px;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: left;
+  color: rgba($color3, .5);
+  font-family: "Gilroy-Bold", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 45px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color: #3f3f3f;
+}

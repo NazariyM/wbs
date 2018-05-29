@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import 'slick-carousel';
 import { $window, Resp } from '../modules/dev/_helpers';
 

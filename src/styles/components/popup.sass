@@ -1,0 +1,112 @@
+.popup
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  opacity: 0
+  visibility: hidden
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+  z-index: 1300
+  overflow: auto
+  outline: 0
+  text-align: center
+  font-size: 0
+  transform: translate3d(0, 0, 0)
+  background-color: rgba($color1,.6)
+  transition: opacity .3s ease, transform .5s ease, visibility .5s
+  will-change: opacity, transform
+  $parent: &
+  &:after
+    content: ''
+    display: inline-block
+    vertical-align: middle
+    width: 0
+    height: 100%
+    //+md
+    //  display: none
+    
+  &.opened
+    opacity: 1
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
+    visibility: visible
+  &__close
+    position: absolute
+    top: 20px
+    right: 20px
+    width: 16px
+    height: 16px
+    cursor: pointer
+    padding: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    border: 0
+    +xs
+      top: 10px
+      right: 12px
+    &:hover svg
+      fill: darken($color1, 50)
+    svg
+      fill: $color1
+      stroke-width: 1px
+      stroke: $color1
+      +trs
+      
+  &__container
+    display: inline-block
+    vertical-align: middle
+    max-width: 900px
+    width: 100%
+    position: relative
+    padding: 70px 50px 55px
+    margin: 30px auto
+    transition: opacity .5s ease, transform .5s ease
+    transform: translate3d(0, -100px, 0)
+    will-change: transform, opacity
+    background: $white
+    text-align: left
+    border-radius: 5px
+    box-shadow: 0 0 15px rgba($black, .2)
+    +md
+      max-width: 708px
+    +xs
+      margin: 0
+      padding: 40px 15px
+    +mob-fix
+      padding: 100px 4px 100px 14px
+
+body.popup-opened
+  overflow: hidden
+  //+md
+  //  position: fixed
+  //  height: 100%
+  
+  //@media only screen and (min-width: 767px) and (max-width: 1199px)
+  //  position: fixed
+  //  height: 100%
+
+.popup.opened .popup__container
+  -webkit-transform: translate3d(0, 0, 0)
+  -moz-transform: translate3d(0, 0, 0)
+  transform: translate3d(0, 0, 0)
+  
+// pops
+.remind-pass
+  text-align: center
+  &__text
+    margin-bottom: 40px
+    +xs
+      margin-bottom: 25px
+  &__title
+    margin-bottom: 10px
+    +xs
+      font-size: 25px
+  
+  p
+    +f('gil-700', 18)
+    letter-spacing: 0.5px
+    color: $color3
+    +xs
+      font-size: 16px
+  

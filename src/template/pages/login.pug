@@ -1,0 +1,55 @@
+extends ../extend/default
+
+block variables
+	- var title = 'Login';
+
+block main
+	main.content
+
+		//begin entry
+		+b.SECTION.entry
+			+e.back-title.back-title
+				h4 SIGN UP
+
+			+e.top
+				+e.text(data-anim-stagger='fade-y')
+					+e.title.title-md
+						h2 ВХОД В ПРОГРАММУ
+					+e.descr
+						p Ты можешь войти используюя
+							br
+							| социяльную сеть
+			+e.container.container
+				+e.socials(data-anim='fade-y' data-anim-delay='0.2')
+					+e.A.socials-btn._fb(href='#!')
+						svg#Capa_1(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', version='1.1', x='0px', y='0px', width='512px', height='512px', viewbox='0 0 470.513 470.513', style='enable-background:new 0 0 470.513 470.513;', xml:space='preserve')
+							path(d='M271.521,154.17v-40.541c0-6.086,0.28-10.8,0.849-14.13c0.567-3.335,1.857-6.615,3.859-9.853   c1.999-3.236,5.236-5.47,9.706-6.708c4.476-1.24,10.424-1.858,17.85-1.858h40.539V0h-64.809c-37.5,0-64.433,8.897-80.803,26.691   c-16.368,17.798-24.551,44.014-24.551,78.658v48.82h-48.542v81.086h48.539v235.256h97.362V235.256h64.805l8.566-81.086H271.521z')
+
+
+				+e.FORM.form.form._default(action='#!' method='POST' data-anim='fade-y' data-anim-delay='0.4')
+					+e.form-title
+						h3 Вход через email
+
+					+b.form-group
+						+b.INPUT.form-control(type='text' name='' required autocomplete="off" data-validation="email required")
+						+b.control-label
+							span e-mail
+						+b.help-block Необходимо заполнить «Почта».
+
+					+b.form-group
+						+b.INPUT.form-control(type='password' name="pass" required autocomplete="off" data-validation="confirmation")
+						+b.control-label
+							span пароль еще раз
+						+b.help-block Необходимо заполнить «Пароль».
+
+					+e.form-remind
+						a(href='#!' data-popup-target='remind-password') Напомнить пароль
+
+					+b.LABEL.form-submit-btn._sm.btn._green-hov
+						span Войти
+						+e.INPUT(type='submit' value='')
+
+					+e.form-login-now
+						p Нет аккаунта?
+							a(href='#!') Зарегистрируйся
+		//end entry

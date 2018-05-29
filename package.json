@@ -15,10 +15,13 @@
     "dotdotdot": "^1.7.0",
     "gsap": "^1.20.4",
     "jquery": "^3.3.1",
+    "jquery-form-validator": "^2.3.77",
     "npm": "^5.8.0",
     "object-fit-images": "^3.2.3",
     "scrollmagic": "^2.0.5",
-    "slick-carousel": "^1.8.1"
+    "select2": "^4.0.6-rc.1",
+    "slick-carousel": "^1.8.1",
+    "vintage-popup": "^0.1.10"
   },
   "author": "Watch1k",
   "devDependencies": {

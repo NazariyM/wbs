@@ -1,0 +1,40 @@
+mixin popup(el)
+	case el.name
+
+		when 'remindPassword'
+			+b.popup(data-popup-id='remind-password' tabindex='-1', role='dialog')
+				+e.container
+					+e.BUTTON.close.js-popup-close(type='button')
+						svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='25', height='25', viewbox='0 0 25 25')
+							defs
+								path#bpq2a(d='M1220.63 158l-1.38-1.4 10.38-10.5 1.38 1.4z')
+								path#bpq2b(d='M1230.72 147.49l-1.37 1.39-10.35-10.5 1.37-1.4z')
+								path#bpq2c(d='M1238.37 137l1.38 1.4-10.38 10.5-1.38-1.4z')
+								path#bpq2d(d='M1228.28 147.51l1.37-1.4 10.35 10.5-1.37 1.4z')
+							g
+								g(transform='translate(-1217 -135)')
+									g
+										use(xlink:href='#bpq2a')
+									g
+										use(xlink:href='#bpq2b')
+									g
+										use(xlink:href='#bpq2c')
+									g
+										use(xlink:href='#bpq2d')
+
+					+b.remind-pass
+						+e.text
+							+e.title.title-md
+								+e.H2 Напомнить пароль
+							p Введите свой E-mail
+
+						+e.FORM.form.form._default(action='#!' method='POST')
+							+b.form-group
+								+b.INPUT.form-control(type='text' name='' required autocomplete="off" data-validation="email required")
+								+b.control-label
+									span e-mail
+								+b.help-block Необходимо заполнить «Email».
+
+							+b.LABEL.form-submit-btn._sm.btn._green-hov
+								span Отправить
+								+e.INPUT(type='submit' value='')

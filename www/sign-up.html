@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+    <title>Sign Up</title>
     <link href="static/css/index.css" rel="stylesheet">
     <link rel="icon" href="static/favicon.ico">
   </head>
@@ -132,491 +132,89 @@
     </header>
     <!-- Main content-->
     <main class="content">
-      <!--begin screen-->
-      <section class="screen" style="background-image: url(static/img/bg/screen_bg.jpg)">
-        <div class="screen__container container">
-          <div class="screen__content">
-            <div class="screen__sub-title title-md">
-              <h4>ТЫ СПОСОБНА НА БОЛЬШЕЕ</h4>
+      <!--begin entry-->
+      <section class="entry">
+        <div class="entry__back-title back-title">
+          <h4>SIGN UP</h4>
+        </div>
+        <div class="entry__top">
+          <div class="entry__text" data-anim-stagger="fade-y">
+            <div class="entry__title title-md">
+              <h2>РЕГИСТРАЦИЯ</h2>
             </div>
-            <div class="screen__title title-lg">
-              <h2>WOWBODY</h2>
+            <div class="entry__descr">
+              <p>Зарегистрируйся и начни программу.</p>
+              <p>Ты можешь зарегистрироваться использую социяальную сеть</p>
             </div>
-            <div class="screen__title screen__title_mod title-lg">
-              <h2>STRONG
-                <span>2.0</span>
-              </h2>
-            </div>
-            <div class="screen__descr js-dot">
-              <p>Онлайн-программа эффективных ежедневных тренировок для создания женственного рельефа тела и упругих ягодиц. Работа над деталями!</p>
-            </div>
-            <a class="screen__btn btn btn_green-hov" href="#!">
-              <span>ПРОЙТИ ПРОГРАММУ</span>
+          </div>
+        </div>
+        <div class="entry__container container">
+          <div class="entry__socials" data-anim="fade-y" data-anim-delay="0.2">
+            <a class="entry__socials-btn entry__socials-btn_fb" href="#!">
+              <svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="512px" height="512px" viewbox="0 0 470.513 470.513" style="enable-background:new 0 0 470.513 470.513;" xml:space="preserve">
+                <path d="M271.521,154.17v-40.541c0-6.086,0.28-10.8,0.849-14.13c0.567-3.335,1.857-6.615,3.859-9.853   c1.999-3.236,5.236-5.47,9.706-6.708c4.476-1.24,10.424-1.858,17.85-1.858h40.539V0h-64.809c-37.5,0-64.433,8.897-80.803,26.691   c-16.368,17.798-24.551,44.014-24.551,78.658v48.82h-48.542v81.086h48.539v235.256h97.362V235.256h64.805l8.566-81.086H271.521z"></path>
+              </svg>
             </a>
           </div>
+          <form class="entry__form form form_default" action="#!" method="POST" data-anim="fade-y" data-anim-delay="0.4">
+            <div class="entry__form-title">
+              <h3>Регистрация через email</h3>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="" required="required" data-validation="custom" data-validation-regexp="^([A-z]+)$" />
+              <div class="control-label">
+                <span>Имя</span>
+              </div>
+              <div class="help-block">Необходимо заполнить «ФИО».</div>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" name="" required="required" autocomplete="off" data-validation="email required" />
+              <div class="control-label">
+                <span>e-mail</span>
+              </div>
+              <div class="help-block">Необходимо заполнить «Почта».</div>
+            </div>
+            <div class="form-group">
+              <select class="form-control form-control_select js-autocomplete-select" required data-placeholder="часовой пояс">
+                <option></option>
+                <option value="np">+2 Киев, Рига</option>
+                <option value="cu">+3 Минск</option>
+                <option value="cu">+1 Москва</option>
+              </select>
+              <div class="help-block">выберите часовой пояс</div>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="password" name="pass_confirmation" required="required" autocomplete="off" data-validation="length" data-validation-length="min6" />
+              <div class="control-label">
+                <span>пароль</span>
+              </div>
+              <div class="help-block">Необходимо заполнить «Пароль».</div>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="password" name="pass" required="required" autocomplete="off" data-validation="confirmation" />
+              <div class="control-label">
+                <span>пароль еще раз</span>
+              </div>
+              <div class="help-block">Необходимо заполнить «Подтверждение пароля».</div>
+            </div>
+            <div class="entry__form-agree">
+              <p>Регистрируясь на сайте, я соглашаюсь с
+                <a href="#!">условиями использования</a>, подтверждаю, что проконсультировалась с врачом и не имею противопоказаний</p>
+            </div>
+            <label class="form-submit-btn btn btn_green-hov">
+              <span>ЗАРЕГИСТРИРОВАТЬСЯ</span>
+              <input type="submit" value="" />
+            </label>
+            <div class="entry__form-login-now">
+              <p>Уже есть аккаунт?
+                <a href="#!">Войдите</a>
+              </p>
+            </div>
+          </form>
         </div>
       </section>
-      <!--end screen-->
-      <!--begin about-program-->
-      <section class="about-program">
-        <div class="about-program__back-title back-title">
-          <h4>ABOUT</h4>
-        </div>
-        <div class="about-program__container container">
-          <div class="about-program__text" data-anim-stagger="fade-y">
-            <div class="about-program__title title-md">
-              <h2>О программе</h2>
-            </div>
-            <div class="about-program__descr">
-              <p>Настойчивость, упорство и дисциплина каждый день будут приближать тебя к цели. Но будет нелегко!</p>
-            </div>
-          </div>
-          <div class="about-program__inner">
-            <div class="about-program__item">
-              <div class="about-program__item-img" data-anim="fade-y">
-                <img src="static/img/content/20-min.png" alt="image" title="" />
-              </div>
-              <div class="about-program__item-text" data-anim="fade-y">
-                <div class="about-program__item-title">
-                  <h4>Только 20 минут в день</h4>
-                </div>
-                <div class="about-program__item-descr" data-anim-stagger="fade-y">
-                  <p>6 разных тренировок в неделю рассчитаных на 20-30 минут
-                    <br>и максимальную отдачу</p>
-                </div>
-              </div>
-            </div>
-            <div class="about-program__item">
-              <div class="about-program__item-img" data-anim="fade-y">
-                <img src="static/img/content/high-level.png" alt="image" title="" />
-              </div>
-              <div class="about-program__item-text" data-anim="fade-y">
-                <div class="about-program__item-title">
-                  <h4>Продвинутый уровень</h4>
-                </div>
-                <div class="about-program__item-descr" data-anim-stagger="fade-y">
-                  <p>В этой прграмме усилена нагрузка, упражнения с весом 5 кг, добавлены йога и растяжка.</p>
-                </div>
-              </div>
-            </div>
-            <div class="about-program__item">
-              <div class="about-program__item-img" data-anim="fade-y">
-                <img src="static/img/content/control.png" alt="image" title="" />
-              </div>
-              <div class="about-program__item-text" data-anim="fade-y">
-                <div class="about-program__item-title">
-                  <h4>Контроль прогресса</h4>
-                </div>
-                <div class="about-program__item-descr" data-anim-stagger="fade-y">
-                  <p>Ты получишь доступ в нашу внутреннюю систему, которая помогает отслеживать изменения в сантиметрах и визуально</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--end about-program-->
-      <!--begin what-program-->
-      <section class="what-program">
-        <div class="what-program__container container">
-          <div class="what-program__title title-md" data-anim="fade-y">
-            <h2>Что входит в программу</h2>
-          </div>
-          <div class="around-slider what-program__around-slider">
-            <div class="around-slider__slider__point js-responsive-slider" data-anim="fade-y" data-anim-stagger="fade-y" data-anim-delay="0.3" data-anim-duration="0.25">
-              <div class="around-slider__item around-slider__item__right around-slider__active active-slide">
-                <div class="around-slider__item__img">
-                  <img src="static/img/content/what-prog_1.jpg" alt="">
-                </div>
-                <div class="around-slider__item__text">
-                  <div class="around-slider__item__title">
-                    <h6>Питание</h6>
-                  </div>
-                  <div class="around-slider__item__desc">
-                    <p>Наше питание подходит и для вегетарианцев, и для тех, кто ест мясо. Ты получишь меню на месяц, продукты в котором можно менять в зависимости от предпочтений и настроения.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="around-slider__item around-slider__item__right">
-                <div class="around-slider__item__img">
-                  <img src="static/img/content/what-prog_2.jpg" alt="">
-                </div>
-                <div class="around-slider__item__text">
-                  <div class="around-slider__item__title">
-                    <h6>Силовые тренировки</h6>
-                  </div>
-                  <div class="around-slider__item__desc">
-                    <p>В личном кабинете ты сможешь следить за изменениями в твоем теле и контролировать правильный здоровый набор веса.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="around-slider__item around-slider__item__left">
-                <div class="around-slider__item__img">
-                  <img src="static/img/content/what-prog_1.jpg" alt="">
-                </div>
-                <div class="around-slider__item__text">
-                  <div class="around-slider__item__title">
-                    <h6>Йога</h6>
-                  </div>
-                  <div class="around-slider__item__desc">
-                    <p>Срок беременности, дата родов, вес, фото — мы гарантируем конфиденциальность и безопасность всех твоих даных.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="around-slider__item around-slider__item__left">
-                <div class="around-slider__item__img">
-                  <img src="static/img/content/what-prog_2.jpg" alt="">
-                </div>
-                <div class="around-slider__item__text">
-                  <div class="around-slider__item__title">
-                    <h6>Растяжка</h6>
-                  </div>
-                  <div class="around-slider__item__desc">
-                    <p>Важная и полезная информация по развитию ребенка на каждом этапе беременности, от зачатия до родов в понятном формате.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="around-slider__item around-slider__item__left">
-                <div class="around-slider__item__img">
-                  <img src="static/img/content/what-prog_1.jpg" alt="">
-                </div>
-                <div class="around-slider__item__text">
-                  <div class="around-slider__item__title">
-                    <h6>Советы</h6>
-                  </div>
-                  <div class="around-slider__item__desc">
-                    <p>Что почитать, посмотреть, уход за телом, посещения врача и важные моменты, на которые нужно обратить внимание.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="around-slider__slides" data-anim="fade-y" data-anim-delay="0.3" data-anim-duration="0.25">
-              <div class="around-slider__slide active-slide">
-                <img src="static/img/content/what-prog_1.jpg" alt="">
-              </div>
-              <div class="around-slider__slide">
-                <img src="static/img/content/what-prog_2.jpg" alt="">
-              </div>
-              <div class="around-slider__slide">
-                <img src="static/img/content/what-prog_1.jpg" alt="">
-              </div>
-              <div class="around-slider__slide">
-                <img src="static/img/content/what-prog_2.jpg" alt="">
-              </div>
-              <div class="around-slider__slide">
-                <img src="static/img/content/what-prog_1.jpg" alt="">
-              </div>
-            </div>
-            <div class="around-slider__controls" data-anim-stagger="fade-y" data-anim-delay="1" data-anim-duration="0.25">
-              <div class="arrow arrow-left">
-                <span>
-                  <svg width="36px" height="36px" viewbox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g transform="translate(-1274.000000, -2550.000000)">
-                        <g transform="translate(0.000000, 2048.000000)">
-                          <g transform="translate(1274.000000, 502.000000)">
-                            <polyline stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(17.000000, 18.000000) rotate(90.000000) translate(-17.000000, -18.000000) " points="13 16 17 20 21 16"></polyline>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                </span>
-              </div>
-              <div class="arrow arrow-right">
-                <span>
-                  <svg width="52px" height="52px" viewbox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g transform="translate(-1314.000000, -2542.000000)">
-                        <g transform="translate(0.000000, 2048.000000)">
-                          <g transform="translate(1314.000000, 494.000000)">
-                            <polyline stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(26.000000, 26.000000) scale(-1, 1) rotate(90.000000) translate(-26.000000, -26.000000) " points="22 24 26 28 30 24"></polyline>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                </span>
-              </div>
-            </div>
-            <div class="around-slider__loader">
-              <div class="around-slider__loader__container">
-                <div class="around-slider__loader__circle"></div>
-              </div>
-            </div>
-            <div class="slick-count">0
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--end what-program-->
-      <!--begin team-->
-      <section class="team">
-        <div class="team__person team__person_left" style="background-image: url(static/img/bg/team_anita.jpg)" data-anim="bg">
-          <div class="team__person-bg team__person-bg_tab" style="background-image: url(static/img/bg/team_anita-tab.jpg)"></div>
-          <div class="team__person-bg team__person-bg_mob" style="background-image: url(static/img/bg/team_anita-mob.jpg)"></div>
-          <div class="team__person-text" data-anim="fade-x" data-anim-delay="0.4" data-anim-duration="0.5">
-            <div class="team__person-name title-md">
-              <h4>АНИТА ЛУЦЕНКО</h4>
-            </div>
-            <div class="team__person-descr">
-              <p>Главный тренер страны, мастер спорта, многократный чемпион по аэробике и фитнесу, известная телеведущая.</p>
-            </div>
-          </div>
-        </div>
-        <div class="team__person team__person_right" style="background-image: url(static/img/bg/team_julia.jpg)" data-anim="bg">
-          <div class="team__person-bg team__person-bg_tab" style="background-image: url(static/img/bg/team_julia-tab.jpg)"></div>
-          <div class="team__person-bg team__person-bg_mob" style="background-image: url(static/img/bg/team_julia-mob.jpg)"></div>
-          <div class="team__person-text" data-anim="fade-x" data-anim-delay="0.4" data-anim-duration="0.5">
-            <div class="team__person-name title-md">
-              <h4>ЮЛИЯ БОГДАН</h4>
-            </div>
-            <div class="team__person-descr">
-              <p>Звездный тренер, мастер спорта, консультант по питанию,
-                <br>коуч и автор фитнес-программ.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--end team-->
-      <!--begin teaser-->
-      <section class="teaser" style="background-image: url(static/img/bg/teaser_bg.jpg)" data-anim="bg">
-        <div class="teaser__container container">
-          <div class="teaser__text" data-anim-stagger="fade-x" data-anim-delay="1.5">
-            <div class="teaser__sub-title title-md">
-              <h4>ТЕБЕ ПОНАДОБЯТСЯ</h4>
-            </div>
-            <div class="teaser__title title-lg">
-              <h2>ГАНТЕЛИ</h2>
-            </div>
-            <div class="teaser__title title-lg">
-              <h2>И КОВРИК</h2>
-            </div>
-            <div class="teaser__descr">
-              <p>Гантели 5 кг, любой коврик для фитнеса, стул и твоя сила воли — все что нужно для прохождения этой программы!</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--end teaser-->
-      <!--begin how-look-->
-      <section class="how-look js-in-view" data-anim="bg">
-        <div class="how-look__media" style="background-image: url(static/img/bg/how-look_bg.jpg)">
-          <video width="100%" height="100%" preload="auto" loop="" muted="">
-            <source src="static/video/video-sample.mp4" type="video/mp4">
-            <source src="static/video/video-sample.webm" type="video/webm">
-          </video>
-        </div>
-        <div class="how-look__container container">
-          <div class="how-look__content" data-anim-stagger="fade-x">
-            <div class="how-look__title title-md">
-              <h3>Как это выглядит</h3>
-            </div>
-            <div class="how-look__text">
-              <p>Пример тренировки и личного кабинета.</p>
-              <p>Всу упражнения в видео формате с подробными обьяснениями и акцентами</p>
-            </div>
-            <a class="how-look__btn btn btn_green-hov" href="#!">
-              <span>ПРОЙТИ ПРОГРАММУ</span>
-            </a>
-          </div>
-        </div>
-      </section>
-      <!--end how-look-->
-      <!--begin results-->
-      <section class="results">
-        <div class="results__back-title back-title">
-          <h4>results</h4>
-        </div>
-        <div class="results__container container">
-          <div class="results__title title-md" data-anim="fade-y">
-            <h2>WOW результаты</h2>
-          </div>
-          <div class="view-slider results__view-slider">
-            <div class="view-slider__images" data-anim="fade-y">
-              <div class="view-slider__images-item">
-                <div class="view-slider__images-item-inner">
-                  <div class="view-slider__images-pic-wrap">
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-2_1.jpg" alt="image" title="" />
-                    </div>
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-2_1.jpg" alt="image" title="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="view-slider__images-item">
-                <div class="view-slider__images-item-inner">
-                  <div class="view-slider__images-pic-wrap">
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-1_1.jpg" alt="image" title="" />
-                    </div>
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-1_1.jpg" alt="image" title="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="view-slider__images-item">
-                <div class="view-slider__images-item-inner">
-                  <div class="view-slider__images-pic-wrap">
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-3_1.jpg" alt="image" title="" />
-                    </div>
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-3_1.jpg" alt="image" title="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="view-slider__images-item">
-                <div class="view-slider__images-item-inner">
-                  <div class="view-slider__images-pic-wrap">
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-2_1.jpg" alt="image" title="" />
-                    </div>
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-2_1.jpg" alt="image" title="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="view-slider__images-item">
-                <div class="view-slider__images-item-inner">
-                  <div class="view-slider__images-pic-wrap">
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-1_1.jpg" alt="image" title="" />
-                    </div>
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-1_1.jpg" alt="image" title="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="view-slider__images-item">
-                <div class="view-slider__images-item-inner">
-                  <div class="view-slider__images-pic-wrap">
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-3_1.jpg" alt="image" title="" />
-                    </div>
-                    <div class="view-slider__images-pic">
-                      <img src="static/img/content/results-3_1.jpg" alt="image" title="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="view-slider__view-text view-slider__text">
-              <div class="view-slider__text-item" data-anim-stagger="fade-y">
-                <div class="view-slider__text-title">
-                  <h4>Елена (Украина)</h4>
-                </div>
-                <div class="view-slider__text-descr">
-                  <p>Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....</p>
-                  <p>а муж так вообще</p>
-                </div>
-              </div>
-              <div class="view-slider__text-item" data-anim-stagger="fade-y">
-                <div class="view-slider__text-title">
-                  <h4>Антонина (Украина)</h4>
-                </div>
-                <div class="view-slider__text-descr">
-                  <p>Результатом очень довольна.... Ну вот и подошла к концу моя любимая программа!</p>
-                  <p>а муж так вообще</p>
-                </div>
-              </div>
-              <div class="view-slider__text-item" data-anim-stagger="fade-y">
-                <div class="view-slider__text-title">
-                  <h4>Светлана (Украина)</h4>
-                </div>
-                <div class="view-slider__text-descr">
-                  <p>Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....</p>
-                  <p>а муж так вообще</p>
-                </div>
-              </div>
-              <div class="view-slider__text-item" data-anim-stagger="fade-y">
-                <div class="view-slider__text-title">
-                  <h4>Елена (Украина)</h4>
-                </div>
-                <div class="view-slider__text-descr">
-                  <p>Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....</p>
-                  <p>а муж так вообще</p>
-                </div>
-              </div>
-              <div class="view-slider__text-item" data-anim-stagger="fade-y">
-                <div class="view-slider__text-title">
-                  <h4>Антонина (Украина)</h4>
-                </div>
-                <div class="view-slider__text-descr">
-                  <p>Результатом очень довольна.... Ну вот и подошла к концу моя любимая программа!</p>
-                  <p>а муж так вообще</p>
-                </div>
-              </div>
-              <div class="view-slider__text-item" data-anim-stagger="fade-y">
-                <div class="view-slider__text-title">
-                  <h4>Светлана (Украина)</h4>
-                </div>
-                <div class="view-slider__text-descr">
-                  <p>Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....</p>
-                  <p>а муж так вообще</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--end results-->
-      <!--begin prices-->
-      <section class="prices">
-        <div class="prices__back-title back-title">
-          <h4>PRICE</h4>
-        </div>
-        <div class="prices__container container">
-          <div class="prices__text" data-anim-stagger="fade-y">
-            <div class="prices__title title-md">
-              <h2>Стоимость программы</h2>
-            </div>
-            <div class="prices__descr">
-              <p>Программа стартует сразу после оплаты</p>
-            </div>
-          </div>
-          <div class="prices__inner js-mobile-slider">
-            <div class="prices__item prices__item_color" data-anim-stagger="fade-y">
-              <div class="prices__item-value">
-                <h5>
-                  <sup>€</sup>15</h5>
-              </div>
-              <div class="prices__item-title">
-                <h5>Доступ к программе
-                  <span>WOWBODY HEAVY STRONG</span>на 4 недели</h5>
-              </div>
-              <a class="prices__item-btn btn btn_white-hov" href="#!">
-                <span>ПРОЙТИ ПРОГРАММУ</span>
-              </a>
-            </div>
-            <div class="prices__item" data-anim-stagger="fade-y">
-              <div class="prices__item-value">
-                <h5>
-                  <sup>€</sup>25</h5>
-              </div>
-              <div class="prices__item-title">
-                <h5>Доступ к программе
-                  <span>WOWBODY HEAVY STRONG</span>на 8 недель</h5>
-              </div>
-              <a class="prices__item-btn btn btn_white-hov" href="#!">
-                <span>ПРОЙТИ ПРОГРАММУ</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--end prices-->
+      <!--end entry-->
     </main>
-    <div class="to-top js-scroll-top is-active">
-      <div class="to-top__arrows arrows-down"></div>
-    </div>
     <div class="popup" data-popup-id="remind-password" tabindex="-1" role="dialog">
       <div class="popup__container">
         <button class="popup__close js-popup-close" type="button">

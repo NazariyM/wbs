@@ -2,6 +2,7 @@ include ../bemto/index
 include ../partials/_variables
 include ../partials/_mixins
 include ../components/_helpers
+include ../components/popup
 
 - var suffix = production ? '.min' : '';
 
@@ -38,6 +39,13 @@ html(lang='ru')
             // Main content
             block main
                 main
+
+            if topBtn
+                .to-top.js-scroll-top.is-active
+                    .to-top__arrows.arrows-down
+
+            block modals
+                +popup({name: 'remindPassword'})
 
             // Footer
             block footer
