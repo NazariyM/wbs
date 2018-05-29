@@ -61,7 +61,7 @@ block main
 							+e.item-text(data-anim="fade-y")
 								+e.item-title
 									h4= item.title
-								+e.item-descr(data-anim-stagger="fade-y")
+								+e.item-descr.js-dot(data-anim-stagger="fade-y")
 									p= item.text
 										if item.brText
 											br
@@ -85,7 +85,7 @@ block main
 							.around-slider__item__text
 								.around-slider__item__title
 									h6 Питание
-								.around-slider__item__desc
+								.around-slider__item__desc.js-dot
 									p Наше питание подходит и для вегетарианцев, и для тех, кто ест мясо. Ты получишь меню на месяц, продукты в котором можно менять в зависимости от предпочтений и настроения.
 
 						.around-slider__item.around-slider__item__right
@@ -94,7 +94,7 @@ block main
 							.around-slider__item__text
 								.around-slider__item__title
 									h6 Силовые тренировки
-								.around-slider__item__desc
+								.around-slider__item__desc.js-dot
 									p В личном кабинете ты сможешь следить за изменениями в твоем теле и контролировать правильный здоровый набор веса.
 
 						.around-slider__item.around-slider__item__left
@@ -103,7 +103,7 @@ block main
 							.around-slider__item__text
 								.around-slider__item__title
 									h6 Йога
-								.around-slider__item__desc
+								.around-slider__item__desc.js-dot
 									p Срок беременности, дата родов, вес, фото — мы гарантируем конфиденциальность и безопасность всех твоих даных.
 
 						.around-slider__item.around-slider__item__left
@@ -112,7 +112,7 @@ block main
 							.around-slider__item__text
 								.around-slider__item__title
 									h6 Растяжка
-								.around-slider__item__desc
+								.around-slider__item__desc.js-dot
 									p Важная и полезная информация по развитию ребенка на каждом этапе беременности, от зачатия до родов в понятном формате.
 
 						.around-slider__item.around-slider__item__left
@@ -121,7 +121,7 @@ block main
 							.around-slider__item__text
 								.around-slider__item__title
 									h6 Советы
-								.around-slider__item__desc
+								.around-slider__item__desc.js-dot
 									p Что почитать, посмотреть, уход за телом, посещения врача и важные моменты, на которые нужно обратить внимание.
 
 					.around-slider__slides(data-anim='fade-y' data-anim-delay='0.3' data-anim-duration='0.25')
@@ -171,7 +171,7 @@ block main
 				+e.person-text(data-anim='fade-x' data-anim-delay='0.4' data-anim-duration='0.5')
 					+e.person-name.title-md
 						h4 АНИТА ЛУЦЕНКО
-					+e.person-descr
+					+e.person-descr.js-dot
 						p Главный тренер страны, мастер спорта, многократный чемпион по аэробике и фитнесу, известная телеведущая.
 
 			+e.person._right(style='background-image: url(static/img/bg/team_julia.jpg)' data-anim='bg')
@@ -180,7 +180,7 @@ block main
 				+e.person-text(data-anim='fade-x' data-anim-delay='0.4' data-anim-duration='0.5')
 					+e.person-name.title-md
 						h4 ЮЛИЯ БОГДАН
-					+e.person-descr
+					+e.person-descr.js-dot
 						p Звездный тренер, мастер спорта, консультант по питанию,
 							br
 							| коуч и автор фитнес-программ.
@@ -196,7 +196,7 @@ block main
 						h2 ГАНТЕЛИ
 					+e.title.title-lg
 						h2 И КОВРИК
-					+e.descr
+					+e.descr.js-dot
 						p Гантели 5 кг, любой коврик для фитнеса, стул и твоя сила воли — все что нужно для прохождения этой программы!
 		//end teaser
 
@@ -210,9 +210,10 @@ block main
 				+e.content(data-anim-stagger='fade-x')
 					+e.title.title-md
 						h3 Как это выглядит
-					+e.text
+					+e.text.js-dot
 						p Пример тренировки и личного кабинета.
-						p Всу упражнения в видео формате с подробными обьяснениями и акцентами
+							br
+							| Все упражнения в видео формате с подробными обьяснениями и акцентами
 
 					+e.A.btn.btn._green-hov(href='#!')
 						span ПРОЙТИ ПРОГРАММУ
@@ -263,23 +264,26 @@ block main
 							+e.text-item(data-anim-stagger='fade-y')
 								+e.text-title
 									h4 Елена (Украина)
-								+e.text-descr
+								+e.text-descr.js-dot
 									p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
-									p а муж так вообще
+										br
+										| а муж так вообще
 
 							+e.text-item(data-anim-stagger='fade-y')
 								+e.text-title
 									h4 Антонина (Украина)
-								+e.text-descr
+								+e.text-descr.js-dot
 									p Результатом очень довольна.... Ну вот и подошла к концу моя любимая программа!
-									p а муж так вообще
+										br
+										| а муж так вообще
 
 							+e.text-item(data-anim-stagger='fade-y')
 								+e.text-title
 									h4 Светлана (Украина)
-								+e.text-descr
+								+e.text-descr.js-dot
 									p Ну вот и подошла к концу моя любимая программа! Результатом очень довольна....
-									p а муж так вообще
+										br
+										| а муж так вообще
 
 							-i++
 		//end results
@@ -292,12 +296,13 @@ block main
 				+e.text(data-anim-stagger='fade-y')
 					+e.title.title-md
 						h2 Стоимость программы
-					+e.descr
+					+e.descr.js-dot
 						p Программа стартует сразу после оплаты
 
 				+e.inner.js-mobile-slider
 					+e.item._color(data-anim-stagger='fade-y')
 						+e.item-value
+							i 35 €
 							h5
 								sup €
 								| 15
