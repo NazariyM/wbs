@@ -13,6 +13,7 @@ import './AutocompleteSelect';
 import Validate from './validate';
 import PageResize from './pageResize';
 import './Dot';
+import './noTouch';
 
 export class Common {
   /**

@@ -29125,6 +29125,8 @@ var _pageResize2 = _interopRequireDefault(_pageResize);
 
 __webpack_require__(354);
 
+__webpack_require__(358);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43455,6 +43457,49 @@ var PublicAPI = exports.PublicAPI = function PublicAPI() {
 
 
 exports.default = window.PublicAPI = PublicAPI;
+
+/***/ }),
+/* 357 */,
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _helpers = __webpack_require__(32);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var NoTouch = function () {
+  function NoTouch() {
+    _classCallCheck(this, NoTouch);
+
+    NoTouch.init();
+  }
+
+  _createClass(NoTouch, null, [{
+    key: 'init',
+    value: function init() {
+      var body = document.querySelector('body');
+      var toggleNoTouch = function toggleNoTouch() {
+        _helpers.Resp.isDesk ? body.classList.add(_helpers.css.noTouch) : body.classList.remove(_helpers.css.noTouch);
+      };
+
+      toggleNoTouch();
+      window.addEventListener('resize', (0, _helpers.debounce)(toggleNoTouch, this, 250));
+    }
+  }]);
+
+  return NoTouch;
+}();
+
+exports.default = new NoTouch();
 
 /***/ })
 /******/ ]);

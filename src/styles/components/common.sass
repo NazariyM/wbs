@@ -83,7 +83,7 @@ body
   overflow: hidden
   backface-visibility: hidden
   background-color: $color1
-  &:hover
+  .no-touch &:hover
     background: $color2
     transition: background .2s .2s
     span
@@ -115,7 +115,7 @@ body
   &_white-hov
     &::before, &::after
       background-color: $white
-    &:hover
+    .no-touch &:hover
       &::before
         transform: translate3d(0, 75px, 0)
       &::after
@@ -124,7 +124,7 @@ body
   &_green-hov
     &::before, &::after
       background-color: $color2
-    &:hover
+    .no-touch &:hover
       &::before
         transform: translate3d(0, 75px, 0)
       &::after
