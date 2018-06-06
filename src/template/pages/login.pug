@@ -8,17 +8,19 @@ block main
 
 		//begin entry
 		+b.SECTION.entry
-			+e.back-title.back-title
-				h4 SIGN UP
-
 			+e.top
-				+e.text(data-anim-stagger='fade-y')
-					+e.title.title-md
-						h2 ВХОД В ПРОГРАММУ
-					+e.descr
-						p Ты можешь войти используюя
-							br
-							| социяльную сеть
+				+e.back-title.back-title
+					h4 LOGIN
+				+e.top-container.container
+
+					+e.text(data-anim-stagger='fade-y')
+						+e.title.title-md
+							h2 ВХОД В ПРОГРАММУ
+						+e.descr
+							p Ты можешь войти используюя
+								br
+								| социяльную сеть
+
 			+e.container.container
 				+e.socials(data-anim='fade-y' data-anim-delay='0.2')
 					+e.A.socials-btn._fb(href='#!')

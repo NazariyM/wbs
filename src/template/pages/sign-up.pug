@@ -8,16 +8,18 @@ block main
 
 		//begin entry
 		+b.SECTION.entry
-			+e.back-title.back-title
-				h4 SIGN UP
-
 			+e.top
-				+e.text(data-anim-stagger='fade-y')
-					+e.title.title-md
-						h2 РЕГИСТРАЦИЯ
-					+e.descr
-						p Зарегистрируйся и начни программу.
-						p Ты можешь зарегистрироваться использую социяальную сеть
+				+e.back-title.back-title
+					h4 SIGN UP
+
+				+e.top-container.container
+					+e.text(data-anim-stagger='fade-y')
+						+e.title.title-md
+							h2 РЕГИСТРАЦИЯ
+						+e.descr
+							p Зарегистрируйся и начни программу.
+							p Ты можешь зарегистрироваться использую социяальную сеть
+
 			+e.container.container
 				+e.socials(data-anim='fade-y' data-anim-delay='0.2')
 					+e.A.socials-btn._fb(href='#!')

@@ -1,13 +1,13 @@
 .entry
-   position: relative
-   overflow: hidden
-   padding-bottom: 35px
+   padding-bottom: 85px
    
    &__top
-      padding-top: 300px
+      position: relative
+      overflow: hidden
+      padding: 100px 0 83px
       background: #a8dcbf
       +xs
-         padding-top: 235px
+         padding: 90px 0 45px
    
    &__back-title
       font-size: 400px
@@ -15,11 +15,10 @@
       top: 0
    
    &__text
-      margin-top: -200px
       text-align: center
       color: $white
       +xs
-         margin-top: -145px
+         margin: 0 -8px
    
    &__title
       margin-bottom: 20px
@@ -55,7 +54,7 @@
 
    &__form
       max-width: 390px
-      margin: 62px auto 0
+      margin: 65px auto 0
       text-align: center
       font-size: 14px
       line-height: 24px
@@ -69,7 +68,9 @@
          +f('gil-700', 18)
          letter-spacing: 0.5px
          color: $color3
-         
+         +xs
+            margin-bottom: 12px
+   
       a
          color: #537161
          border-bottom: 1px solid transparent
@@ -92,4 +93,4 @@
       .form-submit-btn
          margin-bottom: 20px
          +xs
-            margin-bottom: 15px
+            margin-bottom: 5px
