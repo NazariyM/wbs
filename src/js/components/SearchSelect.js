@@ -1,8 +1,8 @@
 import 'select2';
 
-class AutocompleteSelect {
+class SearchSelect {
   constructor() {
-    this.$el = $('.js-autocomplete-select');
+    this.$el = $('.js-search-select');
     this.$placeholder = this.$el.data('placeholder');
 
     if (this.$el.length) this.init();
@@ -31,4 +31,4 @@ class AutocompleteSelect {
   }
 }
 
-export default new AutocompleteSelect();
+export default new SearchSelect();

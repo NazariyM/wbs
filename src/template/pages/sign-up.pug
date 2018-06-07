@@ -38,13 +38,13 @@ block main
 						+b.help-block Необходимо заполнить «ФИО».
 
 					+b.form-group.has-error
-						+b.INPUT.form-control(type='email' name='email' autocomplete="off" required)
+						+b.INPUT.form-control(type='email' name='email' autocomplete="on" required)
 						+b.control-label
 							span e-mail
 						+b.help-block Необходимо заполнить «Почта».
 
 					.form-group
-						select.form-control.form-control_select.js-autocomplete-select(required data-placeholder="часовой пояс" data-find='не найдено')
+						select.form-control.form-control_select.js-search-select(required data-placeholder="часовой пояс" data-find='не найдено')
 							option(value)
 							option(value='np') +2 Киев, Рига
 							option(value='cu') +3 Минск

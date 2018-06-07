@@ -29031,17 +29031,15 @@ __webpack_require__(346);
 
 __webpack_require__(348);
 
-__webpack_require__(349);
-
-var _validate = __webpack_require__(351);
-
-var _validate2 = _interopRequireDefault(_validate);
+__webpack_require__(357);
 
 var _pageResize = __webpack_require__(352);
 
 var _pageResize2 = _interopRequireDefault(_pageResize);
 
 __webpack_require__(353);
+
+__webpack_require__(358);
 
 __webpack_require__(355);
 
@@ -29068,7 +29066,6 @@ var Common = exports.Common = function () {
     value: function init() {
       (0, _objectFitImages2.default)();
       _pageResize2.default.init();
-      _validate2.default.init();
     }
   }]);
 
@@ -36462,63 +36459,7 @@ exports.default = new ToTop();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 349 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-__webpack_require__(350);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var AutocompleteSelect = function () {
-  function AutocompleteSelect() {
-    _classCallCheck(this, AutocompleteSelect);
-
-    this.$el = $('.js-autocomplete-select');
-    this.$placeholder = this.$el.data('placeholder');
-
-    if (this.$el.length) this.init();
-  }
-
-  _createClass(AutocompleteSelect, [{
-    key: 'init',
-    value: function init() {
-      var textFind = this.$el.data('find');
-      var placeholder = this.$el.data('placeholder');
-
-      this.$el.select2({
-        minimumResultsForSearch: 0,
-        allowClear: false,
-        placeholder: placeholder,
-        language: {
-          noResults: function noResults() {
-            return textFind;
-          }
-        },
-        escapeMarkup: function escapeMarkup(markup) {
-          return markup;
-        }
-      }).on('select2:opening', function () {
-        $(this).closest('.form-group').removeClass('has-error');
-      });
-    }
-  }]);
-
-  return AutocompleteSelect;
-}();
-
-exports.default = new AutocompleteSelect();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
-
-/***/ }),
+/* 349 */,
 /* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42376,92 +42317,7 @@ S2.define('jquery.select2',[
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 351 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Validate = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _helpers = __webpack_require__(30);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Validate = exports.Validate = function () {
-  function Validate() {
-    _classCallCheck(this, Validate);
-
-    this.inputText = '.form-control';
-    this.submit = '[type="submit"]';
-  }
-
-  _createClass(Validate, [{
-    key: 'init',
-    value: function init() {
-      var _this = this;
-
-      this.onFocusOut();
-      this.checkInputFill();
-      _helpers.$window.on('load', function () {
-        _this.checkInputFill();
-      });
-    }
-  }, {
-    key: 'onFocusOut',
-    value: function onFocusOut() {
-      $(this.inputText).each(function () {
-        var $self = $(this);
-        if ($self.hasClass('js-no-error')) {
-          $self.blur(function () {
-            $self.parent().removeClass('has-error');
-          });
-        }
-      });
-
-      $(this.submit).each(function () {
-        var $self = $(this);
-        if ($self.hasClass('js-no-error')) {
-          $self.blur(function () {
-            $self.closest('form').find('.has-error').each(function () {
-              $(this).removeClass('has-error');
-            });
-          });
-        }
-      });
-    }
-  }, {
-    key: 'checkInputFill',
-    value: function checkInputFill() {
-      $(this.inputText).each(function () {
-        checkInput($(this));
-      });
-      $(this.inputText).blur(function () {
-        checkInput($(this));
-      });
-
-      function checkInput(el) {
-        if (el.val() !== '') {
-          el.addClass(_helpers.css.fill);
-        } else {
-          el.removeClass(_helpers.css.fill);
-        }
-      }
-    }
-  }]);
-
-  return Validate;
-}();
-
-exports.default = new Validate();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
-
-/***/ }),
+/* 351 */,
 /* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -43346,6 +43202,129 @@ var PublicAPI = exports.PublicAPI = function PublicAPI() {
 
 
 exports.default = window.PublicAPI = PublicAPI;
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+__webpack_require__(350);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SearchSelect = function () {
+  function SearchSelect() {
+    _classCallCheck(this, SearchSelect);
+
+    this.$el = $('.js-search-select');
+    this.$placeholder = this.$el.data('placeholder');
+
+    if (this.$el.length) this.init();
+  }
+
+  _createClass(SearchSelect, [{
+    key: 'init',
+    value: function init() {
+      var textFind = this.$el.data('find');
+      var placeholder = this.$el.data('placeholder');
+
+      this.$el.select2({
+        minimumResultsForSearch: 0,
+        allowClear: false,
+        placeholder: placeholder,
+        language: {
+          noResults: function noResults() {
+            return textFind;
+          }
+        },
+        escapeMarkup: function escapeMarkup(markup) {
+          return markup;
+        }
+      }).on('select2:opening', function () {
+        $(this).closest('.form-group').removeClass('has-error');
+      });
+    }
+  }]);
+
+  return SearchSelect;
+}();
+
+exports.default = new SearchSelect();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _helpers = __webpack_require__(30);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Form = function () {
+	function Form() {
+		_classCallCheck(this, Form);
+
+		this.$form = $('.form');
+		this.$input = this.$form.find('.form-control');
+
+		this.init();
+	}
+
+	_createClass(Form, [{
+		key: 'init',
+		value: function init() {
+			this.checkFill();
+			this.removeError();
+		}
+	}, {
+		key: 'checkFill',
+		value: function checkFill() {
+			this.$input.each(function () {
+				checkInput($(this));
+			});
+			this.$input.blur(function () {
+				checkInput($(this));
+			});
+
+			function checkInput(el) {
+				if (el.val() !== '') {
+					el.addClass(_helpers.css.fill);
+				} else {
+					el.removeClass(_helpers.css.fill);
+				}
+			}
+		}
+	}, {
+		key: 'removeError',
+		value: function removeError() {
+			this.$input.on('click focus', function (ev) {
+				$(ev.currentTarget).parent().removeClass(_helpers.css.error);
+			});
+		}
+	}]);
+
+	return Form;
+}();
+
+exports.default = new Form();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ })
 /******/ ]);

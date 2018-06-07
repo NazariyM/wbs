@@ -9,10 +9,10 @@ import './Footer';
 import './PlayInView';
 import './Popup';
 import './To-top';
-import './AutocompleteSelect';
-import Validate from './validate';
+import './SearchSelect';
 import PageResize from './pageResize';
 import './Dot';
+import './form';
 import './noTouch';
 
 export class Common {
@@ -28,7 +28,6 @@ export class Common {
   init() {
     objectFitImages();
     PageResize.init();
-    Validate.init();
   }
 }
 
