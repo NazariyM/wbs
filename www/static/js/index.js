@@ -11547,78 +11547,6 @@ module.exports = {
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var META = __webpack_require__(34)('meta');
-var isObject = __webpack_require__(4);
-var has = __webpack_require__(12);
-var setDesc = __webpack_require__(7).f;
-var id = 0;
-var isExtensible = Object.isExtensible || function () {
-  return true;
-};
-var FREEZE = !__webpack_require__(3)(function () {
-  return isExtensible(Object.preventExtensions({}));
-});
-var setMeta = function (it) {
-  setDesc(it, META, { value: {
-    i: 'O' + ++id, // object ID
-    w: {}          // weak collections IDs
-  } });
-};
-var fastKey = function (it, create) {
-  // return primitive with prefix
-  if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
-  if (!has(it, META)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return 'F';
-    // not necessary to add metadata
-    if (!create) return 'E';
-    // add missing metadata
-    setMeta(it);
-  // return object ID
-  } return it[META].i;
-};
-var getWeak = function (it, create) {
-  if (!has(it, META)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return true;
-    // not necessary to add metadata
-    if (!create) return false;
-    // add missing metadata
-    setMeta(it);
-  // return hash weak collections IDs
-  } return it[META].w;
-};
-// add metadata on freeze-family methods calling
-var onFreeze = function (it) {
-  if (FREEZE && meta.NEED && isExtensible(it) && !has(it, META)) setMeta(it);
-  return it;
-};
-var meta = module.exports = {
-  KEY: META,
-  NEED: false,
-  fastKey: fastKey,
-  getWeak: getWeak,
-  onFreeze: onFreeze
-};
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 22.1.3.31 Array.prototype[@@unscopables]
-var UNSCOPABLES = __webpack_require__(5)('unscopables');
-var ArrayProto = Array.prototype;
-if (ArrayProto[UNSCOPABLES] == undefined) __webpack_require__(13)(ArrayProto, UNSCOPABLES, {});
-module.exports = function (key) {
-  ArrayProto[UNSCOPABLES][key] = true;
-};
-
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -12024,6 +11952,78 @@ var detectIE = exports.detectIE = function detectIE() {
 	// other browser
 	return false;
 };
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var META = __webpack_require__(34)('meta');
+var isObject = __webpack_require__(4);
+var has = __webpack_require__(12);
+var setDesc = __webpack_require__(7).f;
+var id = 0;
+var isExtensible = Object.isExtensible || function () {
+  return true;
+};
+var FREEZE = !__webpack_require__(3)(function () {
+  return isExtensible(Object.preventExtensions({}));
+});
+var setMeta = function (it) {
+  setDesc(it, META, { value: {
+    i: 'O' + ++id, // object ID
+    w: {}          // weak collections IDs
+  } });
+};
+var fastKey = function (it, create) {
+  // return primitive with prefix
+  if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
+  if (!has(it, META)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return 'F';
+    // not necessary to add metadata
+    if (!create) return 'E';
+    // add missing metadata
+    setMeta(it);
+  // return object ID
+  } return it[META].i;
+};
+var getWeak = function (it, create) {
+  if (!has(it, META)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return true;
+    // not necessary to add metadata
+    if (!create) return false;
+    // add missing metadata
+    setMeta(it);
+  // return hash weak collections IDs
+  } return it[META].w;
+};
+// add metadata on freeze-family methods calling
+var onFreeze = function (it) {
+  if (FREEZE && meta.NEED && isExtensible(it) && !has(it, META)) setMeta(it);
+  return it;
+};
+var meta = module.exports = {
+  KEY: META,
+  NEED: false,
+  fastKey: fastKey,
+  getWeak: getWeak,
+  onFreeze: onFreeze
+};
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 22.1.3.31 Array.prototype[@@unscopables]
+var UNSCOPABLES = __webpack_require__(5)('unscopables');
+var ArrayProto = Array.prototype;
+if (ArrayProto[UNSCOPABLES] == undefined) __webpack_require__(13)(ArrayProto, UNSCOPABLES, {});
+module.exports = function (key) {
+  ArrayProto[UNSCOPABLES][key] = true;
+};
+
 
 /***/ }),
 /* 33 */
@@ -20496,7 +20496,7 @@ var global = __webpack_require__(2);
 var $export = __webpack_require__(0);
 var redefine = __webpack_require__(14);
 var redefineAll = __webpack_require__(43);
-var meta = __webpack_require__(30);
+var meta = __webpack_require__(31);
 var forOf = __webpack_require__(42);
 var anInstance = __webpack_require__(41);
 var isObject = __webpack_require__(4);
@@ -21188,7 +21188,7 @@ module.exports = function fill(value /* , start = 0, end = @length */) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(31);
+var addToUnscopables = __webpack_require__(32);
 var step = __webpack_require__(112);
 var Iterators = __webpack_require__(46);
 var toIObject = __webpack_require__(16);
@@ -22152,7 +22152,7 @@ var $iterDefine = __webpack_require__(80);
 var step = __webpack_require__(112);
 var setSpecies = __webpack_require__(40);
 var DESCRIPTORS = __webpack_require__(6);
-var fastKey = __webpack_require__(30).fastKey;
+var fastKey = __webpack_require__(31).fastKey;
 var validate = __webpack_require__(47);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
 
@@ -22316,7 +22316,7 @@ module.exports = __webpack_require__(61)(SET, function (get) {
 
 var each = __webpack_require__(27)(0);
 var redefine = __webpack_require__(14);
-var meta = __webpack_require__(30);
+var meta = __webpack_require__(31);
 var assign = __webpack_require__(100);
 var weak = __webpack_require__(120);
 var isObject = __webpack_require__(4);
@@ -22381,7 +22381,7 @@ if (fails(function () { return new $WeakMap().set((Object.freeze || Object)(tmp)
 "use strict";
 
 var redefineAll = __webpack_require__(43);
-var getWeak = __webpack_require__(30).getWeak;
+var getWeak = __webpack_require__(31).getWeak;
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(4);
 var anInstance = __webpack_require__(41);
@@ -22657,7 +22657,7 @@ var _Scrollmagic = __webpack_require__(341);
 
 var _Scrollmagic2 = _interopRequireDefault(_Scrollmagic);
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22798,7 +22798,7 @@ __webpack_require__(333);
 
 __webpack_require__(334);
 
-__webpack_require__(356);
+__webpack_require__(357);
 
 /***/ }),
 /* 131 */
@@ -23050,7 +23050,7 @@ var has = __webpack_require__(12);
 var DESCRIPTORS = __webpack_require__(6);
 var $export = __webpack_require__(0);
 var redefine = __webpack_require__(14);
-var META = __webpack_require__(30).KEY;
+var META = __webpack_require__(31).KEY;
 var $fails = __webpack_require__(3);
 var shared = __webpack_require__(52);
 var setToStringTag = __webpack_require__(44);
@@ -23388,7 +23388,7 @@ __webpack_require__(26)('getOwnPropertyNames', function () {
 
 // 19.1.2.5 Object.freeze(O)
 var isObject = __webpack_require__(4);
-var meta = __webpack_require__(30).onFreeze;
+var meta = __webpack_require__(31).onFreeze;
 
 __webpack_require__(26)('freeze', function ($freeze) {
   return function freeze(it) {
@@ -23403,7 +23403,7 @@ __webpack_require__(26)('freeze', function ($freeze) {
 
 // 19.1.2.17 Object.seal(O)
 var isObject = __webpack_require__(4);
-var meta = __webpack_require__(30).onFreeze;
+var meta = __webpack_require__(31).onFreeze;
 
 __webpack_require__(26)('seal', function ($seal) {
   return function seal(it) {
@@ -23418,7 +23418,7 @@ __webpack_require__(26)('seal', function ($seal) {
 
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = __webpack_require__(4);
-var meta = __webpack_require__(30).onFreeze;
+var meta = __webpack_require__(31).onFreeze;
 
 __webpack_require__(26)('preventExtensions', function ($preventExtensions) {
   return function preventExtensions(it) {
@@ -25063,7 +25063,7 @@ var $export = __webpack_require__(0);
 
 $export($export.P, 'Array', { copyWithin: __webpack_require__(111) });
 
-__webpack_require__(31)('copyWithin');
+__webpack_require__(32)('copyWithin');
 
 
 /***/ }),
@@ -25075,7 +25075,7 @@ var $export = __webpack_require__(0);
 
 $export($export.P, 'Array', { fill: __webpack_require__(88) });
 
-__webpack_require__(31)('fill');
+__webpack_require__(32)('fill');
 
 
 /***/ }),
@@ -25096,7 +25096,7 @@ $export($export.P + $export.F * forced, 'Array', {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-__webpack_require__(31)(KEY);
+__webpack_require__(32)(KEY);
 
 
 /***/ }),
@@ -25117,7 +25117,7 @@ $export($export.P + $export.F * forced, 'Array', {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-__webpack_require__(31)(KEY);
+__webpack_require__(32)(KEY);
 
 
 /***/ }),
@@ -26148,7 +26148,7 @@ $export($export.P, 'Array', {
   }
 });
 
-__webpack_require__(31)('includes');
+__webpack_require__(32)('includes');
 
 
 /***/ }),
@@ -26177,7 +26177,7 @@ $export($export.P, 'Array', {
   }
 });
 
-__webpack_require__(31)('flatMap');
+__webpack_require__(32)('flatMap');
 
 
 /***/ }),
@@ -26205,7 +26205,7 @@ $export($export.P, 'Array', {
   }
 });
 
-__webpack_require__(31)('flatten');
+__webpack_require__(32)('flatten');
 
 
 /***/ }),
@@ -29125,7 +29125,7 @@ var _pageResize2 = _interopRequireDefault(_pageResize);
 
 __webpack_require__(354);
 
-__webpack_require__(358);
+__webpack_require__(356);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29418,7 +29418,7 @@ var _gsap = __webpack_require__(48);
 
 var _Preloader = __webpack_require__(66);
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
@@ -29623,7 +29623,7 @@ var _gsap = __webpack_require__(48);
 
 var _Preloader = __webpack_require__(66);
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29723,7 +29723,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 __webpack_require__(339);
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36454,7 +36454,7 @@ var Popups = function () {
       this.$popup.popup({
         closeOnEsc: false,
         closeBtnSelector: '.js-popup-close',
-        lockScreenEl: 'body, header'
+        lockScreenEl: 'body'
       });
     }
   }]);
@@ -36486,7 +36486,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42465,123 +42465,109 @@ S2.define('jquery.select2',[
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function($) {
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.Validate = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _helpers = __webpack_require__(32);
-
-var _jquery = __webpack_require__(9);
-
-var _jquery2 = _interopRequireDefault(_jquery);
+var _helpers = __webpack_require__(30);
 
 __webpack_require__(351);
 
 __webpack_require__(352);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Validate = exports.Validate = function () {
-	function Validate() {
-		_classCallCheck(this, Validate);
+  function Validate() {
+    _classCallCheck(this, Validate);
 
-		this.$form = (0, _jquery2.default)('.form');
-		this.$input = this.$form.find('.form-control');
-		this.submit = '[type="submit"]';
-	}
+    this.inputText = '.form-control';
+    this.submit = '[type="submit"]';
+  }
 
-	_createClass(Validate, [{
-		key: 'init',
-		value: function init() {
-			Validate.initValidator();
-			this.onFocusOut();
-			this.checkFill();
-			this.removeError();
-		}
-	}, {
-		key: 'onFocusOut',
-		value: function onFocusOut() {
-			(0, _jquery2.default)(this.$input).each(function () {
-				var $self = (0, _jquery2.default)(this);
-				if ($self.hasClass('js-no-error')) {
-					$self.blur(function () {
-						$self.parent().removeClass('has-error');
-					});
-				}
-			});
+  _createClass(Validate, [{
+    key: 'init',
+    value: function init() {
+      var _this = this;
 
-			(0, _jquery2.default)(this.submit).each(function () {
-				var $self = (0, _jquery2.default)(this);
-				if ($self.hasClass('js-no-error')) {
-					$self.blur(function () {
-						$self.closest('form').find('.has-error').each(function () {
-							(0, _jquery2.default)(this).removeClass('has-error');
-						});
-					});
-				}
-			});
-		}
-	}, {
-		key: 'checkFill',
-		value: function checkFill() {
-			this.$input.each(function () {
-				checkInput((0, _jquery2.default)(this));
-			});
+      Validate.initValidator();
+      this.onFocusOut();
+      this.checkInputFill();
+      _helpers.$window.on('load', function () {
+        _this.checkInputFill();
+      });
+    }
+  }, {
+    key: 'onFocusOut',
+    value: function onFocusOut() {
+      $(this.inputText).each(function () {
+        var $self = $(this);
+        if ($self.hasClass('js-no-error')) {
+          $self.blur(function () {
+            $self.parent().removeClass('has-error');
+          });
+        }
+      });
 
-			this.$input.blur(function () {
-				checkInput((0, _jquery2.default)(this));
-			});
+      $(this.submit).each(function () {
+        var $self = $(this);
+        if ($self.hasClass('js-no-error')) {
+          $self.blur(function () {
+            $self.closest('form').find('.has-error').each(function () {
+              $(this).removeClass('has-error');
+            });
+          });
+        }
+      });
+    }
+  }, {
+    key: 'checkInputFill',
+    value: function checkInputFill() {
+      $(this.inputText).each(function () {
+        checkInput($(this));
+      });
+      $(this.inputText).blur(function () {
+        checkInput($(this));
+      });
 
-			this.$input.on('keyup keydown keypress', function () {
-				checkInput((0, _jquery2.default)(this));
-			});
+      function checkInput(el) {
+        if (el.val() !== '') {
+          el.addClass(_helpers.css.fill);
+        } else {
+          el.removeClass(_helpers.css.fill);
+        }
+      }
+    }
+  }], [{
+    key: 'initValidator',
+    value: function initValidator() {
+      $.validate({
+        validateOnBlur: true,
+        showHelpOnFocus: false,
+        addSuggestions: false,
+        scrollToTopOnError: false,
+        borderColorOnError: false,
+        validateOnEvent: true,
+        modules: 'security'
+      });
+    }
+  }]);
 
-			function checkInput(el) {
-				if (el.val() !== '') {
-					el.addClass(_helpers.css.fill);
-				} else {
-					el.removeClass(_helpers.css.fill);
-				}
-			}
-		}
-	}, {
-		key: 'removeError',
-		value: function removeError() {
-			this.$input.on('click focus', function (ev) {
-				(0, _jquery2.default)(ev.currentTarget).parent().removeClass(_helpers.css.error);
-			});
-		}
-	}], [{
-		key: 'initValidator',
-		value: function initValidator() {
-			_jquery2.default.validate({
-				validateOnBlur: true,
-				showHelpOnFocus: false,
-				addSuggestions: false,
-				scrollToTopOnError: false,
-				borderColorOnError: false,
-				validateOnEvent: true,
-				modules: 'security html5'
-			});
-		}
-	}]);
-
-	return Validate;
+  return Validate;
 }();
 
 exports.default = new Validate();
 
 
 window.refreshValidate = function () {
-	new Validate().init();
+  new Validate().init();
 };
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
 /* 351 */
@@ -42628,7 +42614,7 @@ exports.PageResize = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42698,7 +42684,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 __webpack_require__(355);
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43440,39 +43426,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Website's public API (example).
- * Make some functions and methods accessible in global scope.
- *
- * @module PublicAPI
- */
-
-var PublicAPI = exports.PublicAPI = function PublicAPI() {
-  _classCallCheck(this, PublicAPI);
-};
-
-/** Expose Public API */
-
-
-exports.default = window.PublicAPI = PublicAPI;
-
-/***/ }),
-/* 357 */,
-/* 358 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _helpers = __webpack_require__(32);
+var _helpers = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43500,6 +43456,35 @@ var NoTouch = function () {
 }();
 
 exports.default = new NoTouch();
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Website's public API (example).
+ * Make some functions and methods accessible in global scope.
+ *
+ * @module PublicAPI
+ */
+
+var PublicAPI = exports.PublicAPI = function PublicAPI() {
+  _classCallCheck(this, PublicAPI);
+};
+
+/** Expose Public API */
+
+
+exports.default = window.PublicAPI = PublicAPI;
 
 /***/ })
 /******/ ]);

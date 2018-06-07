@@ -19,7 +19,7 @@ class Popups {
     this.$popup.popup({
       closeOnEsc: false,
       closeBtnSelector: '.js-popup-close',
-      lockScreenEl: 'body, header'
+      lockScreenEl: 'body'
     });
   }
 }
