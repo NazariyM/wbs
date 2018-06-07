@@ -32,13 +32,13 @@ block main
 						h3 Регистрация через email
 
 					+b.form-group
-						+b.INPUT.form-control(type='text' name='' autocomplete="off" data-validation="required")
+						+b.INPUT.form-control(type='text' name='name' autocomplete="off" data-validation="required")
 						+b.control-label
 							span Имя
 						+b.help-block Необходимо заполнить «ФИО».
 
 					+b.form-group
-						+b.INPUT.form-control(type='email' name='' autocomplete="off" data-validation="email required")
+						+b.INPUT.form-control(type='email' name='email' autocomplete="off" data-validation="email required")
 						+b.control-label
 							span e-mail
 						+b.help-block Необходимо заполнить «Почта».
@@ -47,6 +47,7 @@ block main
 						select.form-control.form-control_select.js-autocomplete-select(required data-placeholder="часовой пояс")
 							option
 							option(value='np') +2 Киев, Рига
+							option(value='cu') +3 Минск
 							option(value='cu') +3 Минск
 							option(value='cu') +1 Москва
 						div.help-block выберите часовой пояс
