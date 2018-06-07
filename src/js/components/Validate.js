@@ -1,6 +1,4 @@
 import { $window, css } from '../modules/dev/_helpers';
-import 'jquery-form-validator';
-import 'jquery-form-validator/form-validator/security';
 
 export class Validate {
   constructor() {
@@ -9,7 +7,6 @@ export class Validate {
   }
 
   init() {
-    Validate.initValidator();
     this.onFocusOut();
     this.checkInputFill();
     $window.on('load', () => {
@@ -56,21 +53,6 @@ export class Validate {
     }
   }
 
-  static initValidator() {
-    $.validate({
-      validateOnBlur: true,
-      showHelpOnFocus: false,
-      addSuggestions: false,
-      scrollToTopOnError: false,
-      borderColorOnError: false,
-      validateOnEvent: true,
-      modules: 'security'
-    });
-  }
 }
 
 export default new Validate();
-
-window.refreshValidate = function () {
-  new Validate().init();
-};

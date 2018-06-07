@@ -7,32 +7,28 @@ class AutocompleteSelect {
 
     if (this.$el.length) this.init();
   }
-	
+
   init() {
+    const textFind = this.$el.data('find');
+    const placeholder = this.$el.data('placeholder');
+
     this.$el.select2({
       minimumResultsForSearch: 0,
-      placeholder: this.$placeholder,
       allowClear: false,
+      placeholder: placeholder,
       language: {
         noResults: function () {
-          return 'не найдено';
+          return textFind;
         }
       },
       escapeMarkup: function (markup) {
         return markup;
       }
     })
-     .on('select2:opening', function (e) {
-      $(this).closest('.form-group').removeClass('has-error');
-    })
-    ;
+      .on('select2:opening', function () {
+        $(this).closest('.form-group').removeClass('has-error');
+      });
   }
 }
 
 export default new AutocompleteSelect();
-
-window.reInitSelect = reInitSelect;
-
-function reInitSelect() {
-  new AutocompleteSelect().init();
-}

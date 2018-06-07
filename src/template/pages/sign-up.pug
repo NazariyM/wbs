@@ -32,20 +32,20 @@ block main
 						h3 Регистрация через email
 
 					+b.form-group
-						+b.INPUT.form-control(type='text' name='name' autocomplete="off" data-validation="required")
+						+b.INPUT.form-control(type='text' name='name' autocomplete="off" required)
 						+b.control-label
 							span Имя
 						+b.help-block Необходимо заполнить «ФИО».
 
-					+b.form-group
-						+b.INPUT.form-control(type='email' name='email' autocomplete="off" data-validation="email required")
+					+b.form-group.has-error
+						+b.INPUT.form-control(type='email' name='email' autocomplete="off" required)
 						+b.control-label
 							span e-mail
 						+b.help-block Необходимо заполнить «Почта».
 
 					.form-group
-						select.form-control.form-control_select.js-autocomplete-select(required data-placeholder="часовой пояс")
-							option
+						select.form-control.form-control_select.js-autocomplete-select(required data-placeholder="часовой пояс" data-find='не найдено')
+							option(value)
 							option(value='np') +2 Киев, Рига
 							option(value='cu') +3 Минск
 							option(value='cu') +3 Минск
@@ -53,13 +53,13 @@ block main
 						div.help-block выберите часовой пояс
 
 					+b.form-group
-						+b.INPUT.form-control(type='password' name="pass_confirmation" autocomplete="off" data-validation="length" data-validation-length="min6")
+						+b.INPUT.form-control(type='password' name="" autocomplete="off" required)
 						+b.control-label
 							span пароль
 						+b.help-block Необходимо заполнить «Пароль».
 
 					+b.form-group
-						+b.INPUT.form-control(type='password' name="pass" autocomplete="off" data-validation="confirmation")
+						+b.INPUT.form-control(type='password' name="" autocomplete="off" required)
 						+b.control-label
 							span пароль еще раз
 						+b.help-block Необходимо заполнить «Подтверждение пароля».
